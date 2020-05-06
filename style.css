@@ -1,0 +1,107 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+
+}
+body {
+    background: #ffffff;
+    font-family: "Poppins",sans-serif;
+}
+.header{
+    display: flex;
+    justify-content: center;
+}
+.nav-bar {
+    width: 70%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding: 20px 10px 0 10px;
+}
+.right-side{
+    display: flex;
+    align-items: center;
+}
+.right-side .register {
+    padding-left: 10px;
+    text-decoration: none;
+    color: #222222;
+}
+.right-side .register:hover{
+    color: #6F15C9;
+    cursor: pointer;
+    text-decoration: #6f15c9 underline;
+}
+.right-side .sign-in:hover{
+    color: #6F15C9;
+    cursor: pointer;
+    text-decoration: #6f15c9 underline;
+}
+
+.right-side .sign-in {
+    text-decoration: none;
+    color: #222222;
+}
+.brand-name{
+    display: flex;
+    align-items: center;
+}
+.header .nav-bar .brand-name img {
+    width: 35px;
+    height: 35px;
+    transform: translateX(50%);
+}
+.nav-bar .brand-name .artifact {
+    color: #000000;
+    font-weight: bold;
+    padding-left: 30px;
+    text-decoration: none;
+}
+.artifact{
+    text-decoration: none;
+}
+
+
+
+
+
+
+.tiitle{
+    display: flex;
+    justify-content: center;
+}
+.main .title{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #000000;
+    padding-top: 20px;
+}
+.main .title .line2{
+    color:  #6F15C9;
+}
+.main .description{
+    text-align: center;
+    color: #000000;
+    padding: 20px 30px 20px 30px;
+}
+.main .get-started{
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+    padding: 10px 20px 20px 20px;
+}
+.main .register{
+    text-align: center;
+    color: #ffffff;
+    border: 1px;
+    background-color: #6F15C9;
+    padding: 8px 10px;
+    width: 10%;
+    border-radius: 5px;
+    text-decoration: none;
+
+}
