@@ -10,7 +10,7 @@ body {
     font-family: "Poppins",sans-serif;
 }
 /*header*/
-.header{
+.header {
     display: flex;
     justify-content: center;
 }
@@ -22,7 +22,7 @@ body {
     padding-top: 10px;
     padding: 20px 10px 0 10px;
 }
-.right-side{
+.right-side {
     display: flex;
     align-items: center;
 }
@@ -31,12 +31,12 @@ body {
     text-decoration: none;
     color: #222222;
 }
-.right-side .register:hover{
+.right-side .register:hover {
     color: #6F15C9;
     cursor: pointer;
     text-decoration: #6f15c9 underline;
 }
-.right-side .sign-in:hover{
+.right-side .sign-in:hover {
     color: #6F15C9;
     cursor: pointer;
     text-decoration: #6f15c9 underline;
@@ -46,7 +46,7 @@ body {
     text-decoration: none;
     color: #222222;
 }
-.brand-name{
+.brand-name { 
     display: flex;
     align-items: center;
 }
@@ -66,32 +66,32 @@ body {
 }
 
 /*body*/
-.tiitle{
+.tiitle {
     display: flex;
     justify-content: center;
 }
-.main .title{
+.main .title {
     text-align: center;
     font-size: 25px;
     font-weight: bold;
     color: #000000;
     padding-top: 20px;
 }
-.main .title .line2{
+.main .title .line2 {
     color:  #6F15C9;
 }
-.main .description{
+.main .description {
     text-align: center;
     color: #000000;
     padding: 20px 30px 20px 30px;
 }
-.main .get-started{
+.main .get-started {
     text-align: center;
     color: #000000;
     font-weight: bold;
     padding: 10px 20px 20px 20px;
 }
-.main .register{
+.main .register {
     text-align: center;
     color: #ffffff;
     background-color: #6F15C9;
@@ -100,26 +100,26 @@ body {
     display: block;
 
 }
-.main .account-exists{
+.main .account-exists {
     color: gray;
     text-align: center;
     font-size: 10px;
     padding: 10px 20px 20px 20px;
 }
-.favourite{
+.favourite {
     color: #000000;
     font-weight: bold;
     padding: 20px 30px 20px 30px;
     font-size: 12px;
 }
-.web-container{
+.web-container {
     width: 100%;
 }
-.left-side{
+.left-side {
     padding: 10px 30px;
     width: 80%;
 }
- .left-side .web{
+ .left-side .web {
     border: 1px;
     background-color: #D4D4D4;
     border-radius: 8px;
@@ -129,45 +129,45 @@ body {
     padding-left: 10px;
 
 }
-.web .web-name{
+.web .web-name {
     padding-left: 10px;
     padding-right: 10px;
 }
-.left-side .subject{
+.left-side .subject {
     display: flex;
     justify-content: space-between;
     padding-top: 10px;
 }
-.left-side .heading{
+.left-side .heading {
     color: #000000;
     font-size: 15px;
     font-weight: bold;
 }
-.left-side .subject .readings{
+.left-side .subject .readings {
     font-size: 11px;
     color: gray;
     display: flex;
     align-items: center;
 }
-.left-side .author-details{
+.left-side .author-details {
     display: flex;
     justify-content: space-between;
     padding-top: 5px;
 }
-.left-side .author-details .author-name{
+.left-side .author-details .author-name {
     color: gray;
     font-size: 12px;
 }
-.left-side .author-details .date{
+.left-side .author-details .date {
     color: gray;
     font-size: 11px;
 }
-.left-side .contents{
+.left-side .contents {
     color: #000000;
     font-size: 13px;
     padding-top: 10px;
 }
-.main .right-side{
+.main .right-side {
     width: 20%;
     font-size: 13px;
     color: #000000;
