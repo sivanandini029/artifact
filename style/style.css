@@ -16,6 +16,27 @@ a {
     color: inherit;
 }
 
+.primary-link {
+    color: #6F15C9;
+    transition: color 300ms ease-in-out;
+}
+
+.primary-link:hover {
+    color: #42087C;
+}
+
+.button {
+    color: #ffffff;
+    background-color: #6F15C9;
+    transition: background-color 300ms ease-in-out;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 5px; 
+}
+.button:hover {
+    background-color: #42087C;
+}
+
 body {
     background: #ffffff;
     color: #222222;
@@ -96,12 +117,8 @@ body {
     padding: 15px 0;
 }
 .main .top-section .register {
-    color: #ffffff;
     font-size: 1.3rem;
-    background-color: #6F15C9;
     padding: 8px 25px;
-    text-decoration: none;
-    border-radius: 5px;
 }
 .main .top-section .account-exists {
     text-align: center;
@@ -130,7 +147,13 @@ body {
     padding-bottom: 20px;
 }
 .bottom-section .post-section .post {
-    padding: 20px 0;
+    padding: 20px;
+    transition: background-color 300ms ease-in-out;
+    cursor: pointer;
+    border-radius: 15px;
+}
+.bottom-section .post-section .post:hover {
+    background-color: #F4F4F4;
 }
 .bottom-section .post-section .post .labels {
     display: flex;
