@@ -91,14 +91,19 @@ body {
     font-weight: bold;
     padding: 10px 20px 20px 20px;
 }
+.main .button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .main .register {
     text-align: center;
     color: #ffffff;
     background-color: #6F15C9;
-    padding: 8px 10px;
+    padding: 8px 10px 8px;
     text-decoration: none;
-    display: block;
-
+    width: 100px;
+    border-radius: 5px;
 }
 .main .account-exists {
     color: gray;
@@ -112,13 +117,15 @@ body {
     padding: 20px 30px 20px 30px;
     font-size: 12px;
 }
-.web-container {
+.main-container {
     width: 100%;
     display: flex;
 }
-.web-container .left-side {
+.main-container .post-container{
+    flex-grow: 3;
+}
+.main-container .left-side {
     padding: 10px 30px;
-    width: 70%;
 }
  .left-side .web {
     border: 1px;
@@ -168,9 +175,13 @@ body {
     font-size: 14px;
     padding-top: 10px;
 }
-.web-container .right-side {
+.main-container .right-side {
     width: 20%;
     font-size: 13px;
     color: #000000;
-    padding: 40px 30px 20px 40px;
+    flex-grow: 1;
+    padding: 40px 30px 0 30px;
+    margin-top: 0;
+    align-items: unset;
 }
+
