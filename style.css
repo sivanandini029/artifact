@@ -113,11 +113,12 @@ body {
     font-size: 12px;
 }
 .web-container {
-    width: 100%;
+    width: 1100px;
+    display: flex;
 }
-.left-side {
+.web-container .left-side {
     padding: 10px 30px;
-    width: 80%;
+    width: 900px;
 }
  .left-side .web {
     border: 1px;
@@ -167,9 +168,9 @@ body {
     font-size: 13px;
     padding-top: 10px;
 }
-.main .right-side {
-    width: 20%;
+.web-container .right-side {
+    width: 300px;
     font-size: 13px;
     color: #000000;
-    padding: 20px 30px 20px 30px;
+    padding: 40px 30px 20px 30px;
 }
