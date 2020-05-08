@@ -7,8 +7,18 @@
 :root {
     font-size: 18px;
 }
+
+.make-purple {
+    color: #6F15C9;
+}
+
+a {
+    color: inherit;
+}
+
 body {
     background: #ffffff;
+    color: #222222;
     font-family: "Poppins", sans-serif;
 }
 /*header*/
@@ -18,7 +28,8 @@ body {
     height: 80px;
 }
 .header .nav-bar {
-    width: 70%;
+    width: 100%; 
+    max-width: 900px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -30,7 +41,6 @@ body {
 .header .nav .link {
     padding-left: 10px;
     text-decoration: none;
-    color: #222222;
     cursor: pointer;
     transition: color 300ms ease-in-out;
 }
@@ -49,56 +59,54 @@ body {
     height: 35px;
 }
 .header .nav-bar .brand-name .artifact {
-    color: #000000;
-    font-weight: 800;
+    color: #111111;
+    font-weight: 500;
     padding-left: 10px;
 }
 
 /*body*/
-.tiitle {
+.main {
+    padding: 0 80px;
+}
+
+/*top-section*/
+.main .top-section {
+    padding: 80px 0 20px 0;
     display: flex;
-    justify-content: center;
-}
-.main .title {
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-    color: #000000;
-    padding-top: 20px;
-}
-.main .title .line2 {
-    color:  #6F15C9;
-}
-.main .description {
-    text-align: center;
-    color: #000000;
-    padding: 20px 30px 20px 30px;
-}
-.main .get-started {
-    text-align: center;
-    color: #000000;
-    font-weight: bold;
-    padding: 10px 20px 20px 20px;
-}
-.main .button-container{
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
-.main .register {
+
+.main .top-section .title {
+    font-size: 2.2rem;;
+    font-weight: 800;
+    color: #111111;
     text-align: center;
+    padding-bottom: 20px;
+}
+.main .top-section .description {
+    font-size: 1.1rem;
+    padding: 20px 0 40px 0;
+}
+.main .top-section .get-started {
+    color: #111111;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 15px 0;
+}
+.main .top-section .register {
     color: #ffffff;
+    font-size: 1.3rem;
     background-color: #6F15C9;
-    padding: 8px 10px 8px;
+    padding: 8px 25px;
     text-decoration: none;
-    width: 100px;
     border-radius: 5px;
 }
-.main .account-exists {
-    color: gray;
+.main .top-section .account-exists {
     text-align: center;
-    font-size: 10px;
-    padding: 10px 20px 20px 20px;
+    font-size: 0.86rem;
+    padding: 15px;
 }
 .favourite {
     color: #000000;
