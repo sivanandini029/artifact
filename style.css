@@ -2,67 +2,56 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+}
 
+:root {
+    font-size: 18px;
 }
 body {
     background: #ffffff;
-    font-family: "Poppins",sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 /*header*/
 .header {
     display: flex;
     justify-content: center;
+    height: 80px;
 }
-.nav-bar {
+.header .nav-bar {
     width: 70%;
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    padding-top: 10px;
-    padding: 20px 10px 0 10px;
 }
-.right-side {
+.header .nav-bar .nav {
     display: flex;
     align-items: center;
 }
-.right-side .register {
+.header .nav .link {
     padding-left: 10px;
     text-decoration: none;
     color: #222222;
-}
-.right-side .register:hover {
-    color: #6F15C9;
     cursor: pointer;
-    text-decoration: #6f15c9 underline;
+    transition: color 300ms ease-in-out;
 }
-.right-side .sign-in:hover {
+.header .nav .link:hover {
     color: #6F15C9;
-    cursor: pointer;
-    text-decoration: #6f15c9 underline;
 }
 
-.right-side .sign-in {
-    text-decoration: none;
-    color: #222222;
-}
-.brand-name { 
+.header .nav-bar .brand-name { 
     display: flex;
-    align-items: center;
+    align-items: center;   
+    text-decoration: none;
+    font-size: 1.3rem;
 }
 .header .nav-bar .brand-name img {
     width: 35px;
     height: 35px;
-    transform: translateX(50%);
 }
-.nav-bar .brand-name .artifact {
+.header .nav-bar .brand-name .artifact {
     color: #000000;
-    font-weight: bold;
-    padding-left: 30px;
-    text-decoration: none;
-}
-.artifact{
-    text-decoration: none;
+    font-weight: 800;
+    padding-left: 10px;
 }
 
 /*body*/
