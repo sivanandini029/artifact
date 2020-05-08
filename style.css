@@ -108,77 +108,103 @@ body {
     font-size: 0.86rem;
     padding: 15px;
 }
+
+/* bottom section */
 .favourite {
     color: #000000;
     font-weight: bold;
     padding: 20px 30px 20px 30px;
     font-size: 12px;
 }
-.main-container {
-    width: 100%;
+.bottom-section {
     display: flex;
+    padding: 40px 0;
 }
-.main-container .post-container{
-    flex-grow: 3;
+.bottom-section .post-section {
+    flex: 4;
 }
-.main-container .left-side {
-    padding: 10px 30px;
+.bottom-section .post-section .title {
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: #111111;
+    padding-bottom: 20px;
 }
- .left-side .web {
-    border: 1px;
+.bottom-section .post-section .post {
+    padding: 20px 0;
+}
+.bottom-section .post-section .post .labels {
+    display: flex;
+    flex-wrap: wrap;
+}
+.bottom-section .post-section .post .labels .label {
+    font-size: 0.7rem;
     background-color: #D4D4D4;
-    border-radius: 8px;
-    width: 78px;
+    border-radius: 12.5px;
+    height: 25px;
     display: flex;
     justify-content: space-between;
-    padding-left: 10px;
-
-}
-.web .web-name {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.left-side .subject {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 10px;
-}
-.left-side .heading {
-    color: #000000;
-    font-size: 15px;
-    font-weight: bold;
-}
-.left-side .subject .readings {
-    font-size: 11px;
-    color: gray;
-    display: flex;
     align-items: center;
+    padding: 0 10px;
+    margin-right: 8px;
 }
-.left-side .author-details {
+.bottom-section .post-section .post .labels .label .icon {
+    margin-right: 8px;
+    height: 75%;
+    object-fit: contain;
+}
+.bottom-section .post-section .post .subject {
     display: flex;
     justify-content: space-between;
-    padding-top: 5px;
-}
-.left-side .author-details .author-name {
-    color: gray;
-    font-size: 12px;
-}
-.left-side .author-details .date {
-    color: gray;
-    font-size: 11px;
-}
-.left-side .contents {
-    color: #000000;
-    font-size: 14px;
+    align-items: center;
     padding-top: 10px;
 }
-.main-container .right-side {
-    width: 20%;
-    font-size: 13px;
-    color: #000000;
-    flex-grow: 1;
-    padding: 40px 30px 0 30px;
-    margin-top: 0;
-    align-items: unset;
+.bottom-section .post-section .post .heading {
+    color: #111111;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.bottom-section .post-section .post .subject .readings {
+    font-size: 0.69rem;
+    color: #444444;
+    text-align: right;
+}
+.bottom-section .post-section .post .author-details {
+    display: flex;
+    justify-content: space-between;
+}
+.bottom-section .post-section .post .author-details .author-name {
+    color: #444444;
+    font-size: 0.86rem;
+}
+.bottom-section .post-section .post .author-details .date {
+    font-size: 0.69rem;
+    color: #444444;
+    text-align: right;
+}
+.bottom-section .post-section .post .contents {
+    padding-top: 10px;
+}
+.bottom-section .right-side {
+    flex: 1;
+    padding: 60px 0 0 50px;
+}
+.bottom-section .right-side p {
+    margin: 20px 0;
 }
 
+/* medium screens */
+@media (max-width: 1100px) {
+    .main {
+        padding: 0 40px;
+    }
+}
+
+/* small screens */
+@media (max-width: 700px) {
+    .bottom-section {
+        flex-direction: column;
+    }
+    .bottom-section .right-side {
+        padding: 60px 0 0 0;
+    }
+}
