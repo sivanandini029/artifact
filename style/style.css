@@ -2,186 +2,235 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
-
 }
+
+:root {
+    font-size: 18px;
+}
+
+.make-purple {
+    color: #6F15C9;
+}
+
+a {
+    color: inherit;
+}
+
+.primary-link {
+    color: #6F15C9;
+    transition: color 300ms ease-in-out;
+}
+
+.primary-link:hover {
+    color: #42087C;
+}
+
+.button {
+    color: #ffffff;
+    background-color: #6F15C9;
+    transition: background-color 300ms ease-in-out;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 5px; 
+}
+.button:hover {
+    background-color: #42087C;
+}
+
 body {
     background: #ffffff;
-    font-family: "Poppins",sans-serif;
+    color: #222222;
+    font-family: "Poppins", sans-serif;
 }
 /*header*/
 .header {
     display: flex;
     justify-content: center;
+    height: 80px;
 }
-.nav-bar {
-    width: 70%;
+.header .nav-bar {
+    width: 100%; 
+    max-width: 900px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    padding-top: 10px;
-    padding: 20px 10px 0 10px;
 }
-.right-side {
+.header .nav-bar .nav {
     display: flex;
     align-items: center;
 }
-.right-side .register {
+.header .nav .link {
     padding-left: 10px;
     text-decoration: none;
-    color: #222222;
-}
-.right-side .register:hover {
-    color: #6F15C9;
     cursor: pointer;
-    text-decoration: #6f15c9 underline;
+    transition: color 300ms ease-in-out;
 }
-.right-side .sign-in:hover {
+.header .nav .link:hover {
     color: #6F15C9;
-    cursor: pointer;
-    text-decoration: #6f15c9 underline;
 }
 
-.right-side .sign-in {
-    text-decoration: none;
-    color: #222222;
-}
-.brand-name { 
+.header .nav-bar .brand-name { 
     display: flex;
-    align-items: center;
+    align-items: center;   
+    text-decoration: none;
+    font-size: 1.3rem;
 }
 .header .nav-bar .brand-name img {
     width: 35px;
     height: 35px;
-    transform: translateX(50%);
 }
-.nav-bar .brand-name .artifact {
-    color: #000000;
-    font-weight: bold;
-    padding-left: 30px;
-    text-decoration: none;
-}
-.artifact{
-    text-decoration: none;
+.header .nav-bar .brand-name .artifact {
+    color: #111111;
+    font-weight: 500;
+    padding-left: 10px;
 }
 
 /*body*/
-.tiitle {
+.main {
+    padding: 0 80px;
+}
+
+/*top-section*/
+.main .top-section {
+    padding: 80px 0 20px 0;
     display: flex;
-    justify-content: center;
-}
-.main .title {
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-    color: #000000;
-    padding-top: 20px;
-}
-.main .title .line2 {
-    color:  #6F15C9;
-}
-.main .description {
-    text-align: center;
-    color: #000000;
-    padding: 20px 30px 20px 30px;
-}
-.main .get-started {
-    text-align: center;
-    color: #000000;
-    font-weight: bold;
-    padding: 10px 20px 20px 20px;
-}
-.main .button-container{
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
-.main .register {
+
+.main .top-section .title {
+    font-size: 2.2rem;;
+    font-weight: 800;
+    color: #111111;
     text-align: center;
-    color: #ffffff;
-    background-color: #6F15C9;
-    padding: 8px 10px 8px;
-    text-decoration: none;
-    width: 100px;
-    border-radius: 5px;
+    padding-bottom: 20px;
 }
-.main .account-exists {
-    color: gray;
+.main .top-section .description {
+    font-size: 1.1rem;
+    padding: 20px 0 40px 0;
+}
+.main .top-section .get-started {
+    color: #111111;
     text-align: center;
-    font-size: 10px;
-    padding: 10px 20px 20px 20px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 15px 0;
 }
+.main .top-section .register {
+    font-size: 1.3rem;
+    padding: 8px 25px;
+}
+.main .top-section .account-exists {
+    text-align: center;
+    font-size: 0.86rem;
+    padding: 15px;
+}
+
+/* bottom section */
 .favourite {
     color: #000000;
     font-weight: bold;
     padding: 20px 30px 20px 30px;
     font-size: 12px;
 }
-.main-container {
-    width: 100%;
+.bottom-section {
     display: flex;
+    padding: 40px 0;
 }
-.main-container .post-container{
-    flex-grow: 3;
+.bottom-section .post-section {
+    flex: 4;
 }
-.main-container .left-side {
-    padding: 10px 30px;
+.bottom-section .post-section .title {
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: #111111;
+    padding-bottom: 20px;
 }
- .left-side .web {
-    border: 1px;
+.bottom-section .post-section .post {
+    padding: 20px;
+    transition: background-color 300ms ease-in-out;
+    cursor: pointer;
+    border-radius: 15px;
+}
+.bottom-section .post-section .post:hover {
+    background-color: #F4F4F4;
+}
+.bottom-section .post-section .post .labels {
+    display: flex;
+    flex-wrap: wrap;
+}
+.bottom-section .post-section .post .labels .label {
+    font-size: 0.7rem;
     background-color: #D4D4D4;
-    border-radius: 8px;
-    width: 78px;
+    border-radius: 12.5px;
+    height: 25px;
     display: flex;
     justify-content: space-between;
-    padding-left: 10px;
-
-}
-.web .web-name {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.left-side .subject {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 10px;
-}
-.left-side .heading {
-    color: #000000;
-    font-size: 15px;
-    font-weight: bold;
-}
-.left-side .subject .readings {
-    font-size: 11px;
-    color: gray;
-    display: flex;
     align-items: center;
+    padding: 0 10px;
+    margin-right: 8px;
 }
-.left-side .author-details {
+.bottom-section .post-section .post .labels .label .icon {
+    margin-right: 8px;
+    height: 75%;
+    object-fit: contain;
+}
+.bottom-section .post-section .post .subject {
     display: flex;
     justify-content: space-between;
-    padding-top: 5px;
-}
-.left-side .author-details .author-name {
-    color: gray;
-    font-size: 12px;
-}
-.left-side .author-details .date {
-    color: gray;
-    font-size: 11px;
-}
-.left-side .contents {
-    color: #000000;
-    font-size: 14px;
+    align-items: center;
     padding-top: 10px;
 }
-.main-container .right-side {
-    width: 20%;
-    font-size: 13px;
-    color: #000000;
-    flex-grow: 1;
-    padding: 40px 30px 0 30px;
-    margin-top: 0;
-    align-items: unset;
+.bottom-section .post-section .post .heading {
+    color: #111111;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.bottom-section .post-section .post .subject .readings {
+    font-size: 0.69rem;
+    color: #444444;
+    text-align: right;
+}
+.bottom-section .post-section .post .author-details {
+    display: flex;
+    justify-content: space-between;
+}
+.bottom-section .post-section .post .author-details .author-name {
+    color: #444444;
+    font-size: 0.86rem;
+}
+.bottom-section .post-section .post .author-details .date {
+    font-size: 0.69rem;
+    color: #444444;
+    text-align: right;
+}
+.bottom-section .post-section .post .contents {
+    padding-top: 10px;
+}
+.bottom-section .right-side {
+    flex: 1;
+    padding: 60px 0 0 50px;
+}
+.bottom-section .right-side p {
+    margin: 20px 0;
 }
 
+/* medium screens */
+@media (max-width: 1100px) {
+    .main {
+        padding: 0 40px;
+    }
+}
+
+/* small screens */
+@media (max-width: 700px) {
+    .main {
+        padding: 0 15px;
+    }
+    .bottom-section {
+        flex-direction: column;
+    }
+    .bottom-section .right-side {
+        padding: 60px 0 0 0;
+    }
+}
