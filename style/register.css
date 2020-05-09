@@ -97,7 +97,7 @@ body {
 /* small screens */
 @media (max-width: 700px) {
     .main-container {
-        padding: 0 15px;
+        padding: 10px 15px;
     }
     .main-container {
         flex-direction: column;
