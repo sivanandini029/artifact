@@ -8,3 +8,17 @@
 .main-container .form .register-container {
     padding-top: 0;
 }
+.main-container .form .register-container {
+    display: flex;
+    justify-content: center;
+}
+
+.main-container .form .register-container .button{
+    width: 100%;
+    text-align: center;
+}
+.form .login-footer{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
