@@ -19,34 +19,33 @@ body {
     font-weight: 800;
 }
 
-.main-container{
+.main-container {
     display: flex;
     justify-content: space-between;
     padding-top: 30px;
     width: 100%;
 }
-.main-container .image-container{
+.main-container .image-container {
     padding: 0  10px 50px;
     flex-grow: 1;
 }
-.main-container .image-container .image{
-    
+.main-container .image-container .image {
     display: flex;
     justify-content: center;
 }
-.main-container .image-container .image img{
+.main-container .image-container .image img {
     width: 80%;
 }
-.main-container .image-container .image-description{
+.main-container .image-container .image-description {
     font-size: 1.3rem;
     display: flex;
     justify-content: center;
 }
-.main-container .form{
+.main-container .form {
     flex-grow: 1;
     padding-right: 50px;
 }
-.main-container .form p{
+.main-container .form p {
     font-size: 1rem;
     color: #222222;
     padding-top: 30px;
@@ -60,12 +59,12 @@ body {
     border: none;
     padding-left: 20px;
 }
-.main-container .form .register-container{
+.main-container .form .register-container {
     padding-top: 40px;
     display: flex;
     justify-content: space-between;
 }
-.main-container .form .register-container .primary-link{
+.main-container .form .register-container .primary-link {
     display: flex;
     justify-content: right;
 }
@@ -74,7 +73,7 @@ body {
     .main-container {
         padding: 0 40px;
     }
-    .main-container .image-container .image-description{
+    .main-container .image-container .image-description {
         display: flex;
         justify-content: center;
         width: 100%;
@@ -86,7 +85,7 @@ body {
     .form .register-container {
         flex-direction: column;
     }
-    .form .register-container .button{
+    .form .register-container .button {
         width: 100px;
     }
     .form .register-container .primary-link{
@@ -106,7 +105,6 @@ body {
     .main-container .image-container .image-description{
         display: flex;
         justify-content: center;
-        /* width: 90%; */
     }
     .form {
         padding: 0 20px;
