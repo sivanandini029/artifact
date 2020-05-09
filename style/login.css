@@ -1,0 +1,10 @@
+.form{
+    padding-top: 50px;
+}
+.form input{
+    width: 100%;
+    margin-bottom: 30px;
+}
+.main-container .form .register-container {
+    padding-top: 0;
+}
