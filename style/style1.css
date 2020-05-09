@@ -44,6 +44,7 @@ body {
 }
 .main-container .form{
     flex-grow: 1;
+    padding-right: 50px;
 }
 .main-container .form p{
     font-size: 1rem;
@@ -55,13 +56,12 @@ body {
     background: #DCDCDC;
     border-radius: 5px;
     height: 35px;
-    width: 400px;
+    width: 100%;
     border: none;
     padding-left: 20px;
 }
 .main-container .form .register-container{
     padding-top: 40px;
-    width: 70%;
     display: flex;
     justify-content: space-between;
 }
@@ -77,14 +77,14 @@ body {
     .main-container .image-container .image-description{
         display: flex;
         justify-content: center;
-        width: 90%;
+        width: 100%;
     }
     .form {
         padding: 0 20px;
+        width: 100%;
     }
     .form .register-container {
         flex-direction: column;
-        
     }
     .form .register-container .button{
         width: 100px;
@@ -103,15 +103,17 @@ body {
     .main-container {
         flex-direction: column;
     }
+    .main-container .image-container .image-description{
+        display: flex;
+        justify-content: center;
+        /* width: 90%; */
+    }
     .form {
         padding: 0 20px;
     }
     .form .register-container {
         flex-direction: column;
         
-    }
-    .form .register-container .button{
-        width: 100px;
     }
     .form .register-container .primary-link{
         padding-top: 10px;
