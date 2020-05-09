@@ -67,6 +67,9 @@ body {
 .main-container .form .register-container .primary-link {
     display: flex;
     justify-content: right;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
 }
 /* medium screens */
 @media (max-width: 1100px) {

@@ -21,4 +21,5 @@
     display: flex;
     justify-content: space-between;
     padding-top: 20px;
+    font-size: 0.7rem;
 }
