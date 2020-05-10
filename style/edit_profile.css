@@ -1,0 +1,85 @@
+.update-details {
+    display: flex;
+    justify-content: space-between;
+}
+.update-details .userdetails-container {
+    flex: 1;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.update-details .userdetails-container .account-title {
+    padding-left: 20px;
+}
+.update-details .userdetails-container .profile-pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.userdetails-container .name-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+.userdetails-container .details-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+.userdetails-container .bio-container .input-container .label-bio {
+   display: flex;
+   justify-content: space-between;
+}
+.update-details .update {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+.userdetails-container .form .input-container {
+    padding: 20px 20px;
+}
+.update-details .account-details {
+    flex: 1;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.update-details .account-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.account-details .form .input-container {
+    padding: 20px 20px;
+}
+.account-details .account-title {
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+.account-details .disable-account .disable-description {
+    padding-left: 20px;
+}
+.account-details .disable-account .update {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.account-details .disable-account .button {
+    background-color: #CE2626;
+    font-size: 1.3rem;
+}
+.account-details .disable-account .button:hover {
+    background-color: rgb(128, 12, 12);
+}
+
+
+
+
+@media (max-width: 1100px) {
+    .update-details {
+        flex-direction: column;
+    }
+}
+
+/* small screens */
+@media (max-width: 700px) {
+    .update-details {
+        padding: 10px 0;
+    }
+}
