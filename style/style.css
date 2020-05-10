@@ -1,7 +1,28 @@
+/*********************************************
+FONT SIZE
+very-large(40px) - 2.2rem
+large(25px) - 1.3rem
+medium(20px) - 1.1rem
+normal(18px) - 1rem
+small(16px) - 0.86rem
+extra-small(14px) - 0.69rem
+
+COLOR
+theme - #6F15C9
+theme-dark - #42087C
+title-color - #111111
+font-color - #222222
+gray-color - #444444
+************************************************/
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
 }
 
 :root {
@@ -26,12 +47,15 @@ a {
 }
 
 .button {
+    border: none;
+    font-family: "Poppins", sans-serif;
     color: #ffffff;
     background-color: #6F15C9;
     transition: background-color 300ms ease-in-out;
     padding: 6px 12px;
     text-decoration: none;
     border-radius: 5px; 
+    cursor: pointer;
 }
 .button:hover {
     background-color: #42087C;
@@ -87,23 +111,22 @@ body {
 
 /*body*/
 .main {
-    padding: 0 80px;
+    padding: 60px 80px;
 }
 
-/*top-section*/
-.main .top-section {
-    padding: 80px 0 20px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.main .top-section .title {
+.main .title {
     font-size: 2.2rem;;
     font-weight: 800;
     color: #111111;
     text-align: center;
-    padding-bottom: 20px;
+    padding: 20px;
+}
+
+/*top-section*/
+.main .top-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .main .top-section .description {
     font-size: 1.1rem;
@@ -127,12 +150,6 @@ body {
 }
 
 /* bottom section */
-.favourite {
-    color: #000000;
-    font-weight: bold;
-    padding: 20px 30px 20px 30px;
-    font-size: 12px;
-}
 .bottom-section {
     display: flex;
     padding: 40px 0;
@@ -140,7 +157,7 @@ body {
 .bottom-section .post-section {
     flex: 4;
 }
-.bottom-section .post-section .title {
+.bottom-section .post-section .sub-title {
     font-weight: 500;
     font-size: 1.3rem;
     color: #111111;
@@ -160,7 +177,7 @@ body {
     flex-wrap: wrap;
 }
 .bottom-section .post-section .post .labels .label {
-    font-size: 0.7rem;
+    font-size: 0.69rem;
     background-color: #D4D4D4;
     border-radius: 12.5px;
     height: 25px;
