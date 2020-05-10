@@ -75,8 +75,11 @@
     justify-content: space-between;
     align-items: center;
 }
-.form .bottom-control .left-section{
+.form .bottom-control .left-section {
     font-size: 0.86rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 .form .button.large {
     font-size: 1.3rem;
