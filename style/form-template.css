@@ -77,9 +77,13 @@
 }
 .form .bottom-control .left-section {
     font-size: 0.86rem;
+    margin-right: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+.form .bottom-control .left-section a {
+    margin: 3px 0;
 }
 .form .button.large {
     font-size: 1.3rem;
@@ -103,11 +107,20 @@
 
 /* small screens */
 @media (max-width: 700px) {
+    .form-template {
+        padding: 10px 0;
+    }
+
+    .form-template .left-container {
+        padding: 10px 0;
+    }
+
     .form-template .left-container .image-container {
         width: 95%;
     }
 
     .form-template .form form {
         width: 95%;
+        padding: 20px 0;
     }
 }
