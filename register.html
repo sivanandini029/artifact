@@ -1,51 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Register Page</title>
-        <link rel="stylesheet" href="style/style.css">
-        <link rel="stylesheet" href="style/register.css">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container">
-            <header class="header">
-                <div class="nav-bar"> 
-                    <a href="#" class="brand-name">
-                        <img src="assets/app-icon.png">
-                        <span class="artifact">Artifact</span>
-                    </a>
-                    <nav class="nav">
-                        <a href="#" class="link">Sign In</a>
-                        <a href="#" class="link">Register</a>
-                    </nav>
-                </div>
-            </header>
-            <div class="main-title">
-                <div class="register-heading">Register</div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/form-template.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="nav-bar"> 
+                <a href="./index.html" class="brand-name">
+                    <img src="assets/app-icon.png">
+                    <span class="artifact">Artifact</span>
+                </a>
+                <nav class="nav">
+                    <a href="./login.html" class="link">Sign In</a>
+                    <a href="./register.html" class="link">Register</a>
+                </nav>
             </div>
-            <div class="main-container">
-                <div class="image-container">
-                    <div class="image">
-                        <img src="assets/undraw_stand_out_1oag 1.png">
+        </header>
+        <main class="main">
+            <h1 class="title">Register</h1>
+            <div class="form-template">
+                <div class="left-container">
+                    <div class="image-container">
+                        <img class="image" src="assets/undraw_stand_out_1oag.svg" />
                     </div>
                     <div class="image-description">Join up and start writing to the world</div>
                 </div>
                 <div class="form">
-                    <form name="myForm">
-                        <p>Username</p>
-                        <input type="text" name="name" placeholder="Choose a good username">
-                        <p>Email</p>
-                        <input type="email" name="email" placeholder="Your email address">
-                        <p>Passwrod</p>
-                        <input type="password" name="password" placeholder="Enter Password">
-                        </form>
-                        <div class="register-container">
-                            <a href="#" class="primary-link">Already have an account</a>
-                            <a href="#" class="button register">Register</a>
+                    <form name="register">
+                        <div class="input-container">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username" placeholder="Choose a good username" />
                         </div>
+                        <div class="input-container">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Your email address" />
+                        </div>
+                        <div class="input-container">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" placeholder="Enter Password" />
+                        </div>
+                        <div class="bottom-control">
+                            <div class="left-section">
+                                <a href="./login.html" class="primary-link">Already have an account</a>
+                            </div>
+                            <div class="right-section">
+                                <button href="#" class="button large">Register</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </div>
+        </main>
+    </div>
+</body>
+</html>
+
             

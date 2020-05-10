@@ -1,53 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login Page</title>
-        <link rel="stylesheet" href="style/style.css">
-        <link rel="stylesheet" href="style/register.css">
-        <link rel="stylesheet" href="style/login.css">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container">
-            <header class="header">
-                <div class="nav-bar"> 
-                    <a href="#" class="brand-name">
-                        <img src="assets/app-icon.png">
-                        <span class="artifact">Artifact</span>
-                    </a>
-                    <nav class="nav">
-                        <a href="#" class="link">Sign In</a>
-                        <a href="#" class="link">Register</a>
-                    </nav>
-                </div>
-            </header>
-            <div class="main-title">
-                <div class="register-heading">Login Here</div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/form-template.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="nav-bar"> 
+                <a href="./index.html" class="brand-name">
+                    <img src="assets/app-icon.png">
+                    <span class="artifact">Artifact</span>
+                </a>
+                <nav class="nav">
+                    <a href="./login.html" class="link">Sign In</a>
+                    <a href="./register.html" class="link">Register</a>
+                </nav>
             </div>
-            <div class="main-container">
-                <div class="image-container">
-                    <div class="image">
-                        <img src="assets/undraw_my_documents_ym8x 1.png">
+        </header>
+        <div class="main">
+            <div class="title">Login</div>
+            <div class="form-template">
+                <div class="left-container">
+                    <div class="image-container">
+                        <img class="image" src="assets/undraw_choosing_house_v37h.svg" />
                     </div>
                     <div class="image-description">Go inside into the world of wonders</div>
                 </div>
                 <div class="form">
-                    <form name="myForm">
-                        <input type="text" name="name" placeholder="Enter username or email address">
-                        <input type="password" name="password" placeholder="Enter Password">
-                     </form>
-                    <div class="log-in">
-                        <div class="register-container">
-                            <a href="#" class="button register">Log In</a>
+                    <form name="login">
+                        <div class="input-container">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username" placeholder="Enter username or email address">
                         </div>
-                        <div class="login-footer">
-                            <a href="#" class="primary-link">Create an account</a>
-                            <a href="#" class="primary-link">Forgot Password ?</a>
+                        <div class="input-container">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" placeholder="Enter Password">
                         </div>
-                    </div>
+                        <div class="bottom-control">
+                            <div class="left-section">
+                                <a href="./register.html" class="primary-link">Create an account</a>
+                                <a href="#" class="primary-link">Forgot Password ?</a>
+                            </div>
+                            <div class="right-container">
+                                <button class="button large">Log In</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
+</body>
+</html>
             
