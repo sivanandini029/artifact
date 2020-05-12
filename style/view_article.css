@@ -19,25 +19,25 @@
 .container .about-article .profile-website-container .website .website-button{
     padding-bottom: 20px;
 }
-.container .about-article .profile-container{
+.container .profile-container{
     display: flex;
     flex-direction: unset;
     align-items: center;
     padding: unset;
 }
-.container .about-article .profile-container .name-read .profile-name{
+.container .profile-container .name-read .profile-name{
     color: #6F15C9;
     font-size: 0.86rem;
     font-weight: 500;
     padding-top: 10px;
 }
-.container .about-article .profile-container .name-read .profile-reads{
+.container .profile-container .name-read .profile-reads{
     font-size: 0.69rem;
     font-weight: 500;
     color: #444444;
     padding-left: 10px;
 }
-.container .about-article .profile-container .profile-pic img{
+.container .profile-container .profile-pic img{
     width: 63px;
     height: 62px;
 }
