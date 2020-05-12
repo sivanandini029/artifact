@@ -1,0 +1,24 @@
+.container .main{
+    text-align: center;
+}
+.container .form textarea{
+    width: 100%;
+    background-color: rgb(236, 236, 236);
+    border-radius: 5px;
+    padding: 8px 15px;
+    width: 100%;
+    color: #444444;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    border: 2px solid rgb(230, 230, 230);
+    transition: background-color 300ms ease-in-out, border 300ms ease-in-out;
+}
+.container .form textarea:focus{
+    border: 2px solid #6F15C933;
+}
+.container .form textarea:hover{
+    background-color: rgb(225, 225, 225);
+}
+.container .form{
+    padding: 30px 30px;
+}
