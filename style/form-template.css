@@ -85,10 +85,6 @@
 .form .bottom-control .left-section a {
     margin: 3px 0;
 }
-.form .button.large {
-    font-size: 1.3rem;
-    padding: 5px 25px;
-}
 .form .error {
     font-size: 0.69rem;
     color: #D60000;

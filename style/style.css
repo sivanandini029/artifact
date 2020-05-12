@@ -29,6 +29,10 @@ gray-color - #444444
     font-size: 18px;
 }
 
+button::-moz-focus-inner {
+    border: 0;
+}
+  
 .make-purple {
     color: #6F15C9;
 }
@@ -56,6 +60,12 @@ a {
     text-decoration: none;
     border-radius: 5px; 
     cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.button.large {
+    font-size: 1.3rem;
+    padding: 5px 25px;
 }
 .button:hover {
     background-color: #42087C;
@@ -157,26 +167,27 @@ body {
 .bottom-section .post-section {
     flex: 4;
 }
-.bottom-section .post-section .sub-title {
+.post-section .sub-title {
     font-weight: 500;
     font-size: 1.3rem;
     color: #111111;
     padding-bottom: 20px;
 }
-.bottom-section .post-section .post {
+.post-section .post {
     padding: 20px;
     transition: background-color 300ms ease-in-out;
     cursor: pointer;
     border-radius: 15px;
 }
-.bottom-section .post-section .post:hover {
+.post-section .post:hover {
     background-color: #F4F4F4;
 }
-.bottom-section .post-section .post .labels {
+.post-section .post .labels {
     display: flex;
     flex-wrap: wrap;
+    padding: 2px 0;
 }
-.bottom-section .post-section .post .labels .label {
+.post-section .post .labels .label {
     font-size: 0.69rem;
     background-color: #D4D4D4;
     border-radius: 12.5px;
@@ -187,41 +198,68 @@ body {
     padding: 0 10px;
     margin-right: 8px;
 }
-.bottom-section .post-section .post .labels .label .icon {
+.post-section .post .labels .label .icon {
     margin-right: 8px;
     height: 75%;
     object-fit: contain;
 }
-.bottom-section .post-section .post .subject {
+.post-section .post .subject {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 10px;
+    padding: 5px 0;
 }
-.bottom-section .post-section .post .heading {
+.post-section .post .heading {
     color: #111111;
     font-size: 1.3rem;
     font-weight: 500;
 }
-.bottom-section .post-section .post .subject .readings {
+.post-section .post .icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.post-section .post .icons .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 7px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 #00000066;
+    transition: box-shadow 300ms ease-in-out;
+}
+.post-section .post .icons .icon:hover {
+    box-shadow: 0 0 8px #00000066;
+    background-color: #F4F4F4;
+}
+.post-section .post .icons .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.post-section .post .subject .readings {
     font-size: 0.69rem;
     color: #444444;
     text-align: right;
 }
-.bottom-section .post-section .post .author-details {
+.post-section .post .author-details {
     display: flex;
     justify-content: space-between;
 }
-.bottom-section .post-section .post .author-details .author-name {
+.post-section .post .author-details .author-name {
     color: #444444;
     font-size: 0.86rem;
 }
-.bottom-section .post-section .post .author-details .date {
+.post-section .post .author-details .date {
     font-size: 0.69rem;
     color: #444444;
     text-align: right;
 }
-.bottom-section .post-section .post .contents {
+.post-section .post .contents {
     padding-top: 10px;
 }
 .bottom-section .right-side {
