@@ -6,77 +6,56 @@
 .container .search-bar .form{
     padding-right: 20px;
 }
-.container .search-bar .search-button .button{
+.search-bar .search-button .button{
     font-size: 1.3rem;
+}
+.news-feed{
+    display: flex;
+    padding-top: 30px;
+}
+.news-feed .profile-container{
+    display: flex;
+    flex: 1;
+    align-items: unset;
+    justify-content: unset;
+}
+.news-feed .user-profile{
+    display: block;
+    padding: 30px; 
+    background-color: #F4F4F4;
+}
+.news-feed .user-profile .user-articles .subject{
+    padding-top: 20px;
+}
+.news-feed .profile-container .profile-name{
+    color: #6F15C9;
+    font-size: 0.86rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+.news-feed .user-articles .readings{
+    color: #444444;
+    font-size: 0.69rem;
 }
 .container .recent-articles{
-    padding: 30px 30px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    flex: 4;
 }
-.container .post-section .sub-title {
-    font-weight: 500;
-    font-size: 1.3rem;
-    color: #111111;
-    padding-bottom: 20px;
+.recent-articles .post-section .post .author-details {
+    padding-top: unset;
 }
-.container .post-section .post {
+.recent-articles .post{
+    padding-bottom: 40px;
+}
+.recent-articles .post-container {
     padding: 20px;
     transition: background-color 300ms ease-in-out;
     cursor: pointer;
     border-radius: 15px;
 }
-.container .post-section .post:hover {
+.recent-articles .post-container:hover {
     background-color: #F4F4F4;
-}
-.container .post-section .post .labels {
-    display: flex;
-    flex-wrap: wrap;
-}
-.container .post-section .post .labels .label {
-    font-size: 0.69rem;
-    background-color: #D4D4D4;
-    border-radius: 12.5px;
-    height: 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    margin-right: 8px;
-}
-.container .post-section .post .labels .label .icon {
-    margin-right: 8px;
-    height: 75%;
-    object-fit: contain;
-}
-.container .post-section .post .subject {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 10px;
-}
-.container .post-section .post .heading {
-    color: #111111;
-    font-size: 1.3rem;
-    font-weight: 500;
-}
-.container .post-section .post .subject .readings {
-    font-size: 0.69rem;
-    color: #444444;
-    text-align: right;
-}
-.container .post-section .post .author-details {
-    display: flex;
-    justify-content: space-between;
-    padding-top: unset;
-}
-.container .post-section .post .author-details .author-name {
-    color: #444444;
-    font-size: 0.86rem;
-}
-.container .post-section .post .author-details .date {
-    font-size: 0.69rem;
-    color: #444444;
-    text-align: right;
-}
-.container .post-section .post .contents {
-    padding-top: 10px;
 }
