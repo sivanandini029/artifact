@@ -157,26 +157,26 @@ body {
 .bottom-section .post-section {
     flex: 4;
 }
-.bottom-section .post-section .sub-title {
+.post-section .sub-title {
     font-weight: 500;
     font-size: 1.3rem;
     color: #111111;
     padding-bottom: 20px;
 }
-.bottom-section .post-section .post {
+.post-section .post {
     padding: 20px;
     transition: background-color 300ms ease-in-out;
     cursor: pointer;
     border-radius: 15px;
 }
-.bottom-section .post-section .post:hover {
+.post-section .post:hover {
     background-color: #F4F4F4;
 }
-.bottom-section .post-section .post .labels {
+.post-section .post .labels {
     display: flex;
     flex-wrap: wrap;
 }
-.bottom-section .post-section .post .labels .label {
+.post-section .post .labels .label {
     font-size: 0.69rem;
     background-color: #D4D4D4;
     border-radius: 12.5px;
@@ -187,41 +187,41 @@ body {
     padding: 0 10px;
     margin-right: 8px;
 }
-.bottom-section .post-section .post .labels .label .icon {
+.post-section .post .labels .label .icon {
     margin-right: 8px;
     height: 75%;
     object-fit: contain;
 }
-.bottom-section .post-section .post .subject {
+.post-section .post .subject {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 10px;
 }
-.bottom-section .post-section .post .heading {
+.post-section .post .heading {
     color: #111111;
     font-size: 1.3rem;
     font-weight: 500;
 }
-.bottom-section .post-section .post .subject .readings {
+.post-section .post .subject .readings {
     font-size: 0.69rem;
     color: #444444;
     text-align: right;
 }
-.bottom-section .post-section .post .author-details {
+.post-section .post .author-details {
     display: flex;
     justify-content: space-between;
 }
-.bottom-section .post-section .post .author-details .author-name {
+.post-section .post .author-details .author-name {
     color: #444444;
     font-size: 0.86rem;
 }
-.bottom-section .post-section .post .author-details .date {
+.post-section .post .author-details .date {
     font-size: 0.69rem;
     color: #444444;
     text-align: right;
 }
-.bottom-section .post-section .post .contents {
+.post-section .post .contents {
     padding-top: 10px;
 }
 .bottom-section .right-side {
