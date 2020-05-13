@@ -10,11 +10,6 @@
     padding: 100px 40px;
     flex: 2;
 }
-.user-profile .profile-container .profile-pic {
-    height: 275px;
-    width: 275px;
-    border-radius: 50%;
-}
 
 .user-profile .profile-container .profile-name {
     font-size: 2.2rem;

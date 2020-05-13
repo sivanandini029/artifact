@@ -63,12 +63,29 @@ a {
     font-size: 1rem;
     font-weight: 500;
 }
+.button.danger {
+    background-color: #ce2626;
+}
+.button.danger:hover {
+    background-color: #800c0c;
+}
 .button.large {
     font-size: 1.3rem;
     padding: 5px 25px;
 }
+.button.medium {
+    font-size: 1.1rem;
+    padding: 6px 25px;
+}
 .button:hover {
     background-color: #42087C;
+}
+
+.profile-pic .picture {
+    height: 275px;
+    width: 275px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 body {

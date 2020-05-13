@@ -1,103 +1,54 @@
 .update-details {
     display: flex;
-    justify-content: space-between;
 }
-.update-details .userdetails-container {
+.update-details .form {
+    padding-bottom: 50px;
+}
+.update-details .form .sub-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #111111;
+    margin: 20px 0 30px 0;
+}
+.update-details .basic-details, .update-details .account-details {
     flex: 1;
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
-.update-details .userdetails-container .account-title {
-    padding-left: 20px;
-}
-.update-details .userdetails-container .profile-pic {
+.update-details .basic-details .profile-pic {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
 }
-.userdetails-container .name-container {
+.update-details .basic-details .input-container .label-bio {
     display: flex;
     justify-content: space-between;
-    padding-top: 20px;
+    align-items: flex-end;
 }
-.userdetails-container .bio-container textarea{
-    width: 100%;
-    background-color: rgb(236, 236, 236);
-    border-radius: 5px;
-    padding: 8px 15px;
-    width: 100%;
+.update-details .basic-details .input-container .label-bio .length {
+    font-size: 0.69rem;
     color: #444444;
-    font-size: 1rem;
-    font-family: "Poppins", sans-serif;
-    border: 2px solid rgb(230, 230, 230);
-    transition: background-color 300ms ease-in-out, border 300ms ease-in-out;
 }
-.userdetails-container .bio-container textarea:focus{
-    border: 2px solid #6F15C933;
-}
-.userdetails-container .bio-container textarea:hover{
-    background-color: rgb(225, 225, 225);
-}
-.userdetails-container .details-container {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 20px;
-}
-.userdetails-container .bio-container .input-container .label-bio {
-   display: flex;
-   justify-content: space-between;
-}
-.update-details .update {
+.update-details .button-container {
     display: flex;
     justify-content: flex-end;
-    padding-right: 20px;
-}
-.userdetails-container .form .input-container {
-    padding: 20px 20px;
-}
-.update-details .account-details {
-    flex: 1;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-.update-details .account-title {
-    font-size: 1.3rem;
-    font-weight: 500;
-}
-.account-details .form .input-container {
-    padding: 20px 20px;
-}
-.account-details .account-title {
-    padding-bottom: 20px;
-    padding-left: 20px;
-}
-.account-details .disable-account .disable-description {
-    padding-left: 20px;
-}
-.account-details .disable-account .update {
     padding-top: 20px;
+}
+.disable-account .disable-description {
     padding-bottom: 20px;
 }
-.account-details .disable-account .button {
-    background-color: #CE2626;
-    font-size: 1.3rem;
-}
-.account-details .disable-account .button:hover {
-    background-color: rgb(128, 12, 12);
-}
-
-
-
-
 @media (max-width: 1100px) {
     .update-details {
         flex-direction: column;
+    }
+    .update-details .basic-details, .update-details .account-details {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
 /* small screens */
 @media (max-width: 700px) {
-    .update-details {
-        padding: 10px 0;
-    }
+
 }
