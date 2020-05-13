@@ -69,6 +69,10 @@ a {
 .button.danger:hover {
     background-color: #800c0c;
 }
+.button.small {
+    font-size: 0.86;
+    padding: 2px 8px;
+}
 .button.large {
     font-size: 1.3rem;
     padding: 5px 25px;
@@ -87,7 +91,14 @@ a {
     border-radius: 50%;
     object-fit: cover;
 }
-
+.profile-pic.small .picture {
+    height: 64px;
+    width: 64px;
+}
+.profile-pic.medium .picture {
+    height: 124px;
+    width: 124px;
+}
 body {
     background: #ffffff;
     color: #222222;
@@ -204,7 +215,7 @@ body {
     flex-wrap: wrap;
     padding: 2px 0;
 }
-.post-section .post .labels .label {
+.label {
     font-size: 0.69rem;
     background-color: #D4D4D4;
     border-radius: 12.5px;
@@ -215,7 +226,7 @@ body {
     padding: 0 10px;
     margin-right: 8px;
 }
-.post-section .post .labels .label .icon {
+.label .icon {
     margin-right: 8px;
     height: 75%;
     object-fit: contain;
