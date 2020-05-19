@@ -1,5 +1,6 @@
 <?php
-require_once(__DIR__ ."/../class/Database.php");
+require_once(__DIR__ ."/Database.php");
+require_once(__DIR__ ."/User.php");
 
 class Article {
     private $error = "";
@@ -95,11 +96,13 @@ class Article {
             views,
             created,
             updated,
-            status
+            status,
+            (SELECT COUNT(*) FROM Impressions WHERE content_id = :id and content_type = :type) AS impressions
         FROM Articles WHERE 
             id = :id",
         [
-            ":id" => $id
+            ":id" => $id,
+            ":type" => "ARTICLE"
         ]);
 
         
@@ -110,12 +113,65 @@ class Article {
         foreach ($article[0] as $key => $value) {
             $this->$key = $value;
         }
-
+        
+        
+        if (!($this->status === "PUBLISHED" || (!empty($_SESSION["username"]) && $_SESSION["username"] === $owner->username))) {
+            return false;
+        }
+        
+        $this->get_has_liked();
+        $this->update_views();
+        $owner = new User();
+        $owner->get_id($this->owner_id);
+        $this->owner = $owner;
+        
         return $this;
     }
 
-    function get_owner_id() {
-        return $this->owner_id;
+    function get_has_liked() {
+        $this->viewer_has_liked = false;
+        Database::init();
+        $count = Database::query("SELECT COUNT(*) AS num FROM Impressions i, Users u WHERE u.username = :username AND i.content_id = :id AND i.content_type = :type and i.user_id = u.id",
+        [
+            ":username" => (!empty($_SESSION["username"]))? $_SESSION["username"]: "",
+            ":id" => $this->id,
+            ":type" => "ARTICLE"
+        ]);
+
+        if ($count[0]["num"] > 0) {
+            $this->viewer_has_liked = true;
+        }
+    }
+
+    function toggle_impression($viewer) {
+        Database::init();
+        if ($this->viewer_has_liked) {
+            Database::query("DELETE FROM Impressions WHERE user_id = :u_id AND content_id = :id AND content_type = :type",
+            [
+                ":u_id" => $viewer->id,
+                ":id" => $this->id,
+                ":type" => "ARTICLE"
+            ]);
+            $this->viewer_has_liked = false;
+            $this->impressions--;
+        } else {
+            Database::query("INSERT INTO Impressions (user_id, content_id, content_type) VALUES (:u_id, :id, :type)",
+            [
+                ":u_id" => $viewer->id,
+                ":id" => $this->id,
+                ":type" => "ARTICLE"
+            ]);
+
+            $this->impressions++;
+            $this->viewer_has_liked = true;
+
+        }
+    }
+
+    function update_views() {
+        $this->views++;
+        Database::init();
+        Database::query("UPDATE Articles SET views = :views WHERE id = :id", [":views" => $this->views, ":id" => $this->id]);
     }
 
     function get_error() {

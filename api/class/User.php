@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ ."/../class/Database.php");
+require_once(__DIR__ ."/Database.php");
 
 class User {
     private $error = "";
@@ -94,12 +94,17 @@ class User {
             dob, 
             created, 
             updated, 
-            status 
+            status,
+            (SELECT COUNT(*) FROM Impressions i, Articles a WHERE a.id = i.content_id AND i.content_type = :type) AS impressions,
+            (SELECT COUNT(*) FROM Articles WHERE owner_id = :id AND STATUS = :status_article ) AS articles,
+            (SELECT SUM(views) FROM Articles WHERE owner_id = :id AND STATUS = :status_article) AS views
         FROM Users WHERE 
             id = :id AND (status = :status OR username = :username)", 
         [
             ":id" => $id,
+            ":status_article" => "PUBLISHED",
             ":status" => "ACTIVE",
+            ":type" => "ARTICLE",
             ":username" => !empty($_SESSION["username"])? $_SESSION["username"]: ""
         ]);
         

@@ -7,22 +7,24 @@ class Database {
     static public $conn;
     
     // get the database connection
-    static function init(){ 
-        $KEYS = new Keys();
-        $hostname = $KEYS->DATABASE_HOST;
-        $dbname = $KEYS->DATABASE_NAME;
-        $username = $KEYS->DATABASE_USERNAME;
-        $password = $KEYS->DATABASE_PASSWORD;
-        $db = $db =  ($KEYS->DATABASE_TYPE == "")? "mysql": $KEYS->DATABASE_TYPE;
-        $port = $port = ($KEYS->DATABASE_PORT == "")? "": "port={$KEYS->DATABASE_PORT};";
-        
-        self::$conn = null;
-
-        try {
-            self::$conn = new PDO("{$db}:host={$hostname};{$port}dbname={$dbname}", $username, $password);
-            self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $exception) {
-            Response::send(null, 500, "Connection error: " . $exception->getMessage());
+    static function init(){
+        if (!self::$conn) {
+            $KEYS = new Keys();
+            $hostname = $KEYS->DATABASE_HOST;
+            $dbname = $KEYS->DATABASE_NAME;
+            $username = $KEYS->DATABASE_USERNAME;
+            $password = $KEYS->DATABASE_PASSWORD;
+            $db = $db =  ($KEYS->DATABASE_TYPE == "")? "mysql": $KEYS->DATABASE_TYPE;
+            $port = $port = ($KEYS->DATABASE_PORT == "")? "": "port={$KEYS->DATABASE_PORT};";
+            
+            self::$conn = null;
+    
+            try {
+                self::$conn = new PDO("{$db}:host={$hostname};{$port}dbname={$dbname}", $username, $password);
+                self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch(PDOException $exception) {
+                Response::send(null, 500, "Connection error: " . $exception->getMessage());
+            }
         }
     }
 

@@ -19,7 +19,7 @@ class Response {
         }
 
         http_response_code($code);
-        echo json_encode($response);
+        echo json_encode($response, JSON_UNESCAPED_SLASHES);
 
         exit(0);
     }
