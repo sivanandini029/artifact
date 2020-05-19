@@ -10,7 +10,8 @@ CREATE TABLE Users (
     website VARCHAR(255) DEFAULT NULL,
     dob VARCHAR(11) DEFAULT NULL,
     created BIGINT NOT NULL,
-    updated BIGINT NOT NULL
+    updated BIGINT NOT NULL,
+    status enum("ACTIVE", "DISABLED") DEFAULT "ACTIVE" NOT NULL
 );
 
 CREATE TABLE Articles (

@@ -2,7 +2,8 @@
 require_once(__DIR__ ."/../class/Database.php");
 
 class User {
-    public $error = "";
+    private $error = "";
+    private $password;
 
     function register($data) {
         $username = $data->username;
@@ -45,20 +46,78 @@ class User {
     }
 
     function login($username, $password) {
-        $usr = $this->getUser($username);
+        $usr = $this->get_user($username, false);
 
         if ($usr === false || !password_verify($password, $usr["password"])) {
             return false;
         }
     }
     
-    function getUser($username) {
+    function get_user($username, $show_only_active = true) {
         Database::init();
-        $usr = Database::query("SELECT username, email, password, image, first_name, last_name, bio, website, dob FROM Users WHERE username = :username", [":username" => $username]);
+        if ($show_only_active) {
+            $usr = Database::query("SELECT id, username, email, password, image, first_name, last_name, bio, website, dob, created, updated, status FROM Users WHERE
+                username = :username AND (status = :status OR username = :username_logged_in)", 
+            [
+                ":username" => $username,
+                ":status" => "ACTIVE",
+                ":username_logged_in" => !empty($_SESSION["username"])? $_SESSION["username"]: ""
+            ]);
+        } else {
+            $usr = Database::query("SELECT id, username, email, password, image, first_name, last_name, bio, website, dob, created, updated, status FROM Users WHERE
+                username = :username", 
+            [
+                ":username" => $username
+            ]);
+        }
         
         if (count($usr) < 1) {
             return false;
         }
+        
+        $this->assign_values($usr[0]);
         return $usr[0];
+    }
+    
+    function get_id($id) {
+        Database::init();
+        $usr = Database::query("SELECT 
+            id, 
+            username, 
+            email, 
+            password, 
+            image, 
+            first_name, 
+            last_name, 
+            bio, 
+            website, 
+            dob, 
+            created, 
+            updated, 
+            status 
+        FROM Users WHERE 
+            id = :id AND (status = :status OR username = :username)", 
+        [
+            ":id" => $id,
+            ":status" => "ACTIVE",
+            ":username" => !empty($_SESSION["username"])? $_SESSION["username"]: ""
+        ]);
+        
+        if (count($usr) < 1) {
+            return false;
+        }
+        
+        $this->assign_values($usr[0]);
+        return $usr[0];
+    }
+
+    function assign_values($query_result) {
+        foreach ($query_result as $key => $value) {
+            $this->$key = $value;
+        }
+    }
+
+    function get_error() {
+        return $this->error;
     }
 }
