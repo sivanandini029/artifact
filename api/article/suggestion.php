@@ -20,7 +20,6 @@ if ($method === "GET") {
             a.id,
             a.title,
             a.description,
-            a.content,
             a.topic,
             a.views,
             a.created,
@@ -31,7 +30,7 @@ if ($method === "GET") {
             u.status as user_status
         FROM Articles a, Users u WHERE a.status = :status AND a.owner_id = u.id ORDER BY impressions / a.views DESC LIMIT $results_per_page OFFSET ". $results_per_page * ( $page - 1 ),
         [
-            ":status" => "SAVED",
+            ":status" => "PUBLISHED",
             ":type" => "ARTICLE"
         ]);
 
@@ -40,9 +39,11 @@ if ($method === "GET") {
         $suggestion = [];
         $suggestion["owner"] = json_decode("{}");
         foreach($e as $key => $value) {
-            if (strpos($key, "user") === 0 && $e["user_status"] === "ACTIVE") {
-                $new_key = substr($key, 5);
-                $suggestion["owner"]->$new_key = $value;
+            if (strpos($key, "user") === 0) {
+                if ($e["user_status"] === "ACTIVE") {
+                    $new_key = substr($key, 5);
+                    $suggestion["owner"]->$new_key = $value;
+                }
             } else {
                 $suggestion[$key] = $value;
             }
