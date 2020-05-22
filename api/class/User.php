@@ -6,9 +6,9 @@ class User {
     private $password;
 
     function register($data) {
-        $username = $data->username;
-        $email = $data->email;
-        $password = $data->password;
+        $username = @$data->username;
+        $email = @$data->email;
+        $password = @$data->password;
         
         $error = [];
         

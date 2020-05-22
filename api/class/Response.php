@@ -18,6 +18,7 @@ class Response {
             $response["data"] = $data;
         }
 
+        header('Content-Type: application/json');
         http_response_code($code);
         echo json_encode($response, JSON_UNESCAPED_SLASHES);
 

@@ -24,7 +24,8 @@ CREATE TABLE Articles (
     views BIGINT NOT NULL DEFAULT 0,
     created BIGINT NOT NULL,
     updated BIGINT NOT NULL,
-    status enum("SAVED", "PUBLISHED", "DELETED") NOT NULL DEFAULT "SAVED"
+    status enum("SAVED", "PUBLISHED", "DELETED") NOT NULL DEFAULT "SAVED",
+    FOREIGN KEY(owner_id) references Users(id)
 );
 
 CREATE TABLE Comments (
