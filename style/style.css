@@ -202,6 +202,8 @@ body {
     padding-bottom: 20px;
 }
 .post-section .post {
+    text-decoration: none;
+    display: block;
     padding: 20px;
     transition: background-color 300ms ease-in-out;
     cursor: pointer;
