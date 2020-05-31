@@ -63,7 +63,7 @@ class Backend {
             res = await fetch(`${this.baseURL}${request.url}`, requestBody);
         } catch (exception) {
             console.log(exception, "couldn't even send the request");
-            return;
+            throw "couldn't send request";
         }
 
         try {
@@ -73,7 +73,7 @@ class Backend {
             }
         } catch (exception) {
             console.error(exception);
-            return;
+            throw exception;
         }
 
         return result.data;

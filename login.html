@@ -41,6 +41,7 @@
                             <label for="password">Password</label>
                             <input type="password" name="password" id="password" placeholder="Enter Password">
                         </div>
+                        <div class="error"></div>
                         <div class="bottom-control">
                             <div class="left-section">
                                 <a href="./register.html" class="primary-link">Create an account</a>
@@ -60,10 +61,13 @@
             document.querySelector("form[name=login]").addEventListener("submit", (e) => {
                 e.preventDefault();
                 console.log("but why?")
-                window.location.href = "./profile.html";
+                // window.location.href = "./profile.html";
             });
         })
     </script>
+    <script src="js/class/Backend.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/login.js" defer></script>
 </body>
 </html>
             

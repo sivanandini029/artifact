@@ -1,6 +1,5 @@
-
-getSuggestions();
 const postContainerElem = document.querySelector(".post-container");
+getSuggestions();
 
 
 async function getSuggestions() {
@@ -27,7 +26,7 @@ function makePost(data) {
     elem("DIV", ["readings"], `${data.views} views, ${data.impressions} impressions`, subjectElem);
 
     const authorDetailsElem = elem("DIV", ["author-details"], "", postElem);
-    const created = new Date(parseInt(data.created));
+    const created = new Date(parseInt(data.created)*1000);
     if (data.owner.username) {
         elem("DIV", ["author-name"], `by ${data.owner.username}`, authorDetailsElem);
     } else {
