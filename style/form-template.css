@@ -38,8 +38,14 @@
     width: 80%;
     padding: 50px 0;
 }
+.form .input-group {
+    display: flex;
+}
 .form .input-container {
     padding: 15px 0;
+}
+.form .input-group .input-container:first-child {
+    padding-right: 20px;
 }
 .form .input-container label {
     font-size: 1rem;
@@ -47,7 +53,8 @@
 }
 .form .input-container input[type="text"],
 .form .input-container input[type="email"],
-.form .input-container input[type="password"] {
+.form .input-container input[type="password"],
+.form .input-container textarea {
     background-color: rgb(236, 236, 236);
     border-radius: 5px;
     padding: 8px 15px;
@@ -57,16 +64,20 @@
     font-family: "Poppins", sans-serif;
     border: 2px solid rgb(230, 230, 230);
     transition: background-color 300ms ease-in-out, border 300ms ease-in-out;
+    resize: none;
 }
 .form .input-container input[type="text"]:focus,
 .form .input-container input[type="email"]:focus,
-.form .input-container input[type="password"]:focus {
+.form .input-container input[type="password"]:focus,
+.form .input-container textarea:focus {
     border: 2px solid #6F15C933;
+    background-color: rgb(225, 225, 225);
 }
 
 .form .input-container input[type="text"]:hover,
 .form .input-container input[type="email"]:hover,
-.form .input-container input[type="password"]:hover {
+.form .input-container input[type="password"]:hover,
+.form .input-container textarea:hover {
     background-color: rgb(225, 225, 225);
 }
 .form .bottom-control {
@@ -84,10 +95,6 @@
 }
 .form .bottom-control .left-section a {
     margin: 3px 0;
-}
-.form .button.large {
-    font-size: 1.3rem;
-    padding: 5px 25px;
 }
 .form .error {
     font-size: 0.69rem;

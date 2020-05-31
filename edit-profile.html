@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/form-template.css">
+    <link rel="stylesheet" href="style/edit-profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="nav-bar"> 
+                <a href="./index.html" class="brand-name">
+                    <img src="assets/app-icon.png">
+                    <span class="artifact">Artifact</span>
+                </a>
+                <nav class="nav">
+                    <a href="./profile.html" class="link">Profile</a>
+                    <a href="#" class="link">Home</a>
+                    <a href="./index.html" class="link">Logout</a>
+                </nav>
+            </div>
+        </header>
+        <main class="main">
+            <h1 class="title">Edit Profile</h1>
+            <div class="update-details">
+                <div class="basic-details form">
+                    <div class="sub-title">Basic Details</div>
+                    <div class="profile-pic">
+                        <img class="picture" src="assets/undraw_profile_pic_ic5t 1.svg">
+                    </div>
+                    <form name="basic-details">
+                        <div class="input-group">
+                            <div class="input-container">
+                                <label for="firstname">First Name</label>
+                                <input type="text" name="firstname" id="firstname" placeholder="" value="Nikhil" />
+                            </div>
+                            <div class="input-container">
+                                <label for="lastname">Last Name</label>
+                                <input type="text" name="lastname" id="lastname" placeholder="" value="Nath R" />
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="label-bio">
+                                <label for="bio">Bio</label>
+                                <span class="length">25/50</span>
+                            </div>
+                            <textarea rows="5" cols="50" name="bio">Writing is my passion and sharing it with the world gives me joy.</textarea>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-container">
+                                <label for="website">Website</label>
+                                <input type="text" name="website" id="website" placeholder="" value="https://nikhilnathr.com"/>
+                            </div>
+                            <div class="input-container">
+                                <label for="dob">On the world since</label>
+                                <input type="text" name="dob" id="dob" placeholder="" value="02/04/1998"/>
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <button type="submit" class="button medium">Update</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="account-details">
+                    <div class="account-credentials form">
+                        <div class="sub-title">Account Credentials</div>
+                        <form name="account-credentials">
+                            <div class="input-container">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" id="username" placeholder="" value="nikhilnathr">
+                            </div>
+                            <div class="input-container">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" placeholder="" value="me@nikhilnathr.com">
+                            </div>
+                        </form>
+                        <div class="button-container">
+                            <button type="submit" class="button medium">Update</button>
+                        </div>
+                    </div>
+                    <div class="password-settings form">
+                        <div class="sub-title">Change Password</div>
+                        <form name="password-change">
+                            <div class="input-group">
+                                <div class="input-container">
+                                    <label for="password">Old Password</label>
+                                    <input type="password" name="oldpassword" id="oldpassword" placeholder="***********">
+                                </div>
+                                <div class="input-container">
+                                    <label for="password">New Password</label>
+                                    <input type="password" name="newpassword" id="newpassword" placeholder="***********">
+                                </div>
+                            </div>
+                            <div class="button-container">
+                                <button class="button medium">Change</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="disable-account form">
+                        <div class="sub-title">Disable Account</div>
+                        <div class="disable-description">Disabling an account will make all the posts of this account hidden. You can still login to the account and activate this account. For permenant deletion and futher queries mail to <a href="mailto:support@artifact.nikhilnathr.com" class="primary-link">support@artifact.nikhilnathr.com</a></div>
+                        <div class="button-container">
+                            <button class="button danger medium">Disable</button>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </main>
+    </div>
+</body>
+</html>
