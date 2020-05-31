@@ -35,6 +35,13 @@
                             <div class="input-container">
                                 <input type="text" name="title" id="title" placeholder="title" value="" />
                             </div>
+                            <label for="topics">Choose a topic</label>
+                            <div class="input-container">
+                                <select name="topic" id="topic">
+                                    <option value="web">Web</option>
+                                    <option value="web">Web1</option>
+                                </select>
+                            </div>
                             <div class="input-container">
                                 <textarea type="text" rows = "5" cols = "50" name = "description" placeholder="Description">
                                 </textarea>
@@ -43,5 +50,14 @@
                                 <textarea rows = "50" cols = "50" name = "content" placeholder="Content">
                                 </textarea>
                             </div>
+                            <div class="error"></div>
+                            <div class="right-section">
+                                <button type="submit" class="button large">Post</button>
+                            </div>
                     </form>        
         </div>
+    <script src="js/class/Backend.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/add-article.js" defer></script>
+</body>
+</html>

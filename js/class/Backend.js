@@ -26,6 +26,11 @@ class Backend {
             url: "/article/suggestion.php",
             method: "GET",
         },
+
+        addArticle: {
+            url: "/article/index.php",
+            method: "POST",
+        }
     };
 
     constructor(newBaseURL = "") {
