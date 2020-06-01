@@ -110,22 +110,24 @@ class Article {
             return false;
         }
         
-        foreach ($article[0] as $key => $value) {
-            $this->$key = $value;
-        }
-        
-        
-        if (!($this->status === "PUBLISHED" || (!empty($_SESSION["username"]) && $_SESSION["username"] === $owner->username))) {
-            return false;
-        }
-        
+        $this->assign_values($article[0]);
         $this->get_has_liked();
         $this->update_views();
         $owner = new User();
         $owner->get_id($this->owner_id);
         $this->owner = $owner;
+    
+        if (!($this->status === "PUBLISHED" || (!empty($_SESSION["username"]) && !empty($this->owner->username) && $_SESSION["username"] === $this->owner->username))) {
+            return false;
+        }
         
         return $this;
+    }
+    
+    function assign_values($values) {
+        foreach ($values as $key => $value) {
+            $this->$key = $value;
+        }
     }
 
     function get_has_liked() {

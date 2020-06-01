@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 require_once(__DIR__ ."/../class/Response.php");
 require_once(__DIR__ ."/../class/Request.php");
 require_once(__DIR__ ."/../class/User.php");
+require_once(__DIR__ ."/../class/Article.php");
 
 session_start();
 $method = (!empty($_SERVER["REQUEST_METHOD"]))? $_SERVER["REQUEST_METHOD"]: "GET";
@@ -27,7 +28,7 @@ if ($method === "POST") {
     $username = !empty($_GET["username"])? $_GET["username"]: $_SESSION["username"];
 
     $user = new User();
-    $user->get_user($username);
+    $user->get_user($username, false, true);
     
     if (empty($user->email)) {
         Response::not_found("user with username '{$username}' not found");

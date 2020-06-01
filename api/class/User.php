@@ -46,28 +46,28 @@ class User {
     }
 
     function login($username, $password) {
-        $usr = $this->get_user($username, false);
+        $usr = $this->get_user($username, true);
 
         if ($usr === false || !password_verify($password, $usr["password"])) {
             return false;
         }
     }
     
-    function get_user($username, $show_only_active = true) {
+    function get_user($username, $login = true, $show_articles = false) {
         Database::init();
-        if ($show_only_active) {
-            $usr = Database::query("SELECT id, username, email, password, image, first_name, last_name, bio, website, dob, created, updated, status FROM Users WHERE
-                username = :username AND (status = :status OR username = :username_logged_in)", 
-            [
-                ":username" => $username,
-                ":status" => "ACTIVE",
-                ":username_logged_in" => !empty($_SESSION["username"])? $_SESSION["username"]: ""
-            ]);
-        } else {
+        if ($login) {
             $usr = Database::query("SELECT id, username, email, password, image, first_name, last_name, bio, website, dob, created, updated, status FROM Users WHERE
                 username = :username", 
             [
                 ":username" => $username
+                ]);
+        } else {
+            $usr = Database::query("SELECT id, username, email, password, image, first_name, last_name, bio, website, dob, created, updated, status FROM Users WHERE
+                (username = :username AND status = :status) OR (username = :username AND username = :username_logged_in)", 
+            [
+                ":username" => $username,
+                ":status" => "ACTIVE",
+                ":username_logged_in" => !empty($_SESSION["username"])? $_SESSION["username"]: ""
             ]);
         }
         
@@ -76,7 +76,64 @@ class User {
         }
         
         $this->assign_values($usr[0]);
+        if ($show_articles) {
+            $this->get_articles(empty($_SESSION["username"]) || $_SESSION["username"] !== $username);
+        }
+        
         return $usr[0];
+    }
+
+    function get_articles($show_only_published) {
+        Database::init();
+        if ($show_only_published) {
+            $articles = Database::query(
+                "SELECT 
+                    id,
+                    title,
+                    description,
+                    topic,
+                    views,
+                    created,
+                    updated,
+                    status,
+                    (SELECT COUNT(*) FROM Impressions WHERE content_id = id and content_type = :type) AS impressions
+                FROM Articles WHERE 
+                    owner_id = :id AND status = :status",
+                [
+                    ":id" => $this->id,
+                    ":type" => "ARTICLE",
+                    ":status" => "PUBLISHED"
+                ]
+            );
+        } else {
+            $articles = Database::query(
+                "SELECT 
+                    id,
+                    title,
+                    description,
+                    topic,
+                    views,
+                    created,
+                    updated,
+                    status,
+                    (SELECT COUNT(*) FROM Impressions WHERE content_id = id and content_type = :type) AS impressions
+                FROM Articles WHERE 
+                    owner_id = :id",
+                [
+                    ":id" => $this->id,
+                    ":type" => "ARTICLE"
+                ]
+            );
+
+        }
+
+        $user_articles = [];
+        foreach ($articles as $article) {
+            $user_article = new Article();
+            $user_article->assign_values($article);
+            $user_articles[] = $user_article;       
+        }
+        $this->articles = $user_articles;
     }
     
     function get_id($id) {
@@ -107,11 +164,11 @@ class User {
             ":type" => "ARTICLE",
             ":username" => !empty($_SESSION["username"])? $_SESSION["username"]: ""
         ]);
-        
+        // var_dump($usr);
         if (count($usr) < 1) {
             return false;
         }
-        
+
         $this->assign_values($usr[0]);
         return $usr[0];
     }
