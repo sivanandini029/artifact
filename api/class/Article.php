@@ -84,7 +84,7 @@ class Article {
          ];
     }
     
-    function get_id($id) {
+    function get_id($id, $add_view = true) {
         Database::init();
         $article = Database::query("SELECT 
             id,
@@ -112,7 +112,9 @@ class Article {
         
         $this->assign_values($article[0]);
         $this->get_has_liked();
-        $this->update_views();
+        if ($add_view) {
+            $this->update_views();
+        }
         $owner = new User();
         $owner->get_id($this->owner_id);
         $this->owner = $owner;

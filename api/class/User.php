@@ -55,46 +55,48 @@ class User {
 
     function update($value) {
         $errors = [];
+        $request_params = array_keys(get_object_vars($value));
+
         if (!empty($value->first_name) && strlen($value->first_name) > 50) {
             $errors[] = "First name is maximum 50 characters.";
-        } else if (!empty($value->first_name) || is_null($value->dob)){
+        } else if (array_search("first_name", $request_params) !== false) {
             $this->first_name = $value->first_name;
         }
 
         if (!empty($value->last_name) && strlen($value->last_name) > 50) {
             $errors[] = "Last name is maximum 50 characters.";
-        } else if (!empty($value->last_name) || is_null($value->dob)){
+        } else if (array_search("last_name", $request_params) !== false) {
             $this->last_name = $value->last_name;
         }
 
         if (!empty($value->bio) && strlen($value->bio) > 255) {
             $errors[] = "Bio is maximum 255 characters.";
-        } else if (!empty($value->bio) || is_null($value->dob)){
+        } else if (array_search("bio", $request_params) !== false) {
             $this->bio = $value->bio;
         }
 
         if (!empty($value->website) && (strlen($value->website) > 255 || !filter_var($value->website, FILTER_VALIDATE_URL))) {
            $errors[] = "Website is invalid.";
-        } else if (!empty($value->website) || is_null($value->dob)){
+        } else if (array_search("website", $request_params) !== false) {
             $this->website = $value->website;
         }
         
         if (!empty($value->dob) && strtotime($value->dob) === false) {
             $errors[] = "Dob is invalid.";
-        } else if (!empty($value->dob) || is_null($value->dob)){
+        } else if (array_search("dob", $request_params) !== false) {
             $unified_date = strtotime($value->dob);
             $this->dob = $unified_date;
         }
 
         if (!empty($value->username) && (strlen($value->username) < 3 || strlen($value->username) > 20)) {
             $error[] = "Username is between 3 and 20 characters.";
-        } else if (!empty($value->username)){
+        } else if (!empty($value->username)) {
             $this->username = $value->username;
         }
         
         if (!empty($value->email) && !filter_var($value->email, FILTER_VALIDATE_EMAIL)) {
             $error[] = "Email is invalid.";
-        } else if (!empty($value->email)){
+        } else if (!empty($value->email)) {
             $this->email = $value->email;
         }
 
@@ -247,7 +249,6 @@ class User {
             ":type" => "ARTICLE",
             ":username" => !empty($_SESSION["username"])? $_SESSION["username"]: ""
         ]);
-        // var_dump($usr);
         if (count($usr) < 1) {
             return false;
         }
