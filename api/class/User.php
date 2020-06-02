@@ -54,35 +54,36 @@ class User {
     }
 
     function update($value) {
-        $error = [];
+        $errors = [];
         if (!empty($value->first_name) && strlen($value->first_name) > 50) {
             $errors[] = "First name is maximum 50 characters.";
-        } else if (!empty($value->first_name)){
+        } else if (!empty($value->first_name) || is_null($value->dob)){
             $this->first_name = $value->first_name;
         }
 
         if (!empty($value->last_name) && strlen($value->last_name) > 50) {
             $errors[] = "Last name is maximum 50 characters.";
-        } else if (!empty($value->last_name)){
+        } else if (!empty($value->last_name) || is_null($value->dob)){
             $this->last_name = $value->last_name;
         }
 
         if (!empty($value->bio) && strlen($value->bio) > 255) {
             $errors[] = "Bio is maximum 255 characters.";
-        } else if (!empty($value->bio)){
+        } else if (!empty($value->bio) || is_null($value->dob)){
             $this->bio = $value->bio;
         }
 
         if (!empty($value->website) && (strlen($value->website) > 255 || !filter_var($value->website, FILTER_VALIDATE_URL))) {
            $errors[] = "Website is invalid.";
-        } else if (!empty($value->website)){
+        } else if (!empty($value->website) || is_null($value->dob)){
             $this->website = $value->website;
         }
         
         if (!empty($value->dob) && strtotime($value->dob) === false) {
             $errors[] = "Dob is invalid.";
-        } else if (!empty($value->dob)){
-            $this->dob = $value->dob;
+        } else if (!empty($value->dob) || is_null($value->dob)){
+            $unified_date = strtotime($value->dob);
+            $this->dob = $unified_date;
         }
 
         if (!empty($value->username) && (strlen($value->username) < 3 || strlen($value->username) > 20)) {
@@ -103,8 +104,8 @@ class User {
             $this->status = $value->status;
         }
 
-        if (count($error) !== 0) {
-            $this->error = implode("\n", $error);
+        if (count($errors) !== 0) {
+            $this->error = implode("\n", $errors);
             return false;
         }
 

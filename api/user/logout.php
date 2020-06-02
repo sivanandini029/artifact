@@ -15,6 +15,8 @@ if ($method === "GET") {
     $_SESSION = [];
     session_destroy();
 
+    Response::send([]);
+
 } else {
     Response::not_found();
 }

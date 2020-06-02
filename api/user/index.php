@@ -44,7 +44,7 @@ if ($method === "POST") {
     $user->get_user($_SESSION["username"]);
     
     if ($user->update($req) === false) {
-        Response::not_found("Couldn't update information");
+        Response::send(null, 400, $user->get_error());
     }
  
     if (!empty($request->username)) {
