@@ -52,6 +52,88 @@ class User {
             return false;
         }
     }
+
+    function update($value) {
+        $error = [];
+        if (!empty($value->first_name) && strlen($value->first_name) > 50) {
+            $errors[] = "First name is maximum 50 characters.";
+        } else if (!empty($value->first_name)){
+            $this->first_name = $value->first_name;
+        }
+
+        if (!empty($value->last_name) && strlen($value->last_name) > 50) {
+            $errors[] = "Last name is maximum 50 characters.";
+        } else if (!empty($value->last_name)){
+            $this->last_name = $value->last_name;
+        }
+
+        if (!empty($value->bio) && strlen($value->bio) > 255) {
+            $errors[] = "Bio is maximum 255 characters.";
+        } else if (!empty($value->bio)){
+            $this->bio = $value->bio;
+        }
+
+        if (!empty($value->website) && (strlen($value->website) > 255 || !filter_var($value->website, FILTER_VALIDATE_URL))) {
+           $errors[] = "Website is invalid.";
+        } else if (!empty($value->website)){
+            $this->website = $value->website;
+        }
+        
+        if (!empty($value->dob) && strtotime($value->dob) === false) {
+            $errors[] = "Dob is invalid.";
+        } else if (!empty($value->dob)){
+            $this->dob = $value->dob;
+        }
+
+        if (!empty($value->username) && (strlen($value->username) < 3 || strlen($value->username) > 20)) {
+            $error[] = "Username is between 3 and 20 characters.";
+        } else if (!empty($value->username)){
+            $this->username = $value->username;
+        }
+        
+        if (!empty($value->email) && !filter_var($value->email, FILTER_VALIDATE_EMAIL)) {
+            $error[] = "Email is invalid.";
+        } else if (!empty($value->email)){
+            $this->email = $value->email;
+        }
+
+        if (!empty($value->status) && array_search($value->status, ["DISABLED", "ACTIVE"]) === false) {
+            $error = "Status is invalid";
+        } else if (!empty($value->status)) {
+            $this->status = $value->status;
+        }
+
+        if (count($error) !== 0) {
+            $this->error = implode("\n", $error);
+            return false;
+        }
+
+        Database::init();
+        Database::query(
+            "UPDATE Users SET 
+                username = :username,
+                email = :email,
+                first_name = :first_name,
+                last_name = :last_name,
+                bio = :bio,
+                website = :website,
+                dob = :dob,
+                updated = :updated
+            WHERE
+                id = :id",
+            [
+                ":id" => $this->id,
+                ":username" => $this->username,
+                ":email" => $this->email,
+                ":first_name" => $this->first_name,
+                ":last_name" => $this->last_name,
+                ":bio" => $this->bio,
+                ":website" => $this->website,
+                ":dob" => $this->dob,
+                ":updated" => time(),
+            ]);
+        return true;
+    } 
     
     function get_user($username, $login = true, $show_articles = false) {
         Database::init();

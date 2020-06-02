@@ -36,6 +36,22 @@ if ($method === "POST") {
 
     Response::send($user);
     
+} else if ($method === "PATCH" && !empty($_SESSION["username"])) {
+    
+    $req = Request::parse();
+    
+    $user = new User();
+    $user->get_user($_SESSION["username"]);
+    
+    if ($user->update($req) === false) {
+        Response::not_found("Couldn't update information");
+    }
+ 
+    if (!empty($request->username)) {
+        $_SESSION["username"] = $request->username;
+    }
+
+    Response::send($user);
 } else {
     Response::not_found();
 }

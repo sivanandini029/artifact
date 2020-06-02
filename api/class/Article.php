@@ -34,7 +34,7 @@ class Article {
         if (empty($content)) {
             array_push($error, "content is empty.");
         } else if (strlen($content) < 50 || strlen($content) > 25000) {
-            array_push($error, "description must be between 50 and 25000 characters");
+            array_push($error, "content must be between 50 and 25000 characters");
         }
 
         if (empty($topic)) {
