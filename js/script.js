@@ -15,3 +15,34 @@ const elem = (type , classNames = [], content = "", parent = document.body, prep
     }
     return el;
 }
+
+const getUser = async (redirectOnFail = true, redirectOnSuccess = false) => {
+    try {
+        const user = await backend.fire("getUser");
+        if (redirectOnSuccess) {
+            window.location.href = "./profile.html";
+        }
+        return user;
+    } catch (exception) {
+        if (redirectOnFail) {
+            window.location.href = "./login.html";
+            throw exception;
+        }
+    }
+}
+
+const logout = async () => {
+    try {
+        await backend.fire("logout");
+        window.location.href = "./index.html";
+    } catch (exception) {
+        throw exception;
+    }
+}
+
+const logoutButton = document.getElementById("logout-button");
+if (logoutButton) {
+    logoutButton.addEventListener("click", function() {
+        logout();
+    });
+}

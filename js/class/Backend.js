@@ -17,6 +17,11 @@ class Backend {
             method: "POST",
         },
 
+        logout: {
+            url: "/user/logout.php",
+            method: "GET",
+        },
+
         getUser: {
             url: "/user/index.php",
             method: "GET",
@@ -68,7 +73,7 @@ class Backend {
             res = await fetch(`${this.baseURL}${request.url}`, requestBody);
         } catch (exception) {
             console.log(exception, "couldn't even send the request");
-            throw "couldn't send request";
+            throw "Couldn't send request";
         }
 
         try {

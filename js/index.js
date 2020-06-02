@@ -3,11 +3,15 @@ getSuggestions();
 
 
 async function getSuggestions() {
-    const suggestions = await backend.fire("getSuggestions");
-    
-    suggestions.suggestions.forEach(el => {
-        makePost(el);
-    })
+    await getUser(false, true);
+    try {
+        const suggestions = await backend.fire("getSuggestions");
+        suggestions.suggestions.forEach(el => {
+            makePost(el);
+        })
+    } catch (exception) {
+
+    } 
 }
 
 function makePost(data) {
