@@ -18,7 +18,7 @@ if ($method === "POST" && !empty($_SESSION["username"]) && !empty($_GET["id"])) 
 
     $id = $_GET["id"];
     $article = new Article();
-    if ($article->get_id($id) !== false) {
+    if ($article->get_id($id, false) !== false) {
         $article->toggle_impression($viewer);
 
         Response::send($article, 200);

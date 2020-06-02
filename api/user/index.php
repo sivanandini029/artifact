@@ -47,8 +47,8 @@ if ($method === "POST") {
         Response::send(null, 400, $user->get_error());
     }
  
-    if (!empty($request->username)) {
-        $_SESSION["username"] = $request->username;
+    if (!empty($req->username)) {
+        $_SESSION["username"] = $req->username;
     }
 
     Response::send($user);
