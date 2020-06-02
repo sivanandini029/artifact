@@ -1,4 +1,5 @@
 const profileElem = document.querySelector(".profile-container");
+const postsecElem = document.querySelector(".post-section");
 loadProfile();
 
 async function loadProfile(){
@@ -33,6 +34,35 @@ async function loadProfile(){
       // set website
       websiteElem.textContent = result.website
       websiteElem.href = result.website;
+
+      result.articles.forEach(el => {
+         makePost(el);
+      })
+      
+      function makePost(data) {
+         const postElem = elem("A", ["post"], "", postsecElem);
+         postElem.href = `./view-article.html?id=${data.id}`;
+
+         const subjectElem = elem("DIV", ["subject"], "", postElem);
+         const headingElem = elem("DIV", ["heading"], data.title, subjectElem);
+         const iconsElem = elem("DIV", ["icons"], "", subjectElem);
+         const editElem = elem("DIV", ["icon"], "", iconsElem);
+         const editIconImg = elem("IMG", [], "", editElem);
+         editIconImg.src = "assets/edit-tools.svg";
+         const deleteElem = elem("DIV", ["icon"], "", iconsElem);
+         const deleteImg = elem("IMG", [], "", deleteElem);
+         deleteImg.src = "assets/send-to-trash.svg";
+         
+
+         const labelsElem = elem("DIV", ["labels"], "", postElem);
+         const labelElem = elem("DIV", ["label"], "", labelsElem);
+         const iconElem = elem("IMG", ["icon"], "", labelElem);
+         iconElem.src = "assets/web.svg";
+         elem("DIV", ["name"], data.topic, labelElem);
+         const statusElem = elem("DIV", ["status"], data.status, labelsElem);
+
+         const contentElem = elem("DIV", ["contents"], data.description, postElem);
+      }
    } catch (exception) {
       console.log(exception);
    }
