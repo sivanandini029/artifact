@@ -22,8 +22,11 @@ async function fillDetails() {
     dobElem.value = result.dob;
     userNameElem.value = result.username;
     emailElem.value = result.email;
-    const dob = new Date(parseInt(result.dob)*1000);
-    dobElem.value = `${dob.getDate()}-${dob.getMonth()+1}-${dob.getFullYear()}`;
+    if(result.dob) {
+        const dob = new Date(parseInt(result.dob)*1000);
+        dobElem.value = `${dob.getDate()}-${dob.getMonth()+1}-${dob.getFullYear()}`;
+    }
+    
 
     if(result.status === "DISABLED") 
     {
