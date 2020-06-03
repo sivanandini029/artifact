@@ -35,6 +35,11 @@ class Backend {
         addArticle: {
             url: "/article/index.php",
             method: "POST",
+        },
+
+        editUser: {
+            url: "/user/index.php",
+            method: "PATCH",
         }
     };
 
