@@ -121,7 +121,8 @@ class User {
                 bio = :bio,
                 website = :website,
                 dob = :dob,
-                updated = :updated
+                updated = :updated,
+                status = :status
             WHERE
                 id = :id",
             [
@@ -133,7 +134,8 @@ class User {
                 ":bio" => $this->bio,
                 ":website" => $this->website,
                 ":dob" => $this->dob,
-                ":updated" => time(),
+                ":status" => $this->status,
+                ":updated" => time()
             ]);
         return true;
     } 
