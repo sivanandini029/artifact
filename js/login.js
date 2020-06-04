@@ -6,16 +6,15 @@ async function checkLogin() {
     await getUser(false, true);
 }
 
-formElem.addEventListener('submit', async function(e) {
+formElem.addEventListener("submit", async function (e) {
     e.preventDefault();
     const username = document.querySelector(".form .input-container input[name=username]").value;
     const password = document.querySelector(".form .input-container input[name=password]").value;
     try {
         errorElem.textContent = "";
-        await backend.fire("login", {username:username, password:password});
+        await backend.fire("login", {username, password});
         window.location.href = "./profile.html";
-    }
-    catch (exception) {
+    } catch (exception) {
             errorElem.textContent = exception;
     }
 });

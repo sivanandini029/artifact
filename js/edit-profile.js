@@ -13,7 +13,7 @@ const disableButton = document.querySelector(".disable-account .button");
 
 fillDetails();
 async function fillDetails() {
-    const result = await getUser();
+    const result = await getUser(true, false);
     console.log(result);
     firstNameElem.value = result.first_name;
     lastNameElem.value = result.last_name;
@@ -22,36 +22,35 @@ async function fillDetails() {
     dobElem.value = result.dob;
     userNameElem.value = result.username;
     emailElem.value = result.email;
-    if(result.dob) {
+    if (result.dob) {
         const dob = new Date(parseInt(result.dob)*1000);
         dobElem.value = `${dob.getDate()}-${dob.getMonth()+1}-${dob.getFullYear()}`;
     }
     
 
-    if(result.status === "DISABLED") 
-    {
+    if (result.status === "DISABLED") {
         disableButton.textContent = "Enable";
     }
 }
 
-basicDetailsFormElem.addEventListener('submit', async function(e) {
+basicDetailsFormElem.addEventListener("submit", async function (e) {
     e.preventDefault();
-    const firstName = firstNameElem.value;
-    const lastName = lastNameElem.value;
+    const first_name = firstNameElem.value;
+    const last_name = lastNameElem.value;
     const bio = bioElem.value;
     const website = websiteElem.value;
     const dob = dobElem.value;
     try {
         basicDetailsErrorElem.textContent = "";
-        await backend.fire("editUser", {first_name:firstName, last_name:lastName, bio:bio, dob:dob, website:website});   
+        await backend.fire("editUser", {first_name, last_name, bio, dob, website});   
         basicDetailsErrorElem.textContent = "success";
-    }
-    catch (exception) {
+    } catch (exception) {
+        console.log(exception);
         basicDetailsErrorElem.innerHTML = exception.replace("/n","<br/>");
     }
-})
+});
 
-accntCredentialsFormElem.addEventListener('submit', async function(e) {
+accntCredentialsFormElem.addEventListener("submit", async function (e) {
     e.preventDefault();
     const username = userNameElem.value;
     const email = emailElem.value;
@@ -59,19 +58,18 @@ accntCredentialsFormElem.addEventListener('submit', async function(e) {
         accntCredentialsErrorElem.textContent = "";
         await backend.fire("editUser", {username:username, email:email});
         accntCredentialsErrorElem.textContent = "success";
-    }
-    catch(exception) {
+    } catch (exception) {
         accntCredentialsErrorElem.innerHTML = exception.replace("/n","<br/>");
     }
-})
+});
 
-disableButton.addEventListener('click', async function(e) {
+disableButton.addEventListener("click", async function() {
     let status = "ACTIVE";
 
-    if(disableButton.textContent === "Disable") {
+    if (disableButton.textContent === "Disable") {
        status = "DISABLED";
     }
     console.log(status);
     await backend.fire("editUser", {status:status});
     window.location.href = "./edit-profile.html";
-})
+});

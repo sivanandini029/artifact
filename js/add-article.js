@@ -10,8 +10,7 @@ formElem.addEventListener('submit', async function(e) {
         errorElem.textContent = "";
         await backend.fire("addArticle", {title, topic, description, content});
         window.location.href = "./profile.html";
-    }
-    catch (exception) {
+    } catch (exception) {
         console.log(exception);
         errorElem.innerHTML = exception.replace("/n","<br/>");
     }

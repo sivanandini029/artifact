@@ -2,9 +2,9 @@ const profileElem = document.querySelector(".profile-container");
 const postsecElem = document.querySelector(".post-section");
 loadProfile();
 
-async function loadProfile(){
+async function loadProfile() {
    try {
-      const result = await getUser();
+      const result = await getUser(true, false);
       console.log(result);
       const username = document.querySelector(".user-profile .profile-container .profile-name");
       const bioElem = document.querySelector(".user-profile .profile-container .bio");
