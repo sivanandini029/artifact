@@ -40,6 +40,11 @@ class Backend {
         editUser: {
             url: "/user/index.php",
             method: "PATCH",
+        },
+
+        getArticle: {
+            url: "/article/index.php",
+            method: "GET",
         }
     };
 
