@@ -1,5 +1,5 @@
 class Backend {
-    baseURL = "http://localhost/artifact/api";
+    baseURL = "./api";
 
     endpoints = {
         hello: {
