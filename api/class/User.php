@@ -140,6 +140,34 @@ class User {
         return true;
     } 
     
+    function update_password($password) {
+        
+        $errors = [];
+        if (empty($password)) {
+            array_push($errors, "password is empty.");
+        } else if (strlen($password) < 6) {
+            array_push($errors, "password is minimum 6 characters.");
+        }
+        if (count($errors) !== 0) {
+            $this->error = implode("\n", $errors);
+            return false;
+        }
+
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+        
+        Database::init();
+        Database::query(
+            "UPDATE Users SET 
+                password = :password
+            WHERE
+                id = :id",
+            [
+                ":id" => $this->id,
+                ":password" => $password_hash,
+            ]);
+        return true;
+    }
+    
     function get_user($username, $login = true, $show_articles = false) {
         Database::init();
         if ($login) {
