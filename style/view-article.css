@@ -88,6 +88,7 @@
     margin-right: 10px;
     transition: box-shadow 300ms ease-in-out, background-color 300ms ease-in-out;
     cursor: pointer;
+    justify-content: center;
 }
 .impressions-container .icon.small {
     height: 40px;

@@ -12,6 +12,6 @@ formElem.addEventListener('submit', async function(e) {
         window.location.href = "./profile.html";
     } catch (exception) {
         console.log(exception);
-        errorElem.innerHTML = exception.replace("/n","<br/>");
+        errorElem.innerHTML = exception.replace("\n","<br/>");
     }
 });

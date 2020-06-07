@@ -10,6 +10,7 @@ const emailElem = document.querySelector(".input-container input[name=email]");
 const basicDetailsErrorElem = document.querySelector("form[name=basic-details] .error");
 const accntCredentialsErrorElem = document.querySelector(".account-credentials .error");
 const disableButton = document.querySelector(".disable-account .button");
+const disableButtonErrorElem = document.querySelector(".disable-account .error");
 
 fillDetails();
 async function fillDetails() {
@@ -65,11 +66,15 @@ accntCredentialsFormElem.addEventListener("submit", async function (e) {
 
 disableButton.addEventListener("click", async function() {
     let status = "ACTIVE";
-
-    if (disableButton.textContent === "Disable") {
-       status = "DISABLED";
+    try {
+        if (disableButton.textContent === "Disable") {
+            status = "DISABLED";
+         }
+         console.log(status);
+         await backend.fire("editUser", {status:status});
+         window.location.href = "./edit-profile.html";
+    } catch (exception) {
+        disableButtonErrorElem.innerHTML = exception.replace("/n", "<br/>");
     }
-    console.log(status);
-    await backend.fire("editUser", {status:status});
-    window.location.href = "./edit-profile.html";
+    
 });

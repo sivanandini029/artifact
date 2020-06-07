@@ -15,6 +15,6 @@ formElem.addEventListener("submit", async function (e) {
         await backend.fire("register", {username, email, password});
         window.location.href = "./profile.html";
     } catch (exception) {
-            errorElem.innerHTML = exception.replace("/n","<br/>");
+            errorElem.innerHTML = exception.replace("\n","<br/>");
     }
 });
