@@ -79,6 +79,11 @@
     align-items: center;
     justify-content: center;
 }
+
+.impressions-container .icon.active img {
+    filter: invert(14%) sepia(89%) saturate(4621%) hue-rotate(270deg) brightness(85%) contrast(105%);
+} 
+
 .impressions-container .icon {
     height: 55px;
     width: 55px;
@@ -86,7 +91,7 @@
     box-shadow: 0 0 2px #00000066;
     display: flex;
     margin-right: 10px;
-    transition: box-shadow 300ms ease-in-out, background-color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, background-color 300ms ease-in-out, filter 300ms ease-in-out;
     cursor: pointer;
     justify-content: center;
 }
