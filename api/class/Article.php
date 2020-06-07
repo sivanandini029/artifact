@@ -158,6 +158,7 @@ class Article {
             ]);
             $this->viewer_has_liked = false;
             $this->impressions--;
+            $this->owner->impressions--;
         } else {
             Database::query("INSERT INTO Impressions (user_id, content_id, content_type) VALUES (:u_id, :id, :type)",
             [
@@ -167,6 +168,7 @@ class Article {
             ]);
 
             $this->impressions++;
+            $this->owner->impressions++;
             $this->viewer_has_liked = true;
 
         }
