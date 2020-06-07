@@ -13,7 +13,7 @@ const bioElem = document.querySelector(".author-more .description");
 const websiteButton2 = document.querySelector(".author-more .name-website button");
 const followTopicElem = document.querySelector(".follow-container .topic");
 const responseElem = document.querySelector(".response-section .input-container textarea[name=response]");
-const impressionsElem = document.querySelector(".impressions-follow");
+const impressionsElem = document.querySelector(".impressions-follow .impressions-container");
 const impressionsNumElem= document.querySelector(".impressions-follow .impressions-container .no-of-impressions");
 const impressionsErrorElem = document.querySelector(".impressions-follow .error");
 
@@ -82,7 +82,8 @@ async function fillDetails() {
                 window.location.href = "./login.html";
             }
            
-    });
+    
+        });
        
     
     
