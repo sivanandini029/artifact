@@ -48,7 +48,7 @@ async function fillDetails() {
         websiteButton.style.visibility = "hidden";
     }
     
-    setImrpressions(result.owner.articles, result.viewer_has_liked, result.owner.impressions, result.impressions)
+    setImpressions(result.owner.articles, result.viewer_has_liked, result.owner.impressions, result.impressions)
     topicElem.textContent = result.topic;
     iconElem.src = "assets/web.svg";
 
@@ -71,7 +71,7 @@ async function fillDetails() {
         if(user) {
             try {
                 const imp = await backend.fire("toggleImpression", {}, {id});
-                setImrpressions(imp.owner.articles, imp.viewer_has_liked, imp.owner.impressions, imp.impressions)
+                setImpressions(imp.owner.articles, imp.viewer_has_liked, imp.owner.impressions, imp.impressions)
             } catch(exception) {
                 console.log(exception);
             }
@@ -82,7 +82,7 @@ async function fillDetails() {
     });    
 }
 
-function setImrpressions(article, viewerLiked, allImpressions, thisImpression) {
+function setImpressions(article, viewerLiked, allImpressions, thisImpression) {
     impressionElem.textContent = `${article} article${article > 1? "s": ""}, ${allImpressions} impression${allImpressions > 1? "s": ""}`;
     impressionsNumElem.textContent = thisImpression;
 
