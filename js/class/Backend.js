@@ -45,6 +45,11 @@ class Backend {
         getArticle: {
             url: "/article/index.php",
             method: "GET",
+        },
+
+        toggleImpression: {
+            url: "/article/impression.php",
+            method: "POST",
         }
     };
 
