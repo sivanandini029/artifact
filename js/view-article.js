@@ -43,7 +43,7 @@ async function fillDetails() {
     });
     ownerNameElem.textContent = result.owner.username;
     if(result.owner.website) {
-        websiteButton.href = window.location.href = result.owner.website;
+        websiteButton.href = result.owner.website;
     } else{
         websiteButton.style.visibility = "hidden";
     }
