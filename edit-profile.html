@@ -90,15 +90,16 @@
                             <div class="input-group">
                                 <div class="input-container">
                                     <label for="password">Old Password</label>
-                                    <input type="password" name="oldpassword" id="oldpassword" placeholder="***********">
+                                    <input type="password" autocomplete="current-password" name="old-password" id="old-password" placeholder="***********">
                                 </div>
                                 <div class="input-container">
                                     <label for="password">New Password</label>
-                                    <input type="password" name="newpassword" id="newpassword" placeholder="***********">
+                                    <input type="password" autocomplete="new-password" name="new-password" id="new-password" placeholder="***********">
                                 </div>
                             </div>
+                            <div class="error"></div>
                             <div class="button-container">
-                                <button class="button medium">Change</button>
+                                <button type="submit" class="button medium">Change</button>
                             </div>
                         </form>
                     </div>

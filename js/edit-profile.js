@@ -11,6 +11,10 @@ const basicDetailsErrorElem = document.querySelector("form[name=basic-details] .
 const accntCredentialsErrorElem = document.querySelector(".account-credentials .error");
 const disableButton = document.querySelector(".disable-account .button");
 const disableButtonErrorElem = document.querySelector(".disable-account .error");
+const passwordFormElem = document.querySelector(".password-settings form[name=password-change]");
+const newpassword = document.querySelector("form[name=password-change] .input-group .input-container input[name=new-password]");
+const oldpassword = document.querySelector("form[name=password-change] .input-group .input-container input[name=old-password]");
+const passwordErrorElem = document.querySelector(".password-settings .error");
 
 fillDetails();
 async function fillDetails() {
@@ -64,6 +68,19 @@ accntCredentialsFormElem.addEventListener("submit", async function (e) {
     }
 });
 
+passwordFormElem.addEventListener("submit", async function(e) {
+ e.preventDefault();
+ const old_password = oldpassword.value;
+ const new_password = newpassword.value;
+    try{
+        passwordErrorElem.textContent = "";
+        await backend.fire("changePassword", {old_password, new_password});
+        passwordErrorElem.textContent = "success";
+    } catch (exception) {
+        passwordErrorElem.innerHTML = exception.replace("/n", "<br/>");
+    }
+});
+
 disableButton.addEventListener("click", async function() {
     let status = "ACTIVE";
     try {
@@ -74,7 +91,10 @@ disableButton.addEventListener("click", async function() {
          await backend.fire("editUser", {status:status});
          window.location.href = "./edit-profile.html";
     } catch (exception) {
-        disableButtonErrorElem.innerHTML = exception.replace("/n", "<br/>");
+        // disableButtonErrorElem.innerHTML = exception.replace("/n", "<br/>");
+        console.log(exception);
+
+
     }
     
 });

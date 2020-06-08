@@ -50,6 +50,11 @@ class Backend {
         toggleImpression: {
             url: "/article/impression.php",
             method: "POST",
+        },
+
+        changePassword: {
+            url: "/user/change-password.php",
+            method: "PATCH",
         }
     };
 
