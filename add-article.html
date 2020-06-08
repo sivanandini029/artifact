@@ -29,26 +29,35 @@
         </main>
         <div class="form">
                     <form name="add-article">
+                            
                             <div class="input-container">
-                                <input type="text" name="title" id="title" placeholder="title" value="" />
-                            </div>
-                            <label for="topics">Choose a topic</label>
-                            <div class="input-container">
+                                <label for="topics">Topic</label>
                                 <select name="topic" id="topic">
                                     <option value="web">Web</option>
                                 </select>
                             </div>
+                            
                             <div class="input-container">
-                                <textarea type="text" rows = "5" cols = "50" name = "description" placeholder="Description">
-                                </textarea>
+                                <label for="topics">Title</label>
+                                <input type="text" name="title" id="title" placeholder="title" value="" />
                             </div>
+                            
                             <div class="input-container">
-                                <textarea rows = "50" cols = "50" name = "content" placeholder="Content">
-                                </textarea>
+                                <label for="topics">Description</label>
+                                <textarea type="text" rows = "5" cols = "50" name = "description" placeholder="description" value=""></textarea>
+                            </div>
+                            
+                            <div class="input-container">
+                                <label for="topics">Content</label>
+                                <textarea rows = "50" cols = "50" name = "content" placeholder="content"  value=""></textarea>
                             </div>
                             <div class="error"></div>
                             <div class="right-section">
-                                <button type="submit" class="button large">Post</button>
+                                <button type="submit" class="button large">Publish</button>
+                                <div class="save-button">
+                                    <button type="submit" class="button large">Save</button>
+                                </div>
+                                
                             </div>
                     </form>        
         </div>

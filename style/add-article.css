@@ -1,0 +1,65 @@
+.container .main {
+    text-align: center;
+}
+
+.container .form textarea {
+    width: 100%;
+    background-color: rgb(236, 236, 236);
+    border-radius: 5px;
+    padding: 8px 15px;
+    color: #444444;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    border: 2px solid rgb(230, 230, 230);
+    transition: background-color 300ms ease-in-out, border 300ms ease-in-out;
+}
+.container .form textarea:focus {
+    border: 2px solid #6F15C933;
+}
+.container .form textarea:hover {
+    background-color: rgb(225, 225, 225);
+}
+.container .form {
+    padding: 30px 30px;
+}
+.container .form .input-container label {
+    padding-bottom: 10px;
+}
+.container .form .input-container {
+    display: flex;
+    flex-direction: column;
+}
+.container .form select {
+    width: 20%;
+    background-color: rgb(236, 236, 236);
+    border-radius: 5px;
+    padding: 4px 15px;
+    color: #444444;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    border: 2px solid rgb(230, 230, 230);
+    transition: background-color 300ms ease-in-out, border 300ms ease-in-out;
+}
+.container .form select:focus {
+    border: 2px solid #6F15C933;
+}
+.container .form select:hover {
+    background-color: rgb(225, 225, 225);
+}
+.container .right-section {
+    display: flex;
+    justify-content: flex-end;
+}
+.container .right-section .save-button button {
+    background-color: #ffffff;
+    color: #6f15c9;
+    border: solid #6f15c9;
+}
+.container .right-section .save-button button:hover {
+    background-color: #42087C;
+    border: #42087C;
+    color: #ffffff;
+}
+.container .right-section .save-button {
+    padding-left: 20px;
+}
