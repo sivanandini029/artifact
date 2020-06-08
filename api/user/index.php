@@ -21,7 +21,7 @@ if ($method === "POST") {
         Response::send(null, 400, $user->get_error());
     }
 
-    Response::send($val, 201, "Created new user");
+    Response::send($user, 201, "Created new user");
 
 } else if ($method === "GET" && !empty($_SESSION["username"])) { 
 

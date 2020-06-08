@@ -42,6 +42,8 @@ class User {
         Database::init();
         Database::query("INSERT INTO Users (username, email, password, created, updated) VALUES (:username, :email, :password, :created, :updated)", [ ":username" => $username, ":email" => $email, ":password" => $password_hash, ":created" => time(), ":updated" => time()]);
 
+        $this->get_id(Database::last_insert_id());
+
         return [ "username" => $username, "email" => $email ];
     }
 
