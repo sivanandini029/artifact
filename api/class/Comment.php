@@ -4,7 +4,7 @@ require_once(__DIR__ ."/Database.php");
 class Comment {
     private $error = "";
 
-    function create($user_id, $article_id, $content) {
+    function create($user, $article, $content) {
         Database::init();
         if (empty($content) || strlen($content) < 10) {
             $this->error = "comment should be atleast 10 characters";
@@ -17,14 +17,22 @@ class Comment {
             VALUES
                 (:article_id, :user_id, :content, :created)",
             [
-                ":article_id" => $article_id,
-                ":user_id" => $user_id,
+                ":article_id" => $article->id,
+                ":user_id" => $user->id,
                 ":content" => $content,
                 ":created" => time(),
             ]      
         );
 
         $this->id = Database::last_insert_id();
+        $this->content = $content;
+        $this->username = $user->username;
+        $this->image = $user->image;
+        $this->impressions = 0;
+        $this->viewer_has_liked = false;
+        $this->created = time();
+
+        return true;
     }
 
     function get_id($id) {

@@ -45,4 +45,8 @@ class Database {
             Response::send("", 500, $msg);
         }
     }
+
+    public static function last_insert_id() {
+        return self::$conn->lastInsertId();
+    }
 }

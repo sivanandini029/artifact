@@ -76,13 +76,8 @@ class Article {
             ":updated" => time()
         ]);
 
-        return [ 
-            "owner" => $owner,
-            "title" => $title,
-            "description" => $description,
-            "content" => $content,
-            "topic" => $topic,
-         ];
+        $this->get_id(Database::last_insert_id());
+        return true;
     }
     
     function get_id($id, $add_view = true) {

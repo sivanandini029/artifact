@@ -26,13 +26,11 @@ if ($method === "POST" && !empty($_SESSION["username"]) && !empty($_GET["id"])) 
 
     // add comment
     $comment = new Comment();
-    if ($comment->create($viewer->id, $article->id, @$req->comment) === false) {
+    if ($comment->create($viewer, $article, @$req->comment) === false) {
         Response::send(null, 400, $comment->get_error());
     }
-    
-    $article->get_id($id, false);
 
-    Response::send($article, 200);
+    Response::send($comment, 200);
 } else {
     Response::not_found();
 }
