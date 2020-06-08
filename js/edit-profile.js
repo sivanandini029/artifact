@@ -72,7 +72,7 @@ passwordFormElem.addEventListener("submit", async function(e) {
  e.preventDefault();
  const old_password = oldpassword.value;
  const new_password = newpassword.value;
-    try{
+    try {
         passwordErrorElem.textContent = "";
         await backend.fire("changePassword", {old_password, new_password});
         passwordErrorElem.textContent = "success";
@@ -91,10 +91,7 @@ disableButton.addEventListener("click", async function() {
          await backend.fire("editUser", {status:status});
          window.location.href = "./edit-profile.html";
     } catch (exception) {
-        // disableButtonErrorElem.innerHTML = exception.replace("/n", "<br/>");
-        console.log(exception);
-
-
+        disableButtonErrorElem.innerHTML = exception.replace("/n", "<br/>");
     }
     
 });
