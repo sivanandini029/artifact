@@ -33,6 +33,7 @@ CREATE TABLE Comments (
     article_id INT NOT NULL,
     user_id INT NOT NULL,
     content TEXT NOT NULL,
+    created BIGINT NOT NULL,
     status enum("ACTIVE", "DELETED") NOT NULL DEFAULT "ACTIVE",
     FOREIGN KEY(article_id) references Articles(id),
     FOREIGN KEY(user_id) references Users(id)

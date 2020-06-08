@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ ."/Database.php");
 require_once(__DIR__ ."/User.php");
+require_once(__DIR__ ."/Comment.php");
 
 class Article {
     private $error = "";
@@ -112,13 +113,14 @@ class Article {
         
         $this->assign_values($article[0]);
         $this->get_has_liked();
-        if ($add_view) {
+        if ($add_view && $this->status === "PUBLISHED") {
             $this->update_views();
         }
         $owner = new User();
         $owner->get_id($this->owner_id);
         $this->owner = $owner;
-    
+        
+        $this->get_comments();
         if (!($this->status === "PUBLISHED" || (!empty($_SESSION["username"]) && !empty($this->owner->username) && $_SESSION["username"] === $this->owner->username))) {
             return false;
         }
@@ -172,6 +174,12 @@ class Article {
             $this->viewer_has_liked = true;
 
         }
+    }
+
+    function get_comments() {
+        $comments = new Comment();
+
+        $this->comments = $comments->get_all_article($this->id);
     }
 
     function update_views() {
