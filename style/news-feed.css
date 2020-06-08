@@ -1,0 +1,61 @@
+.container .search-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .search-bar .form{
+    padding-right: 20px;
+}
+.search-bar .search-button .button{
+    font-size: 1.3rem;
+}
+.news-feed{
+    display: flex;
+    padding-top: 30px;
+}
+.news-feed .profile-container{
+    display: flex;
+    flex: 1;
+    align-items: unset;
+    justify-content: unset;
+}
+.news-feed .user-profile{
+    display: block;
+    padding: 30px; 
+    background-color: #F4F4F4;
+}
+.news-feed .user-profile .user-articles .subject{
+    padding-top: 20px;
+}
+.news-feed .profile-container .profile-name{
+    color: #6F15C9;
+    font-size: 0.86rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+.news-feed .user-articles .readings{
+    color: #444444;
+    font-size: 0.69rem;
+}
+.container .recent-articles{
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+}
+.recent-articles .post-section .post .author-details {
+    padding-top: unset;
+}
+.recent-articles .post{
+    padding-bottom: 40px;
+}
+.recent-articles .post-container {
+    padding: 20px;
+    transition: background-color 300ms ease-in-out;
+    cursor: pointer;
+    border-radius: 15px;
+}
+.recent-articles .post-container:hover {
+    background-color: #F4F4F4;
+}

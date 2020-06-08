@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/form-template.css">
     <link rel="stylesheet" href="style/profile.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap" rel="stylesheet">
 </head>
@@ -18,84 +17,39 @@
                     <span class="artifact">Artifact</span>
                 </a>
                 <nav class="nav">
-                    <a href="#" class="link">Profile</a>
+                    <a href="./profile.html" class="link">Profile</a>
                     <a href="#" class="link">Home</a>
-                    <a href="#" class="link">Logout</a>
+                    <a id="logout-button" class="link">Logout</a>
 
                 </nav>
             </div>
         </header>
-        <div class="user-profile">
+        <main class="user-profile main">
             <div class="profile-container">
                 <div class="profile-pic">
-                    <img src="assets/undraw_profile_pic_ic5t 1.svg">
+                    <img class="picture" src="assets/undraw_profile_pic_ic5t 1.svg" />
                 </div>
-                <div class="profile-name">nikhilnathr</div>
-                <div class="profile-reads">Nikhil Nath R, 22</div>
-                <div class="profile-reads">Writing is my passion and sharing it with the world gives me joy.</div>
-                <div class="profile-reads">5 articles, 153 reads</div>
-                <div class="profile-reads"><a href="#" class="primary-link">me@nikhilnathr.com</a></div>
-                <div class="edit-profile">
-                    <button class="button large">Edit</button>
-                </div>
+                <div class="profile-name"></div>
+                <div class="small"></div>
+                <div class="small"></div>
+                <div class="website"><a href="https://nikhilnathr.com" class="primary-link"></a></div>
+                <div class="bio"></div>
+                <a href="./edit-profile.html" class="edit-profile button medium">
+                    Edit
+                </a>
             </div>
-            <div class="articles-container">
-                <div class="articles-title">
-                    <div class="myarticles">My Articles</div>
-                    <div class="new-article">
-                        <button class="button large">New Article</button>
-                    </div>
+            <div class="post-section">
+                <div class="sub-title">
+                    <div>My Articles</div>
+                    <a href="./add-article.html" class="button">New Article</a>
                 </div>
-                <div class="post">
-                    <div class="subject">
-                        <div class="heading">Get Started on NestJS</div>
-                        <div class="edit-icons">
-                            <img src="assets/edit-tools.svg">
-                            <img src="assets/send-to-trash.svg">
-                        </div>
-                    </div>
-                    <div class="labels">
-                        <div class="label">
-                            <img class="icon" src="assets/web.svg">
-                            <div class="name">web</div>
-                        </div>
-                    </div>
-                    <div class="contents">NestJS is one of the most interesting backend frameworks around, Working with it made my life effortless and easy to make great backends.</div>
-                </div>
-                <div class="post">
-                    <div class="subject">
-                        <div class="heading">Get Started on NestJS</div>
-                        <div class="edit-icons">
-                            <img src="assets/edit-tools.svg">
-                            <img src="assets/send-to-trash.svg">
-                        </div>
-                    </div>
-                    <div class="labels">
-                        <div class="label">
-                            <img class="icon" src="assets/web.svg">
-                            <div class="name">web</div>
-                        </div>
-                    </div>
-                    <div class="contents">NestJS is one of the most interesting backend frameworks around, Working with it made my life effortless and easy to make great backends.</div>
-                </div>
-                <div class="post">
-                    <div class="subject">
-                        <div class="heading">Get Started on NestJS</div>
-                        <div class="edit-icons">
-                            <img src="assets/edit-tools.svg">
-                            <img src="assets/send-to-trash.svg">
-                        </div>
-                    </div>
-                    <div class="labels">
-                        <div class="label">
-                            <img class="icon" src="assets/web.svg">
-                            <div class="name">web</div>
-                        </div>
-                    </div>
-                    <div class="contents">NestJS is one of the most interesting backend frameworks around, Working with it made my life effortless and easy to make great backends.</div>
-                </div>
+                
+               
             </div>
-        </div>
+        </main>
     </div>
+    <script src="js/class/Backend.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/profile.js" defer></script>
 </body>
 </html>

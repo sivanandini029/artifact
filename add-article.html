@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Article</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/form-template.css">
+    <link rel="stylesheet" href="style/add-article.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="nav-bar"> 
+                <a href="./index.html" class="brand-name">
+                    <img src="assets/app-icon.png">
+                    <span class="artifact">Artifact</span>
+                </a>
+                <nav class="nav">
+                    <a href="#" class="link">Profile</a>
+                    <a href="#" class="link">Home</a>
+                    <a id="logout-button" class="link">Logout</a>
+                </nav>
+            </div>
+        </header>
+        <main class="main">
+            <h1 class="title">Add Article</h1>
+        </main>
+        <div class="form">
+                    <form name="add-article">
+                            <div class="input-container">
+                                <input type="text" name="title" id="title" placeholder="title" value="" />
+                            </div>
+                            <label for="topics">Choose a topic</label>
+                            <div class="input-container">
+                                <select name="topic" id="topic">
+                                    <option value="web">Web</option>
+                                </select>
+                            </div>
+                            <div class="input-container">
+                                <textarea type="text" rows = "5" cols = "50" name = "description" placeholder="Description">
+                                </textarea>
+                            </div>
+                            <div class="input-container">
+                                <textarea rows = "50" cols = "50" name = "content" placeholder="Content">
+                                </textarea>
+                            </div>
+                            <div class="error"></div>
+                            <div class="right-section">
+                                <button type="submit" class="button large">Post</button>
+                            </div>
+                    </form>        
+        </div>
+    <script src="js/class/Backend.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/add-article.js" defer></script>
+</body>
+</html>

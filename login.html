@@ -32,7 +32,7 @@
                     <div class="image-description">Go inside into the world of wonders</div>
                 </div>
                 <div class="form">
-                    <form name="login">
+                <form name="login">
                         <div class="input-container">
                             <label for="username">Username</label>
                             <input type="text" name="username" id="username" placeholder="Enter username or email address">
@@ -41,13 +41,14 @@
                             <label for="password">Password</label>
                             <input type="password" name="password" id="password" placeholder="Enter Password">
                         </div>
+                        <div class="error"></div>
                         <div class="bottom-control">
                             <div class="left-section">
                                 <a href="./register.html" class="primary-link">Create an account</a>
                                 <a href="#" class="primary-link">Forgot Password ?</a>
                             </div>
                             <div class="right-container">
-                                <button class="button large">Log In</button>
+                                <button type="submit" class="button large">Log In</button>
                             </div>
                         </div>
                     </form>
@@ -55,6 +56,9 @@
             </div>
         </div>
     </div>
+    <script src="js/class/Backend.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/login.js" defer></script>
 </body>
 </html>
             
