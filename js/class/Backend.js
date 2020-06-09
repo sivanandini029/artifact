@@ -55,6 +55,11 @@ class Backend {
         changePassword: {
             url: "/user/change-password.php",
             method: "PATCH",
+        },
+
+        addComment: {
+            url: "/article/comment/index.php",
+            method: "POST",
         }
     };
 

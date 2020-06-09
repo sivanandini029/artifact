@@ -16,6 +16,9 @@ const responseElem = document.querySelector(".response-section .input-container 
 const impressionsElem = document.querySelector(".impressions-follow .impressions-container");
 const impressionsNumElem = document.querySelector(".impressions-follow .impressions-container .no-of-impressions");
 const impressionsIconElem = document.querySelector(".impressions-container .icon");
+const responseFormElem = document.querySelector(".response-section .form ")
+const response = document.querySelector(".response-section .form .input-container textarea[name=response]");
+const responseErrorElem = document.querySelector(".response-section .error");
 
 fillDetails();
 
@@ -79,7 +82,22 @@ async function fillDetails() {
             window.location.href = "./login.html";
         }
         
-    });    
+    });  
+    
+    responseFormElem.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const comment = response.value;
+        try {
+            responseErrorElem.textContent = "";
+            await backend.fire("addComment", {comment}, {id});
+            responseErrorElem.textContent = "success";
+            console.log(comment);
+        } catch(exception) {
+            console.log(exception);
+            responseErrorElem.innerHTML = exception.replace("\n","<br/>");
+        }
+    });
+    
 }
 
 function setImpressions(article, viewerLiked, allImpressions, thisImpression) {
