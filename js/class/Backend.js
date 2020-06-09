@@ -60,6 +60,11 @@ class Backend {
         addComment: {
             url: "/article/comment/index.php",
             method: "POST",
+        },
+
+        toggleCommentImpression: {
+            url: "/article/comment/impression.php",
+            method: "POST",
         }
     };
 

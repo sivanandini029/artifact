@@ -19,7 +19,9 @@ const impressionsIconElem = document.querySelector(".impressions-container .icon
 const responseFormElem = document.querySelector(".response-section .form ")
 const response = document.querySelector(".response-section .form .input-container textarea[name=response]");
 const responseErrorElem = document.querySelector(".response-section .error");
-
+const commentSection = document.querySelector(".response-section");
+const commentElem = document.querySelector(".responses");
+const loginMsg = document.querySelector(".login-message");
 fillDetails();
 
 async function fillDetails() {
@@ -83,21 +85,59 @@ async function fillDetails() {
         }
         
     });  
+    if(user){
+        responseFormElem.addEventListener("submit", async function(e) {
+            e.preventDefault();
+            const comment = response.value;
+            try {
+                responseErrorElem.textContent = "";
+                const com = await backend.fire("addComment", {comment}, {id});
+                responseErrorElem.textContent = "success";
+                console.log(comment);
+                // result.comment = responseElem;
+            } catch(exception) {
+                console.log(exception);
+                responseErrorElem.innerHTML = exception.replace("\n","<br/>");
+            }
+        });
+    } else {
+        commentSection.style.visibility = "hidden";
+        loginMsg.textContent = "LOGIN TO COMMENT";
+        console.log(loginMsg);
+    }
     
-    responseFormElem.addEventListener("submit", async function(e) {
-        e.preventDefault();
-        const comment = response.value;
-        try {
-            responseErrorElem.textContent = "";
-            await backend.fire("addComment", {comment}, {id});
-            responseErrorElem.textContent = "success";
-            console.log(comment);
-        } catch(exception) {
-            console.log(exception);
-            responseErrorElem.innerHTML = exception.replace("\n","<br/>");
-        }
-    });
     
+    result.comments.forEach(el => {
+        makeComment(el);
+    })
+    function makeComment(data) {
+        console.log(data);
+        const responseElem = elem("DIV", ["response"], "", commentElem);
+        const profileElem = elem("DIV", ["profile-container"], "", responseElem);
+        const profilePicElem = elem("DIV", ["profile-pic", "small"], "", profileElem);
+        const imgElem = elem("IMG", ["picture"], "", profilePicElem);
+        imgElem.src = "assets/undraw_profile_pic_ic5t 1.svg";
+        const detailsElem = elem("DIV", ["details"], "", profileElem);
+        const nameElem = elem("DIV", ["name", "make-purple"], data.username, detailsElem);
+        const dateElem = new Date(parseInt(result.created)*1000);
+        elem("DIV", ["reads"], `${months[dateElem.getMonth()]} ${dateElem.getDate()}`, detailsElem);
+        const contentElem = elem("DIV", ["explanation"], data.content, detailsElem);
+        const userImpressionElem = elem("DIV", ["impression"], "", responseElem);
+        const impressionContainer = elem("DIV", ["impressions-container", "bottom-control"], "", userImpressionElem);
+        const impIconElem = elem("IMG", ["icon", "small"], "", impressionContainer);
+        impIconElem.src = "assets/favorites-button 2.svg";
+        const commentImpressionNum = elem("DIV", ["number-of-likes"], "", impressionContainer);
+        commentImpressionNum.addEventListener("click", async function() {
+                try {
+                    const imp1 = await backend.fire("toggleCommentImpression", {}, {id:data.id});
+                    imp1.textContent = data.impressions;
+                    console.log(imp1.textContent);
+                } catch(exception) {
+                    console.log(exception);
+                }
+        });  
+
+    }  
 }
 
 function setImpressions(article, viewerLiked, allImpressions, thisImpression) {
