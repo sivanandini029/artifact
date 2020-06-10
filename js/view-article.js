@@ -127,16 +127,26 @@ async function fillDetails() {
         const impIconElem = elem("IMG", ["icon", "small"], "", impressionContainer);
         impIconElem.src = "assets/favorites-button 2.svg";
         const commentImpressionNum = elem("DIV", ["number-of-likes"], "", impressionContainer);
-        commentImpressionNum.addEventListener("click", async function() {
+        commentImpressionNum.textContent = data.impressions;
+        userImpressionElem.addEventListener("click", async function() {
                 try {
+                    
                     const imp1 = await backend.fire("toggleCommentImpression", {}, {id:data.id});
-                    imp1.textContent = data.impressions;
-                    console.log(imp1.textContent);
+                    setImpressions1(imp1.viewer_has_liked)
+                    commentImpressionNum.textContent = imp1.impressions;
                 } catch(exception) {
                     console.log(exception);
                 }
+               
         });  
-
+       
+        function setImpressions1( viewerLiked1) {
+            if (viewerLiked1) {
+                impIconElem.classList.add("active");
+            } else {
+            impIconElem.classList.remove("active");
+            }
+        }
     }  
 }
 
@@ -150,3 +160,5 @@ function setImpressions(article, viewerLiked, allImpressions, thisImpression) {
         impressionsIconElem.classList.remove("active");
     }
 }
+
+
