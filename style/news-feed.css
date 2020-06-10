@@ -87,4 +87,18 @@
 }
 
 
+@media (max-width: 1100px) {
+    .user-profile {
+        display: none;
+        visibility: hidden;
+    }
+}
 
+/* small screens */
+@media (max-width: 700px) {
+    .user-profile {
+        display: none;
+        visibility: hidden;
+        flex: none;
+    }
+}
