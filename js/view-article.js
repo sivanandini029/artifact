@@ -94,9 +94,9 @@ async function fillDetails() {
                 const com = await backend.fire("addComment", {comment}, {id});
                 responseErrorElem.textContent = "success";
                 console.log(comment);
-                // result.comment = responseElem;
+                makeComment(com);
             } catch(exception) {
-                console.log(exception);
+                console.error(exception);
                 responseErrorElem.innerHTML = exception.replace("\n","<br/>");
             }
         });
@@ -124,28 +124,34 @@ async function fillDetails() {
         const contentElem = elem("DIV", ["explanation"], data.content, detailsElem);
         const userImpressionElem = elem("DIV", ["impression"], "", responseElem);
         const impressionContainer = elem("DIV", ["impressions-container", "bottom-control"], "", userImpressionElem);
-        const impIconElem = elem("IMG", ["icon", "small"], "", impressionContainer);
-        impIconElem.src = "assets/favorites-button 2.svg";
+        const impIconElem = elem("DIV", ["icon", "small"], "", impressionContainer);
+        const impIconElem1 = elem("IMG", [], "", impIconElem);
+        impIconElem1.src = "assets/favorites-button 2.svg";
         const commentImpressionNum = elem("DIV", ["number-of-likes"], "", impressionContainer);
         commentImpressionNum.textContent = data.impressions;
         userImpressionElem.addEventListener("click", async function() {
                 try {
                     
                     const imp1 = await backend.fire("toggleCommentImpression", {}, {id:data.id});
-                    setImpressions1(imp1.viewer_has_liked)
+                
                     commentImpressionNum.textContent = imp1.impressions;
+                    if (imp1.viewer_has_liked) {
+                        impIconElem.classList.add("active");
+                    } else {
+                    impIconElem.classList.remove("active");
+                    }
                 } catch(exception) {
                     console.log(exception);
-                }
-               
+                } 
+            
+                    
+                
         });  
        
-        function setImpressions1( viewerLiked1) {
-            if (viewerLiked1) {
-                impIconElem.classList.add("active");
-            } else {
-            impIconElem.classList.remove("active");
-            }
+        if (data.viewer_has_liked) {
+            impIconElem.classList.add("active");
+        } else {
+        impIconElem.classList.remove("active");
         }
     }  
 }
