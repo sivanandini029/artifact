@@ -29,7 +29,8 @@
 .news-feed .user-profile{
     display: block;
     padding: 30px; 
-    background-color: #ffffff;
+    background-color: #f4f4f4;
+    border-radius: 15px;
 }
 .news-feed .user-profile .user-articles .subject{
     padding-top: 20px;
@@ -62,12 +63,10 @@
 .recent-articles .post{
     padding-bottom: 40px;
 }
-.recent-articles .post-container {
-    padding: 20px;
-    transition: background-color 300ms ease-in-out;
+.recent-articles .post-container a {
+    transition: background-color  300ms ease-in-out;
     cursor: pointer;
     border-radius: 15px;
-    background-color: #F4F4F4;
     margin-bottom: 20px;
 }
 .recent-articles .post-container:hover {
@@ -87,7 +86,7 @@
 }
 
 
-@media (max-width: 1100px) {
+/* @media (max-width: 1100px) {
     .user-profile {
         display: none;
         visibility: hidden;
@@ -95,10 +94,10 @@
 }
 
 /* small screens */
-@media (max-width: 700px) {
+/* @media (max-width: 700px) {
     .user-profile {
         display: none;
         visibility: hidden;
         flex: none;
     }
-}
+} */ 
