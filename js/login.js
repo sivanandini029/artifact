@@ -13,7 +13,7 @@ formElem.addEventListener("submit", async function (e) {
     try {
         errorElem.textContent = "";
         await backend.fire("login", {username, password});
-        window.location.href = "./profile.html";
+        window.location.href = "./news-feed.html";
     } catch (exception) {
             errorElem.textContent = exception;
     }
