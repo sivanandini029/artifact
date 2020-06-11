@@ -36,6 +36,24 @@ if ($method === "GET" && !empty($_GET['id'])) {
     }
 
     Response::send(null, 400, $article->get_error());
+    
+}  else if ($method === "PATCH" && !empty($_SESSION["username"])) {
+    
+    $req = Request::parse();
+    $id = $_GET["id"];
+
+    $article = new Article();
+    if ($article->get_id($id, false) === false || $article->owner->username !== $_SESSION["username"]) {
+        Response::send(null, 404, "Article was not found");
+    }
+    
+    if ($article->update($req) === false) {
+        Response::send(null, 400, $article->get_error());
+    }
+
+    $article->get_id($id, false);
+
+    Response::send($article);
 } else {
     Response::not_found();
 }

@@ -6,6 +6,8 @@ require_once(__DIR__ ."/Comment.php");
 class Article {
     private $error = "";
     private $owner_id;
+    private $allowed_status = ["SAVED", "PUBLISHED"];
+    private $allowed_topics = ["web"];
 
     function create() {
         $owner = !empty($this->owner)? $this->owner: "";
@@ -17,31 +19,31 @@ class Article {
         $error = [];
         
         if (empty($owner) || empty($owner->id)) {
-            array_push($error, "owner is empty.");
+            array_push($error, "Owner is empty.");
         }
         
         if (empty($title)) {
-            array_push($error, "title is empty.");
+            array_push($error, "Title is empty.");
         } else if (strlen($title) < 5 || strlen($title) > 50) {
-            array_push($error, "title must be between 5 and 50 characters");
+            array_push($error, "Title must be between 5 and 50 characters.");
         }
 
         if (empty($description)) {
-            array_push($error, "description is empty.");
+            array_push($error, "Description is empty.");
         } else if (strlen($description) < 10 || strlen($description) > 250) {
-            array_push($error, "description must be between 10 and 250 characters");
+            array_push($error, "Description must be between 10 and 250 characters.");
         }
 
         if (empty($content)) {
-            array_push($error, "content is empty.");
+            array_push($error, "Content is empty.");
         } else if (strlen($content) < 50 || strlen($content) > 25000) {
-            array_push($error, "content must be between 50 and 25000 characters");
+            array_push($error, "Content must be between 50 and 25000 characters.");
         }
 
         if (empty($topic)) {
-            array_push($error, "topic is empty.");
-        } else if (strlen($topic) < 1 || strlen($topic) > 50) {
-            array_push($error, "topic must be between 1 and 50 characters");
+            array_push($error, "Topic is empty.");
+        } else if (array_search($topic, $this->allowed_topics) === false) {
+            array_push($error, "Topic is invalid.");
         }
         
         if (count($error) !== 0) {
@@ -77,6 +79,68 @@ class Article {
         ]);
 
         $this->get_id(Database::last_insert_id());
+        return true;
+    }
+
+    function update($value) {
+        $errors = [];
+        $request_params = array_keys(get_object_vars($value));
+
+        if (!empty($value->title) && (strlen($value->title) < 5 || strlen($value->title) > 50)) {
+            $errors[] = "Title must be between 5 and 50 characters.";
+        } else if (array_search("title", $request_params) !== false) {
+            $this->title = $value->title;
+        }
+
+        if (!empty($value->description) && (strlen($value->description) < 10 || strlen($value->description) > 250)) {
+            $errors[] = "Description must be between 10 and 250 characters.";
+        } else if (array_search("description", $request_params) !== false) {
+            $this->description = $value->description;
+        }
+
+        if (!empty($value->content) && (strlen($value->description) < 50 || strlen($value->description) > 25000)) {
+            $errors[] = "Content must be between 50 and 25000 characters.";
+        } else if (array_search("content", $request_params) !== false) {
+            $this->content = $value->content;
+        }
+
+        if (!empty($value->topic) && array_search($value->topic, $this->allowed_topics) === false) {
+            $errors[] = "Topic is invalid";
+        } else if (array_search("topic", $request_params) !== false) {
+            $this->topic = $value->topic;
+        }
+
+        if (!empty($value->status) && array_search($value->status, $this->allowed_status) === false) {
+            $errors[] = "Status is invalid";
+        } else if (!empty($value->status)) {
+            $this->status = $value->status;
+        }
+
+        if (count($errors) !== 0) {
+            $this->error = implode("\n", $errors);
+            return false;
+        }
+
+        Database::init();
+        Database::query(
+            "UPDATE Articles SET 
+                title = :title,
+                description = :description,
+                content = :content,
+                topic = :topic,
+                updated = :updated,
+                status = :status
+            WHERE
+                id = :id",
+            [
+                ":id" => $this->id,
+                ":title" => $this->title,
+                ":description" => $this->description,
+                ":content" => $this->content,
+                ":topic" => $this->topic,
+                ":status" => $this->status,
+                ":updated" => time()
+            ]);
         return true;
     }
     
@@ -178,9 +242,11 @@ class Article {
     }
 
     function update_views() {
-        $this->views++;
-        Database::init();
-        Database::query("UPDATE Articles SET views = :views WHERE id = :id", [":views" => $this->views, ":id" => $this->id]);
+        if ($this->status === "PUBLISHED") {
+            $this->views++;
+            Database::init();
+            Database::query("UPDATE Articles SET views = :views WHERE id = :id", [":views" => $this->views, ":id" => $this->id]);
+        }
     }
 
     function get_error() {
