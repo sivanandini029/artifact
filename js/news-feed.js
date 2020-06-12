@@ -1,5 +1,6 @@
 const postContainerElem = document.querySelector(".post-container");
 const userProfileElem = document.querySelector(".user-profile");
+const userArticleElem = document.querySelector(".user-profile .user-articles");
 
 getSuggestions();
 
@@ -50,6 +51,14 @@ async function loadProfile() {
        console.log(result);
        const username = document.querySelector(".user-profile .profile-container .profile-name");
        username.textContent = result.username;
+
+       result.articles.filter(data => data.status === "PUBLISHED").forEach(data => {
+        const postElem = elem("A", ["subject"], "", userArticleElem);
+        postElem.href = `./view-article.html?id=${data.id}`;
+
+        const headingElem = elem("DIV", ["heading"], data.title, postElem);
+        elem("DIV", ["readings"], `${data.views} views, ${data.impressions} impressions`, postElem);
+     });
     } catch (exception) {
         console.log(exception);
      }

@@ -116,6 +116,7 @@ body {
     padding: 10px;
     display: flex;
     justify-content: space-between;
+    position: fixed;
 }
 .header .nav-bar .nav {
     display: flex;
