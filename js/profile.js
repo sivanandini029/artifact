@@ -40,16 +40,20 @@ async function loadProfile() {
       })
       
       function makePost(data) {
-         const postElem = elem("A", ["post"], "", postsecElem);
-         postElem.href = `./view-article.html?id=${data.id}`;
+         const postElem = elem("DIV", ["post"], "", postsecElem);
 
          const subjectElem = elem("DIV", ["subject"], "", postElem);
          const headingElem = elem("DIV", ["heading"], data.title, subjectElem);
          const iconsElem = elem("DIV", ["icons"], "", subjectElem);
-         const editElem = elem("DIV", ["icon"], "", iconsElem);
+         const viewArticleElem = elem("A", ["icon"], "", iconsElem);
+         const viewArticleIconImg = elem("IMG", [], "", viewArticleElem);
+         viewArticleIconImg.src = "assets/eye.svg";
+         viewArticleElem.href = `./view-article.html?id=${data.id}`;
+         const editElem = elem("A", ["icon"], "", iconsElem);
          const editIconImg = elem("IMG", [], "", editElem);
          editIconImg.src = "assets/edit-tools.svg";
-         const deleteElem = elem("DIV", ["icon"], "", iconsElem);
+         editElem.href = `./add-article.html?id=${data.id}`;
+         const deleteElem = elem("A", ["icon"], "", iconsElem);
          const deleteImg = elem("IMG", [], "", deleteElem);
          deleteImg.src = "assets/send-to-trash.svg";
          
