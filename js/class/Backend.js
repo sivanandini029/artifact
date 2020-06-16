@@ -65,6 +65,11 @@ class Backend {
         toggleCommentImpression: {
             url: "/article/comment/impression.php",
             method: "POST",
+        },
+
+        editArticle: {
+            url: "/article/index.php",
+            method: "PATCH",
         }
     };
 

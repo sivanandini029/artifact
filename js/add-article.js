@@ -32,7 +32,29 @@ if(!id) {
         titleElem.value= result.title;
         descriptionElem.value = result.description;
         contentElem.value = result.content;
+
+        if (result.status === "PUBLISHED") {
+            publishButton.textContent = "Unpublish";
         }
+        }
+       
+
+        publishButton.addEventListener("click", async function() {
+            await backend.fire("editArticle", {status:status});
+            try {
+                if (publishButton.textContent === "Publish") {
+                    data.status = "PUBLISHED";
+                 } else {
+                     status = "SAVED";
+                 }
+                 console.log(status);
+                 
+                 window.location.href = "./profile.html";
+            } catch (exception) {
+                console.log(exception);
+            }
+            
+        });
 }
     
     
