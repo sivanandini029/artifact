@@ -37,7 +37,7 @@ if ($method === "GET" && !empty($_GET['id'])) {
 
     Response::send(null, 400, $article->get_error());
     
-}  else if ($method === "PATCH" && !empty($_SESSION["username"])) {
+}  else if ($method === "PATCH" && !empty($_SESSION["username"] && !empty($_GET["id"]))) {
     
     $req = Request::parse();
     $id = $_GET["id"];

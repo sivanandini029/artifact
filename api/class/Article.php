@@ -98,7 +98,7 @@ class Article {
             $this->description = $value->description;
         }
 
-        if (!empty($value->content) && (strlen($value->description) < 50 || strlen($value->description) > 25000)) {
+        if (!empty($value->content) && (strlen($value->content) < 50 || strlen($value->content) > 25000)) {
             $errors[] = "Content must be between 50 and 25000 characters.";
         } else if (array_search("content", $request_params) !== false) {
             $this->content = $value->content;
