@@ -143,6 +143,20 @@ class Article {
             ]);
         return true;
     }
+
+    function delete() {
+        Database::init();
+        Database::query(
+            "UPDATE Articles SET
+                status = :status
+            WHERE
+                id = :id",
+            [
+                ":status" => "DELETED",
+                ":id" => $this->id
+            ]);
+        return true;
+    }
     
     function get_id($id, $add_view = true) {
         Database::init();
@@ -159,9 +173,11 @@ class Article {
             status,
             (SELECT COUNT(*) FROM Impressions WHERE content_id = :id and content_type = :type) AS impressions
         FROM Articles WHERE 
-            id = :id",
+            id = :id AND
+            status != :status",
         [
             ":id" => $id,
+            ":status"=> "DELETED",
             ":type" => "ARTICLE"
         ]);
 

@@ -37,7 +37,7 @@ if ($method === "GET" && !empty($_GET['id'])) {
 
     Response::send(null, 400, $article->get_error());
     
-}  else if ($method === "PATCH" && !empty($_SESSION["username"] && !empty($_GET["id"]))) {
+} else if ($method === "PATCH" && !empty($_SESSION["username"] && !empty($_GET["id"]))) {
     
     $req = Request::parse();
     $id = $_GET["id"];
@@ -54,6 +54,20 @@ if ($method === "GET" && !empty($_GET['id'])) {
     $article->get_id($id, false);
 
     Response::send($article);
+} else if ($method === "DELETE" && !empty($_SESSION["username"] && !empty($_GET["id"]))) {
+
+    $id = $_GET["id"];
+
+    $article = new Article();
+    if ($article->get_id($id, false) === false || $article->owner->username !== $_SESSION["username"]) {
+        Response::send(null, 404, "Article was not found");
+    }
+    
+    if ($article->delete() === false) {
+        Response::send(null, 400, $article->get_error());
+    }
+
+    Response::send(null, 200, "Article '{$article->title}' deleted.");
 } else {
     Response::not_found();
 }

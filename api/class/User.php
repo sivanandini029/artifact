@@ -235,9 +235,11 @@ class User {
                     status,
                     (SELECT COUNT(*) FROM Impressions WHERE content_id = id and content_type = :type) AS impressions
                 FROM Articles WHERE 
-                    owner_id = :id",
+                    owner_id = :id AND
+                    status != :status",
                 [
                     ":id" => $this->id,
+                    ":status" => "DELETED",
                     ":type" => "ARTICLE"
                 ]
             );
