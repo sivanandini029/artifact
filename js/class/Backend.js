@@ -70,6 +70,11 @@ class Backend {
         editArticle: {
             url: "/article/index.php",
             method: "PATCH",
+        },
+
+        deleteArticle : {
+            url: "/article/index.php",
+            method: "DELETE",
         }
     };
 

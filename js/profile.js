@@ -56,7 +56,19 @@ async function loadProfile() {
          const deleteElem = elem("A", ["icon"], "", iconsElem);
          const deleteImg = elem("IMG", [], "", deleteElem);
          deleteImg.src = "assets/send-to-trash.svg";
-         
+         deleteElem.addEventListener("click", async function() {
+            try {
+               var z = confirm("Are you sure, do you want to delete this post?");
+               if (z == true) {
+                  const delete1 = await backend.fire("deleteArticle", {}, {id:data.id});
+                  console.log(delete1);
+                  postElem.parentElement.removeChild(postElem);
+               } else {
+               }   
+            } catch(exception) {
+               console.log(exception);
+            }
+         });
 
          const labelsElem = elem("DIV", ["labels"], "", postElem);
          const labelElem = elem("DIV", ["label"], "", labelsElem);
