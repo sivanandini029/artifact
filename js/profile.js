@@ -1,5 +1,5 @@
 const profileElem = document.querySelector(".profile-container");
-const postsecElem = document.querySelector(".post-section");
+const postsecElem = document.querySelector(".post-section .posts");
 loadProfile();
 
 async function loadProfile() {
@@ -58,11 +58,20 @@ async function loadProfile() {
          deleteImg.src = "assets/send-to-trash.svg";
          deleteElem.addEventListener("click", async function() {
             try {
-               var z = confirm("Are you sure, do you want to delete this post?");
-               if (z == true) {
-                  const delete1 = await backend.fire("deleteArticle", {}, {id:data.id});
-                  console.log(delete1);
-                  postElem.parentElement.removeChild(postElem);
+               if (confirm("Are you sure, do you want to delete this post?")) {
+                  const deletePost = await backend.fire("deleteArticle", {}, {id: data.id});
+                  postElem.style.overflow = "hidden";
+                  const deleteAnim = postElem.animate({
+                      height: [getComputedStyle(postElem).height, 0],
+                  }, {
+                     duration: 300,
+                     easing: "ease-in-out"
+                  });
+                   console.log(deletePost);
+
+                   deleteAnim.addEventListener("finish", () => {
+                      postElem.parentElement.removeChild(postElem);
+                   });
                } else {
                }   
             } catch(exception) {

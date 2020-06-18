@@ -7,8 +7,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 100px 40px;
-    flex: 2;
+    flex: 3;
 }
 
 .user-profile .profile-container .profile-name {
@@ -30,12 +29,34 @@
     margin-top: 40px;
 }
 .user-profile .post-section {
-    flex: 3;
-    padding: 40px;
+    flex: 4;
+    height: calc(100vh - 240px);
+    background-color: rgb(234, 232, 236);
+    border: 2px solid rgb(212, 209, 218);
+}
+.user-profile .post-section .post {
+    cursor: default;
+    border-radius: 0;
+    border-bottom: 2px solid rgb(212, 209, 218);
+}
+.user-profile .post-section .posts {
+    height: calc(100vh - 322px);
+    overflow: auto;
+    padding: 0 30px;
+}
+.user-profile .post-section .post:hover {
+    background-color: inherit;
 }
 .user-profile .post-section .sub-title {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    position: relative;
+    height: 80px;
+    padding: 0 40px;
+    background-color: rgb(227, 224, 230);
+    box-shadow: 0px 1px 0 #999999;
+    z-index: 10;
 }
 
 @media (max-width: 1100px) {
@@ -46,7 +67,11 @@
         padding: 20px;
     }
     .user-profile .post-section {
-        padding: 100px 0;
+        margin: 100px 0;
+        height: auto;
+    }
+    .user-profile .post-section .posts {
+        height: auto;
     }
 }
 

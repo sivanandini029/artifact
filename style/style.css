@@ -220,6 +220,9 @@ body {
     flex-wrap: wrap;
     padding: 2px 0;
 }
+.post-section .post .icon {
+    cursor: pointer;
+}
 .label {
     font-size: 0.69rem;
     background-color: #D4D4D4;
