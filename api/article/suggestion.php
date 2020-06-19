@@ -12,8 +12,8 @@ session_start();
 $method = (!empty($_SERVER["REQUEST_METHOD"]))? $_SERVER["REQUEST_METHOD"]: "GET";
 
 if ($method === "GET") {
-    $page = (!empty($_GET["page"]))? intval($_GET["page"]): 1;
-    $results_per_page = 10;
+    $page = htmlspecialchars((!empty($_GET["page"]))? intval($_GET["page"]): 1);
+    $results_per_page = 4;
 
     Database::init();
     $db_suggestions = Database::query("SELECT 
@@ -53,11 +53,11 @@ if ($method === "GET") {
 
     $data["suggestions"] = $suggestions;
     if ($page > 1) {
-        $data["previous_page"] = "http://localhost/artifact/api/article/suggestion.php?page=". ($page-1);
+        $data["previous_page"] = ($page-1);
     }
 
     if (count($suggestions) === $results_per_page) {
-        $data["next_page"] = "http://localhost/artifact/api/article/suggestion.php?page=". ($page+1);
+        $data["next_page"] = ($page+1);
     }
     Response::send($data);
 
