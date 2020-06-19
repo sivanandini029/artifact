@@ -29,32 +29,35 @@
             <div class="form">
                 <form name="add-article">                       
                     <div class="input-container">
-                        <label for="topics">Topic</label>
-                            <select name="topic" id="topic">
-                                <option value="web">Web</option>
-                            </select>
-                    </div>                  
-                    <div class="input-container">
-                        <label for="topics">Title</label>
                         <input type="text" name="title" id="title" placeholder="Enter a title" value="" />
                     </div>   
                     <div class="input-container">
-                        <label for="topics">Description</label>
-                        <textarea type="text" rows = "5" cols = "" name = "description" placeholder="Add a description" value=""></textarea>
+                        <textarea type="text" rows="2" cols="" name="description" placeholder="Add a description" value=""></textarea>
                     </div>
+                    <div class="input-container">
+                        <label for="topics">Topic</label>
+                        <div class="select">
+                            <select name="topic" id="topic">
+                                <option value="web">Web</option>
+                            </select>
+                            <div class="arrow">
+                                <svg viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+                    </div>                  
    
                     <div class="input-container">
                         <label for="topics">Content</label>
-                        <textarea rows = "50" cols = "" name = "content" placeholder="Open up your mind. . . ."  value=""></textarea> 
+                        <textarea rows="20" cols="" name="content" placeholder="Open up your mind..."  value=""></textarea> 
                     </div>
                     <div class="error"></div>
-                    <div class="right-section">
+                    <div class="bottom-portion">
                         <div class="publish-button">
-                            <button type="button" class="button large">Publish</button>
+                            <button type="button" class="button medium">Publish</button>
                         </div>
                                     
                         <div class="save-button">
-                            <button type="submit" class="button large">Save</button>
+                            <button type="submit" class="button medium">Save</button>
                         </div>    
                     </div>
                 </form>        

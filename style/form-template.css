@@ -42,6 +42,7 @@
     display: flex;
 }
 .form .input-container {
+    position: relative;
     padding: 15px 0;
 }
 .form .input-group .input-container:first-child {
@@ -79,6 +80,20 @@
 .form .input-container input[type="password"]:hover,
 .form .input-container textarea:hover {
     background-color: rgb(225, 225, 225);
+}
+.form .input-container select ~ .arrow {
+    pointer-events: none;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    color: #111111;
+    right: 5px;
+    height: 100%;
+}
+.form .input-container select ~ .arrow svg {
+    fill: currentColor;
+    height: 15px;
+    width: 15px;
 }
 .form .bottom-control {
     padding-top: 40px;

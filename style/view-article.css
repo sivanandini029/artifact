@@ -23,6 +23,7 @@
     font-size: 1.3rem;
     padding-bottom: 20px;
     color: #444444;
+    word-break: break-all
 }
 .article .author-details {
     display: flex;
@@ -66,6 +67,7 @@
     padding-bottom: 60px;
     letter-spacing: 0.5px;
     word-spacing: 1px;
+    word-break: break-all;
 }
 
 .article .impressions-follow {
@@ -135,6 +137,7 @@
 }
 .article-more .author-details .description {
     color: #444444;
+    word-break: break-all;
 }
 .article-more .response-section {
     padding-top: 70px;

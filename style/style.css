@@ -299,6 +299,7 @@ body {
 }
 .post-section .post .contents {
     padding-top: 10px;
+    word-break: break-all;
 }
 .bottom-section .right-side {
     flex: 1;

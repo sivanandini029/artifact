@@ -30,11 +30,15 @@
     display: block;
     padding: 30px; 
     border-radius: 15px;
+    max-width: 300px;
     position: fixed;
     overflow: auto;
 }
 .news-feed .user-profile .user-articles .subject{
     padding-top: 20px;
+}
+.news-feed .user-profile .user-articles .subject .heading {
+    word-break: break-all;
 }
 .news-feed .profile-container .profile-name{
     color: #6F15C9;

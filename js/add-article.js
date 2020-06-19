@@ -20,7 +20,16 @@ formElem.addEventListener('submit', async function(e) {
             console.log({title, topic, description, content});
             await backend.fire("editArticle", {title, topic, description, content}, {id});
         } else {
-            await backend.fire("addArticle", {title, topic, description, content});
+            const result = await backend.fire("addArticle", {title, topic, description, content});
+            publishButton.style.visibility = "visible";
+            publishButton.animate({
+                opacity: [0, 1],
+            }, {
+                duration: 300,
+                easing: "ease-in-out",
+            });
+            id = result.id;
+            history.replaceState({}, "", `./add-article.html?id=${id}`);
         }
         errorElem.textContent = "Saved";
     } catch (exception) {
@@ -39,6 +48,7 @@ publishButton.addEventListener("click", async function() {
         }        
         const result = await backend.fire("editArticle", {status}, {id});
         if (result.status === "PUBLISHED") {
+            window.location.href = `./view-article.html?id=${result.id}`;
             publishButton.textContent = "Unpublish";
         } else {
             publishButton.textContent = "Publish";
@@ -51,6 +61,7 @@ publishButton.addEventListener("click", async function() {
 });
 
 async function setArticle() {
+    await getUser(true, false);
     let params = new URLSearchParams(document.location.search.substring(1));
     id = params.get("id"); 
     if(!id) {

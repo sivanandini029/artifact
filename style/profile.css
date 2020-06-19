@@ -33,6 +33,7 @@
     height: calc(100vh - 240px);
     background-color: rgb(234, 232, 236);
     border: 2px solid rgb(212, 209, 218);
+    margin: 40px;
 }
 .user-profile .post-section .post {
     cursor: default;
