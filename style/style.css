@@ -108,11 +108,19 @@ body {
 .header {
     display: flex;
     justify-content: center;
-    height: 80px;
+    height: 70px;
     position: fixed;
+    top: 10px;
+    left: 0;
     z-index: 20;
-    background-color: #ffffff99;
+    background-color: #FFFFFF;
     width: 100%;
+    transition: top 300ms ease-in-out, background-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
+}
+.header.active {
+    top: 0;
+    background-color: #F9F9F9EE;
+    box-shadow: 0 0 4px #999999;
 }
 .header .nav-bar {
     width: 100%; 
@@ -155,6 +163,7 @@ body {
 /*body*/
 .main {
     padding: 100px 80px;
+    padding-top: 170px;
 }
 
 .main .title {
@@ -313,6 +322,7 @@ body {
 @media (max-width: 1100px) {
     .main {
         padding: 0 40px;
+        padding-top: 100px;
     }
 }
 
@@ -320,6 +330,7 @@ body {
 @media (max-width: 700px) {
     .main {
         padding: 0 15px;
+        padding-top: 100px;
     }
     .bottom-section {
         flex-direction: column;
