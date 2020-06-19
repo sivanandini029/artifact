@@ -109,6 +109,10 @@ body {
     display: flex;
     justify-content: center;
     height: 80px;
+    position: fixed;
+    z-index: 20;
+    background-color: #ffffff99;
+    width: 100%;
 }
 .header .nav-bar {
     width: 100%; 
@@ -116,9 +120,7 @@ body {
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    position: fixed;
-    z-index: 20;
-    background-color: #ffffff99;
+    
 }
 .header .nav-bar .nav {
     display: flex;
@@ -152,7 +154,7 @@ body {
 
 /*body*/
 .main {
-    padding: 60px 80px;
+    padding: 100px 80px;
 }
 
 .main .title {
