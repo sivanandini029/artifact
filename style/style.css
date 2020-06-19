@@ -317,6 +317,11 @@ body {
 .bottom-section .right-side p {
     margin: 20px 0;
 }
+.empty-message {
+    font-size: 1.3rem;
+    color: #999999;
+    text-align: center;
+}
 
 /* medium screens */
 @media (max-width: 1100px) {

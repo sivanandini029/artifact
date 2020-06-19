@@ -30,7 +30,7 @@
 }
 .user-profile .post-section {
     flex: 4;
-    height: calc(100vh - 240px);
+    height: calc(100vh - 330px);
     background-color: rgb(234, 232, 236);
     border: 2px solid rgb(212, 209, 218);
     margin: 40px;
@@ -41,7 +41,7 @@
     border-bottom: 2px solid rgb(212, 209, 218);
 }
 .user-profile .post-section .posts {
-    height: calc(100vh - 322px);
+    height: calc(100vh - 412px);
     overflow: auto;
     padding: 0 30px;
 }
