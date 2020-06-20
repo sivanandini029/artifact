@@ -104,6 +104,90 @@ body {
     color: #222222;
     font-family: "Poppins", sans-serif;
 }
+/*loader*/
+.loader {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 25;
+    height: 100vh;
+    width: 100%;
+    background-color: #FFFFFF;
+    top: 0;
+    left: 0;
+}
+.loader .logo-progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.loader .logo-progress .logo {
+    height: 20vmin;
+    width: 20vmin;
+}
+
+.loader .logo-progress .progress-container {
+    position: relative;
+    margin-top: 50px;
+    width: 25vmin;
+    height: 8px;
+    border-radius: 4px;
+    background-color: #999999;
+    overflow: hidden;
+}
+
+.loader .logo-progress .progress-container .progress {
+    position: absolute;
+    width: 30%;
+    height: 8px;
+    border-radius: 4px;
+    background-color: #222222;
+    animation: 1s ease-in-out 0s infinite forwards main-loader-progress;
+}
+@keyframes main-loader-progress {
+    from {
+        left: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        left: 100%;
+        transform: translateX(0);
+    }
+}
+/****************************************************
+                    TOP LOADER
+*****************************************************/
+.top-loader {
+    --loader-height: 3px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: var(--loader-height);
+  }
+  
+  .top-loader .loader {
+    height: 100%;
+    width: 200px;
+    max-width: 40vw;
+    background-color: var(--primary-color);
+    border-radius: calc(var(--loader-height) / 2);
+    position: relative;
+    transform: translateX(-100%);
+    animation: 1500ms ease-in-out 0s loading-run;
+    animation-iteration-count: infinite;
+  }
+  .top-loader .loader:nth-child(2) {
+    animation-delay: 700ms;
+  }
+  @keyframes loading-run {
+    to {
+      transform: translateX(100vw);
+    }
+  }
+  
+
 /*header*/
 .header {
     display: flex;

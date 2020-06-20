@@ -1,3 +1,11 @@
+import { getUser, elem, months } from "./helper/helper.js";
+import fire from "./class/Backend.js";
+
+export async function initViewArticle() {
+    console.log("asdasd");
+    await fillDetails();
+}
+
 const authorDetailsElem = document.querySelector(".article .author-details");
 const ownerNameElem = document.querySelector(".author-details .details .name");
 const websiteButton = document.querySelector(".website-button .button");
@@ -26,7 +34,6 @@ const loginMsg = document.querySelector(".login-message");
 const authHeaderElem = document.querySelector(".header.auth");
 const noauthHeaderElem = document.querySelector(".header.no-auth");
 let user;
-fillDetails();
 
 async function fillDetails() {
     // get info of current user
@@ -47,7 +54,7 @@ async function fillDetails() {
         }
         
         // get info about the article
-        const result = await backend.fire("getArticle", {}, {id});
+        const result = await fire("getArticle", {}, {id});
         
         if (!result) {
             window.location.href = "./index.html";
@@ -93,7 +100,7 @@ async function fillDetails() {
         impressionsElem.addEventListener("click", async function() {
             if (user) {
                 try {
-                    const imp = await backend.fire("toggleImpression", {}, {id});
+                    const imp = await fire("toggleImpression", {}, {id});
                     setImpressions(imp.owner.articles, imp.viewer_has_liked, imp.owner.impressions, imp.impressions)
                 } catch(exception) {
                     console.log(exception);
@@ -109,7 +116,7 @@ async function fillDetails() {
                 const comment = response.value;
                 try {
                     responseErrorElem.textContent = "";
-                    const com = await backend.fire("addComment", {comment}, {id});
+                    const com = await fire("addComment", {comment}, {id});
                     responseErrorElem.textContent = "success";
                     response.value = "";
                     makeComment(com);
@@ -182,7 +189,8 @@ async function fillDetails() {
             }
         }  
     } catch (exception) {
-        window.location.href = "./index.html"
+        console.log(exception);
+        // window.location.href = "./index.html"
     }
 }
 

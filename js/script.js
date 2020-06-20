@@ -1,8 +1,62 @@
-// all the super globals (not available in class folder) can be declared here
+// page init function
+import Router from "./class/Router.js";
+import { initViewArticle } from "./view-article.js";
 
-const backend = new Backend();
+window.addEventListener("load", function () {
+    const loadingScreenMain = document.querySelector(".loader");
+  
+    setTimeout(async () => {
+        const router = new Router({ baseUrl, beforeLoad, afterLoad, pageInitFns });
+        await router.startPage();
+        loadingScreenMain.animate({
+            opacity: [1, 0],
+        }, {
+            duration: 300,
+            easing: "ease-in-out",
+        }).addEventListener("finish", async () => {
+            loadingScreenMain.style.display = "none";
+        });
+    }, 2000);
+});
 
-const months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const baseUrl = "http://localhost/artifact";
+const pageInitFns = [
+  {
+    path: ["/", "/index.html"],
+    fn: () => console.log("Init fn of index.html")
+  },
+  {
+    path: "/view-article.html",
+    fn: initViewArticle,
+  },
+];
+const beforeLoad = () => {
+  createLoader();
+};
+const afterLoad = () => {
+  deleteLoader();
+};
+const createLoader = () => {
+    const topLoader = elem("DIV", "top-loader");
+    elem("DIV", "loader", "", topLoader);
+    elem("DIV", "loader", "", topLoader);
+    topLoader.animate({
+      opacity: [0, 1]
+    }, 50);
+};
+  
+const deleteLoader = () => {
+const topLoader = document.querySelector(".top-loader");
+if (topLoader) {
+    const topLoaderFadeOut = topLoader.animate({
+    opacity: [1, 0]
+    }, 50);
+
+    topLoaderFadeOut.addEventListener("finish", () => {
+    topLoader.parentElement.removeChild(topLoader);
+    });
+}
+}
 
 // add navbar as fixed in scroll
 window.addEventListener("scroll", () => {
@@ -13,33 +67,6 @@ window.addEventListener("scroll", () => {
         headerElem.classList.remove("active");
     }
 });
-
-const elem = (type , classNames = [], content = "", parent = document.body, prepend = false) => {
-    const el = document.createElement(type);
-    classNames.forEach(className => el.classList.add(className));
-    el.appendChild(document.createTextNode(content));
-    if (prepend) {
-        parent.prepend(el);
-    } else {
-        parent.append(el);
-    }
-    return el;
-}
-
-const getUser = async (redirectOnFail = true, redirectOnSuccess = false) => {
-    try {
-        const user = await backend.fire("getUser");
-        if (redirectOnSuccess) {
-            window.location.href = "./profile.html";
-        }
-        return user;
-    } catch (exception) {
-        if (redirectOnFail) {
-            window.location.href = "./login.html";
-            throw exception;
-        }
-    }
-}
 
 const logout = async () => {
     try {
