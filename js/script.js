@@ -7,6 +7,7 @@ import initLogin from "./login.js";
 import initRegister from "./register.js";
 import initNewsFeed from "./news-feed.js";
 import initProfile from "./profile.js";
+import initEditProfile from "./edit-profile.js";
 import initAddArticle from "./add-article.js";
 import initViewArticle from "./view-article.js";
 
@@ -48,6 +49,10 @@ const pageInitFns = [
     {
         path: ["/profile.html"],
         fn: initProfile,
+    },
+    {
+        path: ["/edit-profile.html"],
+        fn: initEditProfile,
     },
     {
         path: ["/add-article.html"],
