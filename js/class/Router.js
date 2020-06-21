@@ -97,7 +97,7 @@ export default class Router {
       if (href.indexOf(this.baseUrl) !== -1 ) {
         el.addEventListener("click", async (evt) => {
           evt.preventDefault();
-          if (href.indexOf(this.getCurrentUri()) === -1) {
+          if (href.indexOf(this.getCurrentUri()) === -1 || [this.baseUrl, `${this.baseUrl}/`].includes(this.getCurrentUri())) {
             await this.navigate(href);
           }
         });
