@@ -1,8 +1,11 @@
 // page init function
 import Router from "./class/Router.js";
-import initViewArticle from "./view-article.js";
-import initIndex from "./index.js";
 import { elem } from "./helper/helper.js";
+import fire from "./class/Backend.js";
+import initIndex from "./index.js";
+import initLogin from "./login.js";
+import initRegister from "./register.js";
+import initViewArticle from "./view-article.js";
 
 window.addEventListener("load", function () {
     const loadingScreenMain = document.querySelector(".loader");
@@ -23,20 +26,30 @@ window.addEventListener("load", function () {
 
 const baseUrl = "http://localhost/artifact";
 const pageInitFns = [
-  {
-    path: ["/", "/index.html"],
-    fn: initIndex,
-  },
-  {
-    path: "/view-article.html",
-    fn: initViewArticle,
-  },
+    {
+        path: ["/", "/index.html"],
+        fn: initIndex,
+    },
+    {
+        path: ["/login.html"],
+        fn: initLogin,
+    },
+    {
+        path: ["/register.html"],
+        fn: initRegister,
+    },
+    {
+        path: "/view-article.html",
+        fn: initViewArticle,
+    },
 ];
 const beforeLoad = () => {
-  createLoader();
+    createLoader();
 };
 const afterLoad = () => {
-  deleteLoader();
+    adjustHeaderForScroll();
+    eventListeners();
+    deleteLoader();
 };
 const createLoader = () => {
     const topLoader = elem("DIV", ["top-loader"]);
@@ -60,28 +73,30 @@ const deleteLoader = () => {
     }
 }
 
+function eventListeners() {
+    const logoutButton = document.getElementById("logout-button");
+    if (logoutButton) {
+        logoutButton.addEventListener("click", async () => {
+            try {
+                await fire("logout");
+                window.router.navigate("./index.html");
+            } catch (exception) {
+                throw exception;
+            }
+        });
+    }
+}
+
 // add navbar as fixed in scroll
 window.addEventListener("scroll", () => {
+    adjustHeaderForScroll();
+});
+
+function adjustHeaderForScroll() {
     const headerElem = document.querySelector(".header");
     if (window.scrollY > 50 && !headerElem.classList.contains("active")) {
         headerElem.classList.add("active");
     } else if (window.scrollY <= 50 && headerElem.classList.contains("active")) {
         headerElem.classList.remove("active");
     }
-});
-
-const logout = async () => {
-    try {
-        await backend.fire("logout");
-        window.location.href = "./index.html";
-    } catch (exception) {
-        throw exception;
-    }
-}
-
-const logoutButton = document.getElementById("logout-button");
-if (logoutButton) {
-    logoutButton.addEventListener("click", function() {
-        logout();
-    });
 }

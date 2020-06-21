@@ -14,6 +14,7 @@ export default class Router {
   async startPage() {
     await this.pageInit();
     this.replaceAnchors();
+    this.afterLoad();
   }
 
   getCurrentUri(relative = false) {

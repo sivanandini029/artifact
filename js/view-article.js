@@ -1,4 +1,3 @@
-import Router from "./class/Router.js";
 import { getUser, elem, months } from "./helper/helper.js";
 import fire from "./class/Backend.js";
 
