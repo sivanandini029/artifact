@@ -44,9 +44,13 @@ async function loadProfile() {
       websiteElem.textContent = result.website
       websiteElem.href = result.website;
 
-      result.articles.forEach(el => {
-         makePost(el);
-      })
+      if (result.articles.length > 0) {
+         result.articles.forEach(el => {
+            makePost(el);
+         })
+      } else {
+         elem("DIV", ["response", "empty-message"], "No articles to list", postsecElem).style.padding = "40px 0";
+      }
       
       function makePost(data) {
          const postElem = elem("DIV", ["post"], "", postsecElem);

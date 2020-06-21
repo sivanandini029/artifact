@@ -159,20 +159,19 @@ body {
                     TOP LOADER
 *****************************************************/
 .top-loader {
-    --loader-height: 3px;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: var(--loader-height);
+    height: 3px;
   }
   
   .top-loader .loader {
     height: 100%;
     width: 200px;
     max-width: 40vw;
-    background-color: var(--primary-color);
-    border-radius: calc(var(--loader-height) / 2);
+    background-color: #6F15C9;
+    border-radius: 1.5px;
     position: relative;
     transform: translateX(-100%);
     animation: 1500ms ease-in-out 0s loading-run;

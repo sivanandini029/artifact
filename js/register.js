@@ -28,7 +28,7 @@ function eventListeners() {
         try {
             errorElem.textContent = "";
             await fire("register", {username, email, password});
-            window.router.navigate("./profile.html");
+            window.router.navigate("./login.html");
         } catch (exception) {
                 errorElem.innerHTML = exception.replace("\n","<br/>");
         }

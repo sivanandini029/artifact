@@ -4,12 +4,12 @@ export const getUser = async (redirectOnFail = true, redirectOnSuccess = false) 
     try {
         const user = await fire("getUser");
         if (redirectOnSuccess) {
-            window.location.href = "./profile.html";
+            window.router.navigate("./profile.html");
         }
         return user;
     } catch (exception) {
         if (redirectOnFail) {
-            window.location.href = "./login.html";
+            window.router.navigate("./login.html");
             throw exception;
         }
     }

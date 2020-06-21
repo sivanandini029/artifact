@@ -16,9 +16,13 @@ async function getSuggestions() {
     await getUser(false, true);
     try {
         const suggestions = await fire("getSuggestions");
-        suggestions.suggestions.forEach(el => {
-            makePost(el);
-        })
+        if (suggestions.suggestions.length > 0) {
+            suggestions.suggestions.forEach(el => {
+                makePost(el);
+            });
+        } else {
+            elem("DIV", ["response", "empty-message"], "No articles to list", postContainerElem).style.padding = "40px 0";
+        }
     } catch (exception) {
         console.log(exception);
     } 

@@ -45,8 +45,6 @@ async function getSuggestions() {
                     console.log(el);
                 }
             })
-        } else if (nextPageUrl === 1) {
-            elem("DIV", ["response", "empty-message"], "No published articles", postContainerElem);
         }
     } catch (exception) {
         console.log(exception)
