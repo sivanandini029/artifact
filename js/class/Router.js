@@ -58,6 +58,9 @@ export default class Router {
       }, 500);
 
       fadeOut.addEventListener("finish", async () => {
+        // load styles
+        this.loadStyles(document, newDocument);
+
         containerElem.parentElement.removeChild(containerElem);
         styleElem && styleElem.parentElement.removeChild(styleElem);
         
@@ -103,5 +106,59 @@ export default class Router {
         });
       }
     });
+  }
+
+  loadStyles(document, newDocument) {
+    let oldStyles = [];
+    let newStyles = [];
+     
+    // get old styles
+    const oldStylesElem = document.querySelectorAll("link[rel=stylesheet]");
+    for (let i = 0; i < oldStylesElem.length; i++) {
+      oldStyles.push(oldStylesElem[i].getAttribute("href"));
+    }
+
+    const newStylesElem = newDocument.querySelectorAll("link[rel=stylesheet]");
+    for (let i = 0; i < newStylesElem.length; i++) {
+      newStyles.push(newStylesElem[i].getAttribute("href"));
+    }
+
+    let diffPositions = [];
+    let stylesToAdd = [];
+
+    newStyles.forEach(newStyle => {
+      if (!oldStyles.includes(newStyle)) { 
+        stylesToAdd.push(newStyle)    ;
+      }
+    });
+
+    oldStyles.forEach((oldStyle, i) => {
+      if (!newStyles.includes(oldStyle)) {
+        diffPositions.push(i);
+      }
+    });
+
+    if (stylesToAdd.length >= diffPositions.length) {
+      diffPositions.forEach((diffPos) => {
+        oldStylesElem[diffPos].href = stylesToAdd[0];
+        stylesToAdd.splice(0, 1);
+      });
+      stylesToAdd.forEach(styleToAdd => {
+        const styleRef = document.createElement("link");
+        styleRef.rel = "stylesheet";
+        styleRef.type = "text/css";
+        styleRef.href = styleToAdd;
+        document.getElementsByTagName("head")[0].appendChild(styleRef)
+      });
+    } else {
+      stylesToAdd.forEach((styleToAdd, i) => {
+        oldStylesElem[i].href = styleToAdd;
+      });
+
+      const deletingPos = diffPositions.splice(stylesToAdd.length);
+      deletingPos.forEach(deletingPosition => {
+        oldStylesElem[deletingPosition].parentElement.removeChild(oldStylesElem[deletingPosition]);
+      })
+    }
   }
 }

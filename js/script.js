@@ -16,7 +16,7 @@ window.addEventListener("load", function () {
   
     setTimeout(async () => {
         window.router = new Router({ baseUrl, beforeLoad, afterLoad, pageInitFns });
-        await router.startPage();
+        await window.router.startPage();
         loadingScreenMain.animate({
             opacity: [1, 0],
         }, {

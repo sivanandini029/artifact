@@ -1,0 +1,106 @@
+.container .main {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.container .form textarea {
+    width: 100%;
+    border-radius: 5px;
+    padding: 8px 15px;
+    color: #444444;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    border: 2px solid rgb(230, 230, 230);
+    transition: background-color 300ms ease-in-out, border 300ms ease-in-out;
+}
+.container .form textarea:focus {
+    border: 2px solid #6F15C933;
+}
+.container .form textarea:hover {
+    background-color: rgb(225, 225, 225);
+}
+.container .form {
+    padding: 30px 30px;
+}
+.container .form .input-container label {
+    padding: 10px 0 5px 0;
+    text-align: left;
+}
+.container .form .input-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2px 0;
+}
+.container .form input[name=title] {
+    text-align: left;
+    font-size: 2.2rem;;
+    font-weight: 800;
+    color: #111111;
+    padding: 5px 10px;
+}
+
+.container .form .input-container textarea,
+.container .form .input-container input,
+.container .form .input-container select {
+    background-color: #F4F4F4;
+}
+
+.container .form .input-container textarea:focus,
+.container .form .input-container input:focus,
+.container .form .input-container select:focus {
+    background-color: #E9E9E9;
+}
+
+.container .form textarea[name=description] {
+    font-size: 1.3rem;
+    padding-bottom: 20px;
+    color: #444444;
+}
+.container .form select {
+    width: 100%;
+    background-color: rgb(236, 236, 236);
+    border-radius: 5px;
+    padding: 4px 15px;
+    color: #444444;
+    font-size: 1rem;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    font-family: "Poppins", sans-serif;
+    border: 2px solid rgb(230, 230, 230);
+    transition: background-color 300ms ease-in-out, border 300ms ease-in-out;
+}
+.container .form select:focus {
+    border: 2px solid #6F15C933;
+}
+.container .form .select {
+    position: relative;
+    display: flex;
+    height: 100%;   
+    width: 100%;
+    max-width: 200px;
+}
+.container .form select:hover {
+    background-color: rgb(225, 225, 225);
+}
+.container .form .bottom-portion {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 0;
+}
+.container .form .bottom-portion .save-button button {
+    background-color: #ffffff;
+    color: #6f15c9;
+    border: 2px solid #6f15c9;
+}
+.container .form .bottom-portion .save-button button:hover {
+    background-color: #42087C;
+    border-color: #42087C;
+    color: #ffffff;
+}
+.container .form .bottom-portion .save-button {
+    padding: 20px 0 20px 20px;
+}
