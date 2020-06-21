@@ -1,6 +1,8 @@
+import fire from "../class/Backend.js";
+
 export const getUser = async (redirectOnFail = true, redirectOnSuccess = false) => {
     try {
-        const user = await backend.fire("getUser");
+        const user = await fire("getUser");
         if (redirectOnSuccess) {
             window.location.href = "./profile.html";
         }

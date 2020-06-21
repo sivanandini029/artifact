@@ -1,12 +1,14 @@
 // page init function
 import Router from "./class/Router.js";
-import { initViewArticle } from "./view-article.js";
+import initViewArticle from "./view-article.js";
+import initIndex from "./index.js";
+import { elem } from "./helper/helper.js";
 
 window.addEventListener("load", function () {
     const loadingScreenMain = document.querySelector(".loader");
   
     setTimeout(async () => {
-        const router = new Router({ baseUrl, beforeLoad, afterLoad, pageInitFns });
+        window.router = new Router({ baseUrl, beforeLoad, afterLoad, pageInitFns });
         await router.startPage();
         loadingScreenMain.animate({
             opacity: [1, 0],
@@ -23,7 +25,7 @@ const baseUrl = "http://localhost/artifact";
 const pageInitFns = [
   {
     path: ["/", "/index.html"],
-    fn: () => console.log("Init fn of index.html")
+    fn: initIndex,
   },
   {
     path: "/view-article.html",
@@ -37,25 +39,25 @@ const afterLoad = () => {
   deleteLoader();
 };
 const createLoader = () => {
-    const topLoader = elem("DIV", "top-loader");
-    elem("DIV", "loader", "", topLoader);
-    elem("DIV", "loader", "", topLoader);
+    const topLoader = elem("DIV", ["top-loader"]);
+    elem("DIV", ["loader"], "", topLoader);
+    elem("DIV", ["loader"], "", topLoader);
     topLoader.animate({
       opacity: [0, 1]
     }, 50);
 };
   
 const deleteLoader = () => {
-const topLoader = document.querySelector(".top-loader");
-if (topLoader) {
-    const topLoaderFadeOut = topLoader.animate({
-    opacity: [1, 0]
-    }, 50);
+    const topLoader = document.querySelector(".top-loader");
+    if (topLoader) {
+        const topLoaderFadeOut = topLoader.animate({
+            opacity: [1, 0]
+        }, 50);
 
-    topLoaderFadeOut.addEventListener("finish", () => {
-    topLoader.parentElement.removeChild(topLoader);
-    });
-}
+        topLoaderFadeOut.addEventListener("finish", () => {
+            topLoader.parentElement.removeChild(topLoader);
+        });
+    }
 }
 
 // add navbar as fixed in scroll

@@ -8,8 +8,178 @@
     <link rel="icon" href="./assets/favicon.png">
     
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/form-template.css">
-    <link rel="stylesheet" href="style/view-article.css">
+    <style>
+        .main .title {
+            text-align: unset;
+            padding-left: 0;
+            padding-bottom: 0;
+        }
+        .article-page {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .main .separator {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0 60px 0;
+        }
+        .main .separator .bar {
+            height: 4px;
+            width: 50%;
+            border-radius: 5px;
+            background-color: #22222266;
+        }
+        .article .description {
+            font-size: 1.3rem;
+            padding-bottom: 20px;
+            color: #444444;
+            word-break: break-all
+        }
+        .article .author-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-container {
+            display: flex;
+        }
+        .profile-container .details {
+            padding-left: 10px;
+            align-self: center;
+        }
+        .profile-container .author-details .details .name {
+            color: #6f15c9;
+            font-weight: 500;
+            font-size: 0.86rem;
+            margin-bottom: 5px;
+        }
+        .profile-container .details .reads {
+            font-weight: 500;
+            font-size: 0.69rem;
+            color: #444444;
+        }
+        .profile-container .details .explaination {
+            margin-top: 10px;
+        }
+
+        .meta-article {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.69rem;
+            color: #444444;
+            padding: 10px 0 70px 0;
+        }
+
+        .article .content p {
+            line-height: 40px;
+            padding-bottom: 60px;
+            letter-spacing: 0.5px;
+            word-spacing: 1px;
+            word-break: break-all;
+        }
+
+        .article .impressions-follow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+        }
+        .impressions-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .impressions-container .icon.active img {
+            filter: invert(14%) sepia(89%) saturate(4621%) hue-rotate(270deg) brightness(85%) contrast(105%);
+        } 
+
+        .impressions-container .icon {
+            height: 55px;
+            width: 55px;
+            border-radius: 50%;
+            box-shadow: 0 0 2px #00000066;
+            display: flex;
+            margin-right: 10px;
+            transition: box-shadow 300ms ease-in-out, background-color 300ms ease-in-out, filter 300ms ease-in-out;
+            cursor: pointer;
+            justify-content: center;
+        }
+        .impressions-container .icon.small {
+            height: 40px;
+            width: 40px;
+        }
+
+        .impressions-container .icon:hover {
+            box-shadow: 0 0 8px #00000066;
+            background-color: #f4f4f4;
+        }
+        .article .impressions-follow .follow-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .article .impressions-follow .follow-container .topic {
+            padding-bottom: 10px;
+        }
+        .article-more .author-details {
+            display: flex;
+            width: 100%;
+            padding-top: 100px;
+        }
+        .article-more .author-details .profile-pic {
+            margin-right: 20px;
+        }
+        .article-more .author-details .author-more {
+            flex: 1;
+        }
+        .article-more .author-details .name-website {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-bottom: 10px;
+        }
+        .article-more .author-details .name-website .name {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .article-more .author-details .description {
+            color: #444444;
+            word-break: break-all;
+        }
+        .article-more .response-section {
+            padding-top: 70px;
+        }
+        .article-more .response-section .sub-title {
+            padding-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+        .article-more .bottom-control {
+            padding-top: 0;
+            justify-content: flex-end;
+        }
+        .article-more .login-message {
+            display: none;
+            text-align: center;
+            padding: 40px 10px;
+            margin: 40px 0 20px 0;
+            color: #666666;
+            font-size: 1.3rem;
+            background-color: #F0F0F0;
+            border-radius: 10px;
+        }
+        .article-more .responses {
+            padding: 50px 0;
+        }
+        .article-more .responses .response {
+            margin: 30px 0;
+        }
+
+    </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap" rel="stylesheet">
 </head>
 <body>

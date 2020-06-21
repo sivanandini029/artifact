@@ -1,16 +1,26 @@
-const postContainerElem = document.querySelector(".post-container");
-getSuggestions();
+import { getUser, elem, months } from "./helper/helper.js";
+import fire from "./class/Backend.js";
 
+let postContainerElem;
+
+export default async function initIndex() {
+    initializeGlobals();
+    await getSuggestions();
+}
+
+function initializeGlobals() {
+    postContainerElem = document.querySelector(".post-container");
+}
 
 async function getSuggestions() {
     await getUser(false, true);
     try {
-        const suggestions = await backend.fire("getSuggestions");
+        const suggestions = await fire("getSuggestions");
         suggestions.suggestions.forEach(el => {
             makePost(el);
         })
     } catch (exception) {
-
+        console.log(exception);
     } 
 }
 

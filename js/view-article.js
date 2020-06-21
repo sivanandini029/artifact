@@ -1,39 +1,71 @@
+import Router from "./class/Router.js";
 import { getUser, elem, months } from "./helper/helper.js";
 import fire from "./class/Backend.js";
 
-export async function initViewArticle() {
-    console.log("asdasd");
+let ownerNameElem;
+let authorDetailsElem;
+let websiteButton;
+let topicElem;
+let titleElem;
+let descriptionElem;
+let impressionElem;
+let contentElem;
+let iconElem;
+let timeToReadElem;
+let authorMoreElem;
+let ownerNameElem2;
+let bioElem;
+let websiteButton2;
+let followTopicElem;
+let responseElem;
+let impressionsElem;
+let impressionsNumElem;
+let impressionsIconElem;
+let responseFormElem;
+let response;
+let responseErrorElem;
+let commentSection;
+let commentElem;
+let loginMsg;
+let authHeaderElem;
+let noauthHeaderElem;
+let user;
+
+export default async function initViewArticle() {
+    initializeGlobals();
     await fillDetails();
 }
+function initializeGlobals() {
+    authorDetailsElem = document.querySelector(".article .author-details");
+    ownerNameElem = document.querySelector(".author-details .details .name");
+    websiteButton = document.querySelector(".website-button .button");
+    topicElem = document.querySelector(".meta-article .labels .label .name");
+    titleElem = document.querySelector(".main .title");
+    descriptionElem = document.querySelector(".main .article .description");
+    impressionElem = document.querySelector(".details .reads");
+    contentElem = document.querySelector(".content");
+    iconElem = document.querySelector(".labels .label .icon");
+    timeToReadElem = document.querySelector(".meta-article .time-to-read");
+    authorMoreElem = document.querySelector(".article-more .author-details");
+    ownerNameElem2 = document.querySelector(".author-more .name-website .name");
+    bioElem = document.querySelector(".author-more .description");
+    websiteButton2 = document.querySelector(".author-more .name-website a");
+    followTopicElem = document.querySelector(".follow-container .topic");
+    responseElem = document.querySelector(".response-section .input-container textarea[name=response]");
+    impressionsElem = document.querySelector(".impressions-follow .impressions-container");
+    impressionsNumElem = document.querySelector(".impressions-follow .impressions-container .no-of-impressions");
+    impressionsIconElem = document.querySelector(".impressions-container .icon");
+    responseFormElem = document.querySelector(".response-section .form ")
+    response = document.querySelector(".response-section .form .input-container textarea[name=response]");
+    responseErrorElem = document.querySelector(".response-section .error");
+    commentSection = document.querySelector(".response-section");
+    commentElem = document.querySelector(".responses");
+    loginMsg = document.querySelector(".login-message");
+    authHeaderElem = document.querySelector(".header.auth");
+    noauthHeaderElem = document.querySelector(".header.no-auth");
 
-const authorDetailsElem = document.querySelector(".article .author-details");
-const ownerNameElem = document.querySelector(".author-details .details .name");
-const websiteButton = document.querySelector(".website-button .button");
-const topicElem = document.querySelector(".meta-article .labels .label .name");
-const titleElem = document.querySelector(".main .title");
-const descriptionElem = document.querySelector(".main .article .description");
-const impressionElem = document.querySelector(".details .reads");
-const contentElem = document.querySelector(".content");
-const iconElem = document.querySelector(".labels .label .icon");
-const timeToReadElem = document.querySelector(".meta-article .time-to-read");
-const authorMoreElem = document.querySelector(".article-more .author-details");
-const ownerNameElem2 = document.querySelector(".author-more .name-website .name");
-const bioElem = document.querySelector(".author-more .description");
-const websiteButton2 = document.querySelector(".author-more .name-website a");
-const followTopicElem = document.querySelector(".follow-container .topic");
-const responseElem = document.querySelector(".response-section .input-container textarea[name=response]");
-const impressionsElem = document.querySelector(".impressions-follow .impressions-container");
-const impressionsNumElem = document.querySelector(".impressions-follow .impressions-container .no-of-impressions");
-const impressionsIconElem = document.querySelector(".impressions-container .icon");
-const responseFormElem = document.querySelector(".response-section .form ")
-const response = document.querySelector(".response-section .form .input-container textarea[name=response]");
-const responseErrorElem = document.querySelector(".response-section .error");
-const commentSection = document.querySelector(".response-section");
-const commentElem = document.querySelector(".responses");
-const loginMsg = document.querySelector(".login-message");
-const authHeaderElem = document.querySelector(".header.auth");
-const noauthHeaderElem = document.querySelector(".header.no-auth");
-let user;
+}
+
 
 async function fillDetails() {
     // get info of current user
@@ -50,14 +82,14 @@ async function fillDetails() {
         let params = new URLSearchParams(document.location.search.substring(1));
         let id = params.get("id");
         if (!id) {
-            window.location.href = "./index.html";
+            window.router.navigate("./index.html");
         }
         
         // get info about the article
         const result = await fire("getArticle", {}, {id});
         
         if (!result) {
-            window.location.href = "./index.html";
+            window.router.navigate("./index.html");
         }
         titleElem.textContent = result.title;
         descriptionElem.textContent = result.description;
@@ -106,7 +138,7 @@ async function fillDetails() {
                     console.log(exception);
                 }
             } else {
-                window.location.href = "./login.html";
+                window.router.navigate("./login.html");
             }
             
         });  
@@ -136,14 +168,13 @@ async function fillDetails() {
                 makeComment(el);
             })
         } else {
-            const responseElem = elem("DIV", ["response"], "No comments", commentElem);
-            responseElem.style.color = "#999999";
-            responseElem.style.fontSize = "1.3rem";
+            const noResponseElem = elem("DIV", ["response"], "No comments", commentElem);
+            noResponseElem.style.color = "#999999";
+            noResponseElem.style.fontSize = "1.3rem";
         }
         function makeComment(data) {
-            console.log(data);
-            const responseElem = elem("DIV", ["response"], "", commentElem);
-            const profileElem = elem("DIV", ["profile-container"], "", responseElem);
+            const commentResponseElem = elem("DIV", ["response"], "", commentElem);
+            const profileElem = elem("DIV", ["profile-container"], "", commentResponseElem);
             const profilePicElem = elem("DIV", ["profile-pic", "small"], "", profileElem);
             const imgElem = elem("IMG", ["picture"], "", profilePicElem);
             imgElem.src = "assets/undraw_profile_pic_ic5t 1.svg";
@@ -152,7 +183,7 @@ async function fillDetails() {
             const dateElem = new Date(parseInt(result.created)*1000);
             elem("DIV", ["reads"], `${months[dateElem.getMonth()]} ${dateElem.getDate()}`, detailsElem);
             const contentElem = elem("DIV", ["explanation"], data.content, detailsElem);
-            const userImpressionElem = elem("DIV", ["impression"], "", responseElem);
+            const userImpressionElem = elem("DIV", ["impression"], "", commentResponseElem);
             const impressionContainer = elem("DIV", ["impressions-container", "bottom-control"], "", userImpressionElem);
             const impIconElem = elem("DIV", ["icon", "small"], "", impressionContainer);
             const impIconElem1 = elem("IMG", [], "", impIconElem);
@@ -160,37 +191,34 @@ async function fillDetails() {
             const commentImpressionNum = elem("DIV", ["number-of-likes"], "", impressionContainer);
             commentImpressionNum.textContent = data.impressions;
             userImpressionElem.addEventListener("click", async function() {
-                    if (!user) {
-                        window.location.href = "./login.html";
-                        return;
-                    }
-                    try {
-                        
-                        const imp1 = await backend.fire("toggleCommentImpression", {}, {id:data.id});
+                if (!user) {
+                    window.router.navigate("./login.html");
+                    return;
+                }
+                try {
                     
-                        commentImpressionNum.textContent = imp1.impressions;
-                        if (imp1.viewer_has_liked) {
-                            impIconElem.classList.add("active");
-                        } else {
-                        impIconElem.classList.remove("active");
-                        }
-                    } catch(exception) {
-                        console.log(exception);
-                    } 
+                    const imp1 = await backend.fire("toggleCommentImpression", {}, {id:data.id});
                 
-                        
-                    
+                    commentImpressionNum.textContent = imp1.impressions;
+                    if (imp1.viewer_has_liked) {
+                        impIconElem.classList.add("active");
+                    } else {
+                    impIconElem.classList.remove("active");
+                    }
+                } catch(exception) {
+                    console.log(exception);
+                }     
             });  
            
             if (data.viewer_has_liked) {
                 impIconElem.classList.add("active");
             } else {
-            impIconElem.classList.remove("active");
+                impIconElem.classList.remove("active");
             }
         }  
     } catch (exception) {
         console.log(exception);
-        // window.location.href = "./index.html"
+        window.router.navigate("./index.html");
     }
 }
 
