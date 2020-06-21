@@ -94,10 +94,10 @@ export default class Router {
   replaceAnchors() {
     document.querySelectorAll("a").forEach((el) => {
       const href = el.href;
-      if (href.indexOf(this.baseUrl) !== -1) {
+      if (href.indexOf(this.baseUrl) !== -1 ) {
         el.addEventListener("click", async (evt) => {
           evt.preventDefault();
-          if (this.getCurrentUri() !== href) {
+          if (href.indexOf(this.getCurrentUri()) === -1) {
             await this.navigate(href);
           }
         });
