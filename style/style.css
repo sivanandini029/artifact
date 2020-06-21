@@ -133,7 +133,7 @@ body {
     width: 25vmin;
     height: 8px;
     border-radius: 4px;
-    background-color: #999999;
+    background-color: #DDDDDD;
     overflow: hidden;
 }
 
@@ -163,7 +163,7 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 3px;
+    height: 5px;
   }
   
   .top-loader .loader {
@@ -171,7 +171,7 @@ body {
     width: 200px;
     max-width: 40vw;
     background-color: #6F15C9;
-    border-radius: 1.5px;
+    border-radius: 2.5px;
     position: relative;
     transform: translateX(-100%);
     animation: 1500ms ease-in-out 0s loading-run;
@@ -179,6 +179,7 @@ body {
   }
   .top-loader .loader:nth-child(2) {
     animation-delay: 700ms;
+    top: -5px;
   }
   @keyframes loading-run {
     to {
