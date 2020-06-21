@@ -1,64 +1,81 @@
-const formElem = document.querySelector(".form");
-const errorElem = document.querySelector(".form .error");
-const publishButton = document.querySelector(".publish-button button");
-const titleElem = document.querySelector(".input-container input[name=title]");
-const contentElem = document.querySelector(".input-container textarea[name=content]");
-const descriptionElem = document.querySelector(".input-container textarea[name=description]");
+import { getUser } from "./helper/helper.js";
+import fire from "./class/Backend.js";
+
+let formElem;
+let errorElem;
+let publishButton;
+let titleElem;
+let contentElem;
+let descriptionElem;
 let id;
-// load article if id present
-setArticle();
 
-formElem.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const title = document.querySelector(".form .input-container input[name=title]").value;
-    const topic = document.querySelector(".form .input-container select[name=topic]").value;
-    const description = document.querySelector(".form .input-container textarea[name=description]").value;
-    const content = document.querySelector(".form .input-container textarea[name=content]").value;
-    try {
-        errorElem.textContent = "";
-        if (id) {
-            console.log({title, topic, description, content});
-            await backend.fire("editArticle", {title, topic, description, content}, {id});
-        } else {
-            const result = await backend.fire("addArticle", {title, topic, description, content});
-            publishButton.style.visibility = "visible";
-            publishButton.animate({
-                opacity: [0, 1],
-            }, {
-                duration: 300,
-                easing: "ease-in-out",
-            });
-            id = result.id;
-            history.replaceState({}, "", `./add-article.html?id=${id}`);
-        }
-        errorElem.textContent = "Saved";
-    } catch (exception) {
-        console.log(exception);
-        errorElem.innerHTML = exception.replace("\n","<br/>");
-    }
-});
+export default async function initAddArticle() {
+    initializeGlobals();
+    await setArticle();
+    eventListeners();
+}
 
-publishButton.addEventListener("click", async function() {
-    try {
-        errorElem.textContent = "";
-        const buttonText = publishButton.textContent;
-        let status = "PUBLISHED";
-        if (buttonText !== "Publish") {
-            status = "SAVED";
-        }        
-        const result = await backend.fire("editArticle", {status}, {id});
-        if (result.status === "PUBLISHED") {
-            window.location.href = `./view-article.html?id=${result.id}`;
-            publishButton.textContent = "Unpublish";
-        } else {
-            publishButton.textContent = "Publish";
+function initializeGlobals() {
+    formElem = document.querySelector(".form");
+    errorElem = document.querySelector(".form .error");
+    publishButton = document.querySelector(".publish-button button");
+    titleElem = document.querySelector(".input-container input[name=title]");
+    contentElem = document.querySelector(".input-container textarea[name=content]");
+    descriptionElem = document.querySelector(".input-container textarea[name=description]");
+}
+
+function eventListeners() {
+    publishButton.addEventListener("click", async function() {
+        try {
+            errorElem.textContent = "";
+            const buttonText = publishButton.textContent;
+            let status = "PUBLISHED";
+            if (buttonText !== "Publish") {
+                status = "SAVED";
+            }        
+            const result = await fire("editArticle", {status}, {id});
+            if (result.status === "PUBLISHED") {
+                window.router.navigate(`./view-article.html?id=${result.id}`);
+                publishButton.textContent = "Unpublish";
+            } else {
+                publishButton.textContent = "Publish";
+            }
+            errorElem.textContent = `${buttonText}ed`;
+        } catch (exception) {
+            console.log(exception);
         }
-        errorElem.textContent = `${buttonText}ed`;
-    } catch (exception) {
-        console.log(exception);
-    }
-    
-});
+        
+    });
+
+    formElem.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const title = document.querySelector(".form .input-container input[name=title]").value;
+        const topic = document.querySelector(".form .input-container select[name=topic]").value;
+        const description = document.querySelector(".form .input-container textarea[name=description]").value;
+        const content = document.querySelector(".form .input-container textarea[name=content]").value;
+        try {
+            errorElem.textContent = "";
+            if (id) {
+                await fire("editArticle", {title, topic, description, content}, {id});
+            } else {
+                const result = await fire("addArticle", {title, topic, description, content});
+                publishButton.style.visibility = "visible";
+                publishButton.animate({
+                    opacity: [0, 1],
+                }, {
+                    duration: 300,
+                    easing: "ease-in-out",
+                });
+                id = result.id;
+                history.replaceState({}, "", `./add-article.html?id=${id}`);
+            }
+            errorElem.textContent = "Saved";
+        } catch (exception) {
+            console.log(exception);
+            errorElem.innerHTML = exception.replace("\n","<br/>");
+        }
+    });
+}
 
 async function setArticle() {
     await getUser(true, false);
@@ -68,8 +85,7 @@ async function setArticle() {
         publishButton.style.visibility = "hidden";
     } else {
         try {
-            const result = await backend.fire("getArticle", {}, {id});
-            console.log(result);
+            const result = await fire("getArticle", {}, {id});
             titleElem.value= result.title;
             descriptionElem.value = result.description;
             contentElem.value = result.content;
@@ -78,7 +94,7 @@ async function setArticle() {
             }
         } catch (exception) {
             console.log(exception);
-            window.location.href = "./profile.html"
+            window.router.navigate("./profile.html");
         }
 
     }

@@ -1,16 +1,30 @@
-const postContainerElem = document.querySelector(".post-container");
-getSuggestions();
+import { getUser, elem, months } from "./helper/helper.js";
+import fire from "./class/Backend.js";
 
+let postContainerElem;
+
+export default async function initIndex() {
+    initializeGlobals();
+    await getSuggestions();
+}
+
+function initializeGlobals() {
+    postContainerElem = document.querySelector(".post-container");
+}
 
 async function getSuggestions() {
     await getUser(false, true);
     try {
-        const suggestions = await backend.fire("getSuggestions");
-        suggestions.suggestions.forEach(el => {
-            makePost(el);
-        })
+        const suggestions = await fire("getSuggestions");
+        if (suggestions.suggestions.length > 0) {
+            suggestions.suggestions.forEach(el => {
+                makePost(el);
+            });
+        } else {
+            elem("DIV", ["response", "empty-message"], "No articles to list", postContainerElem).style.padding = "40px 0";
+        }
     } catch (exception) {
-
+        console.log(exception);
     } 
 }
 
