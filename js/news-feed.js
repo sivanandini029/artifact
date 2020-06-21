@@ -1,23 +1,35 @@
-const postContainerElem = document.querySelector(".post-container");
-const userProfileElem = document.querySelector(".user-profile");
-const userArticleElem = document.querySelector(".user-profile .user-articles");
-const emptyMessageElem = document.querySelector(".recent-articles .empty-message");
-let nextPageUrl = 1;
-let requestRunning = false;
-let showedFeeds = [];
+import { getUser, elem, months } from "./helper/helper.js";
+import fire from "./class/Backend.js";
 
-initNewsFeed();
+let postContainerElem;
+let userArticleElem;
+let emptyMessageElem;
+let nextPageUrl;
+let requestRunning;
+let showedFeeds;
 
-async function initNewsFeed() {
+export default async function initNewsFeed() {
+    initializeGlobals();
     await getUser(true, false);
     await getSuggestions();
+    await loadProfile();
+    eventListeners();
+}
+
+function initializeGlobals() {
+    postContainerElem = document.querySelector(".post-container");
+    userArticleElem = document.querySelector(".user-profile .user-articles");
+    emptyMessageElem = document.querySelector(".recent-articles .empty-message");
+    nextPageUrl = 1;
+    requestRunning = false;
+    showedFeeds = [];
 }
 
 async function getSuggestions() {
     if (requestRunning) return false;
     try {
         requestRunning = true;
-        const suggestions = await backend.fire("getSuggestions", {}, {page: nextPageUrl});
+        const suggestions = await fire("getSuggestions", {}, {page: nextPageUrl});
         if (suggestions.next_page) {
             nextPageUrl = suggestions.next_page;
             emptyMessageElem.style.display = "none";
@@ -43,13 +55,41 @@ async function getSuggestions() {
     }
 }
 
-window.addEventListener("scroll", async () => {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        if (nextPageUrl) {
-            getSuggestions();
+async function loadProfile() {
+    try {
+        const result = await getUser(true, false);
+        const username = document.querySelector(".user-profile .profile-container .profile-name");
+        username.textContent = result.username;
+
+        const userArticles = result.articles.filter(data => data.status === "PUBLISHED").slice(0, 9);
+        if (userArticles.length > 0) {
+
+            userArticles.forEach(data => {
+                const postElem = elem("A", ["subject", "primary-link"], "", userArticleElem);
+                postElem.href = `./view-article.html?id=${data.id}`;
+    
+                elem("DIV", ["heading"], data.title, postElem);
+                elem("DIV", ["readings"], `${data.views} views, ${data.impressions} impressions`, postElem);
+            });
+        } else {
+            const responseElem = elem("DIV", ["response"], "No published articles", userArticleElem);
+            responseElem.style.color = "#999999";
+            responseElem.style.fontSize = "1.3rem";
         }
-    }
-});
+    } catch (exception) {
+        console.log(exception);
+     }
+}
+
+function eventListeners() {
+    window.addEventListener("scroll", async () => {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            if (nextPageUrl) {
+                getSuggestions();
+            }
+        }
+    });
+}
 
 function makePost(data) {
     const postElem = elem("A", ["post"], "", postContainerElem);
@@ -76,32 +116,4 @@ function makePost(data) {
     elem("DIV", ["date"], `${months[created.getMonth()]} ${created.getDate()}`, authorDetailsElem);
     
     elem("DIV", ["contents"], data.description, postElem);
-}
-
-loadProfile();
-
-async function loadProfile() {
-    try {
-        const result = await getUser(true, false);
-        const username = document.querySelector(".user-profile .profile-container .profile-name");
-        username.textContent = result.username;
-
-        const userArticles = result.articles.filter(data => data.status === "PUBLISHED").slice(0, 9);
-        if (userArticles.length > 0) {
-
-            userArticles.forEach(data => {
-                const postElem = elem("A", ["subject", "primary-link"], "", userArticleElem);
-                postElem.href = `./view-article.html?id=${data.id}`;
-    
-                elem("DIV", ["heading"], data.title, postElem);
-                elem("DIV", ["readings"], `${data.views} views, ${data.impressions} impressions`, postElem);
-            });
-        } else {
-            const responseElem = elem("DIV", ["response"], "No published articles", userArticleElem);
-            responseElem.style.color = "#999999";
-            responseElem.style.fontSize = "1.3rem";
-        }
-    } catch (exception) {
-        console.log(exception);
-     }
 }

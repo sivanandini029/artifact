@@ -5,6 +5,7 @@ import fire from "./class/Backend.js";
 import initIndex from "./index.js";
 import initLogin from "./login.js";
 import initRegister from "./register.js";
+import initNewsFeed from "./news-feed.js";
 import initViewArticle from "./view-article.js";
 
 window.addEventListener("load", function () {
@@ -37,6 +38,10 @@ const pageInitFns = [
     {
         path: ["/register.html"],
         fn: initRegister,
+    },
+    {
+        path: ["/news-feed.html"],
+        fn: initNewsFeed,
     },
     {
         path: "/view-article.html",
