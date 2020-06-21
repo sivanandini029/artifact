@@ -1,11 +1,20 @@
-const profileElem = document.querySelector(".profile-container");
-const postsecElem = document.querySelector(".post-section .posts");
-loadProfile();
+import { getUser, elem } from "./helper/helper.js";
+import fire from "./class/Backend.js";
+
+let postsecElem;
+
+export default async function initProfile() {
+   initializeGlobals();
+   await loadProfile();
+}
+
+function initializeGlobals() {
+   postsecElem = document.querySelector(".post-section .posts");
+}
 
 async function loadProfile() {
    try {
       const result = await getUser(true, false);
-      console.log(result);
       const username = document.querySelector(".user-profile .profile-container .profile-name");
       const bioElem = document.querySelector(".user-profile .profile-container .bio");
       const nameAgeElem = document.querySelector(".user-profile .profile-container .small");
@@ -59,7 +68,7 @@ async function loadProfile() {
          deleteElem.addEventListener("click", async function() {
             try {
                if (confirm("Are you sure, do you want to delete this post?")) {
-                  const deletePost = await backend.fire("deleteArticle", {}, {id: data.id});
+                  const deletePost = await fire("deleteArticle", {}, {id: data.id});
                   postElem.style.overflow = "hidden";
                   const deleteAnim = postElem.animate({
                       height: [getComputedStyle(postElem).height, 0],
@@ -67,7 +76,6 @@ async function loadProfile() {
                      duration: 300,
                      easing: "ease-in-out"
                   });
-                   console.log(deletePost);
 
                    deleteAnim.addEventListener("finish", () => {
                       postElem.parentElement.removeChild(postElem);

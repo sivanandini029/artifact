@@ -6,6 +6,7 @@ import initIndex from "./index.js";
 import initLogin from "./login.js";
 import initRegister from "./register.js";
 import initNewsFeed from "./news-feed.js";
+import initProfile from "./profile.js";
 import initViewArticle from "./view-article.js";
 
 window.addEventListener("load", function () {
@@ -42,6 +43,10 @@ const pageInitFns = [
     {
         path: ["/news-feed.html"],
         fn: initNewsFeed,
+    },
+    {
+        path: ["/profile.html"],
+        fn: initProfile,
     },
     {
         path: "/view-article.html",

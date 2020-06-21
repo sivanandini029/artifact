@@ -196,7 +196,7 @@ async function fillDetails() {
                 }
                 try {
                     
-                    const imp1 = await backend.fire("toggleCommentImpression", {}, {id:data.id});
+                    const imp1 = await fire("toggleCommentImpression", {}, {id:data.id});
                 
                     commentImpressionNum.textContent = imp1.impressions;
                     if (imp1.viewer_has_liked) {
