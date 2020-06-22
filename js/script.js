@@ -5,27 +5,25 @@ import fire from "./class/Backend.js";
 import initIndex from "./index.js";
 import initLogin from "./login.js";
 import initRegister from "./register.js";
-import initNewsFeed from "./news-feed.js";
+import initNewsFeed, { cleanupNewsFeed } from "./news-feed.js";
 import initProfile from "./profile.js";
 import initEditProfile from "./edit-profile.js";
 import initAddArticle from "./add-article.js";
 import initViewArticle from "./view-article.js";
 
-window.addEventListener("load", function () {
+window.addEventListener("load", async () => {
     const loadingScreenMain = document.querySelector(".loader");
   
-    setTimeout(async () => {
-        window.router = new Router({ baseUrl, beforeLoad, afterLoad, pageInitFns });
-        await window.router.startPage();
-        loadingScreenMain.animate({
-            opacity: [1, 0],
-        }, {
-            duration: 300,
-            easing: "ease-in-out",
-        }).addEventListener("finish", async () => {
-            loadingScreenMain.style.display = "none";
-        });
-    }, 2000);
+    window.router = new Router({ baseUrl, beforeLoad, afterLoad, pageInitFns });
+    await window.router.startPage();
+    loadingScreenMain.animate({
+        opacity: [1, 0],
+    }, {
+        duration: 300,
+        easing: "ease-in-out",
+    }).addEventListener("finish", async () => {
+        loadingScreenMain.style.display = "none";
+    });
 });
 
 const baseUrl = "http://localhost/artifact";
@@ -45,6 +43,7 @@ const pageInitFns = [
     {
         path: ["/news-feed.html"],
         fn: initNewsFeed,
+        cleanup: cleanupNewsFeed,
     },
     {
         path: ["/profile.html"],

@@ -16,6 +16,10 @@ export default async function initNewsFeed() {
     eventListeners();
 }
 
+export async function cleanupNewsFeed() {
+    window.removeEventListener("scroll", loadNextPosts);
+}
+
 function initializeGlobals() {
     postContainerElem = document.querySelector(".post-container");
     userArticleElem = document.querySelector(".user-profile .user-articles");
@@ -80,13 +84,15 @@ async function loadProfile() {
 }
 
 function eventListeners() {
-    window.addEventListener("scroll", async () => {
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            if (nextPageUrl) {
-                getSuggestions();
-            }
+    window.addEventListener("scroll", loadNextPosts);
+}
+
+async function loadNextPosts() {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        if (nextPageUrl) {
+            getSuggestions();
         }
-    });
+    }
 }
 
 function makePost(data) {

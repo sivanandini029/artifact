@@ -4,8 +4,8 @@ export default class Router {
     this.beforeLoad = beforeLoad || (() => {});
     this.afterLoad = afterLoad || (() => {});
     this.pageInitFns = pageInitFns || [];
+    this.history = [];
 
-    
     window.addEventListener("popstate", (evt) => {
       this.navigate(evt.srcElement.location.href);
     });
@@ -86,12 +86,25 @@ export default class Router {
   
   async pageInit() {
     const currentPage = this.getCurrentUri(true);
-    const currentPageObj = this.pageInitFns.find((initFn) => 
-      (Array.isArray(initFn.path) && initFn.path.includes(currentPage)) || initFn.path === currentPage
-    );
+  
+    const previousPage = this.history[this.history.length - 1];
+    const previousPageObj = this.getPageObj(previousPage);
+    if (previousPage && previousPageObj && previousPageObj.cleanup) {
+      previousPageObj.cleanup();
+    }
+
+    this.history.push(currentPage);
+
+    const currentPageObj = this.getPageObj(currentPage);
     if (currentPageObj) {
       await currentPageObj.fn();
     }
+  }
+
+  getPageObj(pageName) {
+   return  this.pageInitFns.find((initFn) => 
+      (Array.isArray(initFn.path) && initFn.path.includes(pageName)) || initFn.path === pageName
+    );
   }
   
   replaceAnchors() {
