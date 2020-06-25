@@ -104,12 +104,3 @@ async function loadProfile() {
       console.log(exception);
    }
 }
-
-const hamburgerButton = document.querySelector(".container .header .nav-bar button[type=button]");
-const navBar = document.querySelector(".container .header .nav-bar .nav");
-hamburgerButton.addEventListener("click", () => {
-   navBar.classList.add("active");
-});
-navBar.addEventListener("click", () => {
-   navBar.classList.remove("active");
-});
