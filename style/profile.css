@@ -1,14 +1,3 @@
-.icon-bar {
-    border: 1px solid #42087c;
-    width: 40px;
-    height: 1px;
-    margin-bottom: 8px;
-  }
-button.navbar-toggle {
-    padding: 10px 10px;
-    display: none;
-    cursor: pointer;
-  }
 .user-profile {
     display: flex;
 }
@@ -84,25 +73,6 @@ button.navbar-toggle {
     }
     .user-profile .post-section .posts {
         height: auto;
-    }
-    .container .nav-bar .nav {
-        display: none;
-    }
-    .container .nav-bar button.navbar-toggle {
-        display: block;
-    }
-    .container .nav-bar .nav.active {
-        display: flex;
-        flex-direction: column;
-        background-color: #42087c;
-        width: 100%;
-        height: 100%;
-        color: #ffffff;
-        position: fixed;
-        justify-content: center;
-    }
-    .container .nav-bar .nav.active a {
-        padding-bottom: 10px;
     }
 }
 
