@@ -62,6 +62,8 @@ async function loadProfile() {
         const result = await getUser(true, false);
         const username = document.querySelector(".user-profile .profile-container .profile-name");
         username.textContent = result.username;
+        const articlesImp = document.querySelector(".user-profile .profile-container .articles-impressions");
+        articlesImp.textContent = `${result.articles.length} article${result.articles.length > 1? "s": ""}`;
 
         const userArticles = result.articles.filter(data => data.status === "PUBLISHED").slice(0, 9);
         if (userArticles.length > 0) {
@@ -73,6 +75,7 @@ async function loadProfile() {
                 elem("DIV", ["heading"], data.title, postElem);
                 elem("DIV", ["readings"], `${data.views} views, ${data.impressions} impressions`, postElem);
             });
+
         } else {
             const responseElem = elem("DIV", ["response"], "No published articles", userArticleElem);
             responseElem.style.color = "#999999";
