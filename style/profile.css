@@ -104,10 +104,6 @@ button.navbar-toggle {
     .container .nav-bar .nav.active a {
         padding-bottom: 10px;
     }
-    .header {
-        display: flex;
-        flex-direction: column;
-    }
 }
 
 /* small screens */
