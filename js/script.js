@@ -26,7 +26,7 @@ window.addEventListener("load", async () => {
     });
 });
 
-const baseUrl = "http://localhost/artifact";
+const baseUrl = window.location.origin;
 const pageInitFns = [
     {
         path: ["/", "/index.html"],
