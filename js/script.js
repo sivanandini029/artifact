@@ -15,15 +15,20 @@ window.addEventListener("load", async () => {
     const loadingScreenMain = document.querySelector(".loader");
   
     window.router = new Router({ baseUrl, beforeLoad, afterLoad, pageInitFns });
-    await window.router.startPage();
-    loadingScreenMain.animate({
-        opacity: [1, 0],
-    }, {
-        duration: 300,
-        easing: "ease-in-out",
-    }).addEventListener("finish", async () => {
-        loadingScreenMain.style.display = "none";
-    });
+    try {
+        await window.router.startPage();
+    } catch (e) {
+
+    } finally {
+        loadingScreenMain.animate({
+            opacity: [1, 0],
+        }, {
+            duration: 300,
+            easing: "ease-in-out",
+        }).addEventListener("finish", async () => {
+            loadingScreenMain.style.display = "none";
+        });
+    }
 });
 
 const baseUrl = window.location.origin;
