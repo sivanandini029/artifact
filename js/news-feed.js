@@ -93,7 +93,8 @@ function eventListeners() {
 async function loadNextPosts() {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         if (nextPageUrl) {
-            getSuggestions();
+            await getSuggestions();
+            window.router.replaceAnchors();
         }
     }
 }
